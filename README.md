@@ -24,4 +24,6 @@ Here I'll maintain a running record of literature I've read, topics I've learned
     - [ ] https://arxiv.org/abs/2006.01095
   - Multi-task Learning
     - [ ] https://arxiv.org/abs/1905.07553
+  - Pre-training Biomedicine
+    - [ ] https://arxiv.org/pdf/2001.05140.pdf
     
