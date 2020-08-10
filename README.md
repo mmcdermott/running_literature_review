@@ -26,4 +26,5 @@ Here I'll maintain a running record of literature I've read, topics I've learned
     - [ ] https://arxiv.org/abs/1905.07553
   - Pre-training Biomedicine
     - [ ] https://arxiv.org/pdf/2001.05140.pdf
-    
+  - Misc
+    - [ ] https://arxiv.org/abs/2007.05611
