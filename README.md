@@ -28,5 +28,6 @@ Here I'll maintain a running record of literature I've read, topics I've learned
     - Graphs
       - [ ] https://arxiv.org/pdf/2001.05140.pdf
       - [ ] https://arxiv.org/abs/1905.12265
+      - [ ] https://www.semanticscholar.org/paper/GCC%3A-Graph-Contrastive-Coding-for-Graph-Neural-Qiu-Chen/91fb815361fdbf80ff15ce4d783a41846bd99232
   - Misc
     - [ ] https://arxiv.org/abs/2007.05611
