@@ -4,6 +4,7 @@ In this document I'll summarize discrete research artifacts I've read, leaving n
 
 Template
 ```
+# Topic
 ## [PAPER_TITLE](<LINK>)
 ### Summary
 ### Notes Section 1
@@ -38,7 +39,9 @@ This is actually very similar to the architecture I proposed for Anna to study; 
 
 ### References
 \[1\] https://arxiv.org/abs/1905.12265
+
 \[2\] https://arxiv.org/abs/1909.05729
+
 \[3\] https://arxiv.org/abs/1801.07606
 
 # Multi-task Learning
@@ -51,3 +54,26 @@ This paper investigates multi-task learning in computer vision, and proposes a s
 They find several notable findings:
   1. More tasks = worse performance in comparison to ST models at the same (individual) capacity level, but outperform ST models that are restricted to 1/N of the capacity budget (given N tasks)
   2. They link to another paper I should read: https://arxiv.org/abs/1804.08328 for a transfer task-specific mechanism.
+
+# Neural ODEs
+## [Neural Ordinary Differential Equations](https://arxiv.org/pdf/1806.07366.pdf)
+### Summary
+#### Pitch
+Let's look at a residuatl neural network. This network realizes the output of layer `t` via `h_t(x) = h_{t-1}(x) + f(h_{t-1}(x); \theta)`. This looks like an Euler numerical solution to a differential equation: `h_x(t) = h_x(t-1) + \left.\frac{d}{dt}h_x \right|_{h_x(t-1)}`, where `f` is realized as the derivative of `h_x` (and thereby the derivative of `h_x` is realized as a single layer of a neural network (or a block of layers)).
+
+This is sort of interesting, but why would we want to do this? 
+  1. We can thus use an ODE solver to solve for `h_x(t)` _for any `t`_. This allows for
+    a. Continuous depth ResNets.
+    b. Continuous time RNNs.
+    c. (as shown in this paper) constant memory solution for arbitrary depth of networks!
+    d. (as shown in this paper) we can then solve for neural networks with more complex solvers!
+    e. (as shown in this paper) this results in easier change-of-variables formula for pre-NN to post-NN systems, which yields easier use of normalizing flow networks.
+#### Differentiating through an ODE Solver
+TODO
+#### Use cases
+##### Continous Timeseries Models
+In this use-case, the authors suppose the following probabilistic system:
+
+![Continous TS probabilistic system](https://github.com/mmcdermott/running_literature_review/raw/master/research_artifacts/neural_ode_continuous_ts.png)
+
+This system realizes the whole timeseries probabilistically, with an initial latent state distributed according to `p(z_0)`, and the latent state at subsequent timepoints governed by a neural-ODE model `z_{t_i} \sim ODESolve(z_0, f, \theta, t_i)`. An "emission" probability model `q(x | z)` enables the system to generate predictions in the raw data space.
