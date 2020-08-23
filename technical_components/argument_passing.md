@@ -45,4 +45,7 @@ I'll focus on 2 things here:
   3) Ditto for Keras, or Keras-tuner.
 
 ## My Code
-Based on this, admittedly preliminary literature review, I think there is still a use case for my code, at least for now. I still want to be able to easily translate from command line args to jupyter notebook arguments, and I want to be able to trivially write and read args from files. Later functionality, like (1) improved validation (again, regardless of medium), (2) better composability for nested models, and (3) support for more complicated argument types (e.g., file objects) could also be nice. So, I'm going to pull my code into a separate module. 
+Based on this, admittedly preliminary literature review, I think there is still a use case for my code, at least for now. I still want to be able to easily translate from command line args to jupyter notebook arguments, and I want to be able to trivially write and read args from files. Later functionality, like (1) improved validation (again, regardless of medium), (2) better composability for nested models, and (3) support for more complicated argument types (e.g., file objects) could also be nice.
+
+My utility is tracked here: https://github.com/mmcdermott/multisource_args
+It is currently untested, and not really even released, but I'll aim to address that next week, as well as the biggest issue in the project (that it requires passing the spec twice, once to the dataclass, and once to argparse).
