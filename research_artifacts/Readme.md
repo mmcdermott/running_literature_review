@@ -12,6 +12,15 @@ Template
 ```
 
 # Pre-training
+## [Variance-reduced Language Pretraining via a Mask Proposal Network](https://arxiv.org/abs/2008.05333v1)
+### Summary
+This work provides a theoretical validation for using an adversarial approach in a self-supervised masked language model style pre-training task. In particular, they show that if one examines the variance of the gradient of the MLM objective for BERT, this naturally decomposes into one term that corresponds to the members of the data batch (the "sentence variance") and one term that corresponds to the random choice of mask (the "mask variance"). 
+
+### Variance Decomposition
+The MLM objective is negative log likelihood of the correct word being re-identified; e.g.: `\sum_{i:x_i^M = \texttt{[MASK]}} - \log P(x_i | x^M, i ; \theta_{\text{enc}}`. The expected loss is this loss evaluated over the distribution of the training data:
+```L(\theta_{\text{enc}} = \mathbb{E}_{x \sim P_X} \mathbb{E}_{x^M \sim \text{MaskDist}(x)}[\ell(\theta_\text{enc} ; x^M, x)]```
+Note that this decomposition of the expectation is only possible as we assume the mask distribution `MaskDist` is _independent of the data distribution `P_X`_, an assumption that is _not_ true in any situation where the mask distribution is learned from the data somehow (at least, it doesn't if the loss changes as well). 
+
 ## [GRAPH-BERT: Only Attention is Needed for Learning Graph Representations](https://arxiv.org/pdf/2001.05140.pdf)
 ### Summary
 This paper both proposes (1) a new form of graph neural network based solely on attention links and (2) a method for graph based pre-training / fine-tuning based on (1) a local node-attribute task and (2) a structure recovery task (both of which feel somewhat analogous to the node identification and context-prediction of \[1\]). They focus specifically on solving two problems:
