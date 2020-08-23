@@ -40,4 +40,9 @@ I'll focus on 2 things here:
   1. Use config files. This is repeated in a number of places. It also agrees with some of the points I raised in the motivation section above. The most trustworthy seeming source stating such is [this excerpt from Stanford CS230](https://cs230.stanford.edu/blog/hyperparameters/). They also comment more generally on the hyperparameter search aspect of this and connection to this to storage of parameters.
 
 #### Utilites of existing libraries
-  1) 
+  1) [PyTorch Lightning](https://github.com/PyTorchLightning/pytorch-lightning). This doesn't seem to do anything towards argument parsing, but has great support for other aspect of improving runnability of ML pipelines. Worth a tutorial session in the future.
+  2) I'm not seeing anything within Tensorflow that solves this directly.
+  3) Ditto for Keras, or Keras-tuner.
+
+## My Code
+Based on this, admittedly preliminary literature review, I think there is still a use case for my code, at least for now. I still want to be able to easily translate from command line args to jupyter notebook arguments, and I want to be able to trivially write and read args from files. Later functionality, like (1) improved validation (again, regardless of medium), (2) better composability for nested models, and (3) support for more complicated argument types (e.g., file objects) could also be nice. So, I'm going to pull my code into a separate module. 
