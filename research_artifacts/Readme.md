@@ -21,6 +21,20 @@ The MLM objective is negative log likelihood of the correct word being re-identi
 ```L(\theta_{\text{enc}} = \mathbb{E}_{x \sim P_X} \mathbb{E}_{x^M \sim \text{MaskDist}(x)}[\ell(\theta_\text{enc} ; x^M, x)]```
 Note that this decomposition of the expectation is only possible as we assume the mask distribution `MaskDist` is _independent of the data distribution `P_X`_, an assumption that is _not_ true in any situation where the mask distribution is learned from the data somehow (at least, it doesn't if the loss changes as well). 
 
+This latter point actually reveals my ignorance, and this paper's strength -- they don't frame their task as trying to learn a contrastive loss, but instead they frame it as _still learning the random mask approach_, but to do this they use a proposal distribution to minimize this _random mask_ loss most efficiently. Why would using a proposal distribution help learn this loss most efficiently? In essence, we want to estimate the _expectation_ of the random variable, and much of the domain of the RV doesn't contribute to this expectation. This is possibly a key issue in our early efforts with the protein adversarial random training, and may explain the need for us to include jointly a term that was strictly random. Let's get more technical about what they show:
+
+For starters, let's repeat a theorem from Monte-Carlo sampling: 
+```
+Denote z_1, \ldots, z_T are iid sampled from the proposal distribution P_2. Then \frac{1}{T} \sum_{t} \frac{p_1(z_t)}{p_2(z_t)} f(z_t) is an unbiased estimator of \mathbb{E}_{z \sim P_1}[f(z)]. Var_{z \sim P_2} [\frac{p_1(z)}{p_2(z)} f(z)} is minimized if probability density function p_2(z) \propto \norm{f(z)}_2.
+```
+Why is this true? Well, its not a formal proof, but note that `p_2(z) \propto \norm{f(z)}_2 \implies p_2(z) = c \norm{f(z)}_2`, so then 
+```Var_{z \sim P_2} [\frac{p_1(z)}{p_2(z)} f(z)} = Var_{z\sim P_2}[c p_1(z) \frac{f(z)}{\norm{f(z)}_2}]```
+If (for simplicity, and as implied by our notation) we assume `f(z)` is scalar valued, then further:
+```Var_{z\sim P_2}[c p_1(z) \frac{f(z)}{\norm{f(z)}_2}] = c^2 Var_{z \sim P_2}[p_1(z)]```
+We can also likely further relate c to `f(z)` somehow (averaged or somehow otherwise aggregated over all `z` due to normalization constraints). This isn't, on its own, entirely illuminating for me. So, let's go to the source: [1](https://openreview.net/pdf?id=r8lrEqPpYF8wknpYt57j) (also listed below with separate commentary).
+
+So, one issue here is that that statement of the theorem seems to be... wrong? Instead, you want `p_2(z) \propto p_1(z) \norm{f(z)}_2`. Note that this, in the immediate use case of this paper, doesn't change much, b/c `p_1(z)` is a uniform distribution, and therefore is a constant. Also, this paper really doesn't cite [1] enough, in my opinion.
+
 ## [GRAPH-BERT: Only Attention is Needed for Learning Graph Representations](https://arxiv.org/pdf/2001.05140.pdf)
 ### Summary
 This paper both proposes (1) a new form of graph neural network based solely on attention links and (2) a method for graph based pre-training / fine-tuning based on (1) a local node-attribute task and (2) a structure recovery task (both of which feel somewhat analogous to the node identification and context-prediction of \[1\]). They focus specifically on solving two problems:
@@ -120,3 +134,18 @@ This system realizes the whole timeseries probabilistically, with an initial lat
 
 ### Follow-up work
 This work has attracted a lot of follow-up work. What has that looked at?
+
+# Theory of Deep Learning
+## Variance & SGD (may extend topic later)
+### [Variance Reduction In SGD By Distributed Importance Sampling](https://openreview.net/pdf?id=r8lrEqPpYF8wknpYt57j)
+This paper explores the genral idea of importance sampling SGD - an approach to reduce variance, principally explored in the context of asynchronous SGD (e.g., SGD distributed across multiple machines so small updates may be made on slightly stale gradient estimates as lag is induced via the distributed nature of the computation).
+
+#### Theorem
+Starting at the following theorem, as this paper is included to help better understand a different piece, they claim that if you are trying to estimate `E_{p(x)}[f(x)]`, you can minimize the variance of your estimator by instead viewing the system as `E_{q(x)}[\frac{p(x)}{q(x)} f(x)]` where `p(x) > 0 \implies q(x) > 0` and `q(x)` (your proposal distribution) is chosen such that `q(x)\propto p(x) |f(x)|`. 
+
+They propose a scheme where they are able to implement this exactly and profile it. They find some interesting findings, concordant with their theory, and the (slightly more modern) understanding that some variance is helpful in SGD for regularization. Their immediate method is not applicable with most useful network types, unfortunately.
+
+#### Follow-up work
+This seems like an important technique, particularly for enabling pre-training algorithms to be run on much more limited computational resources, given the primary cost there is the decrease to batch size, which has a primary effect of increasing gradient variance. Some notable follow-up works that may warrant additional attention include:
+  * https://jmlr.org/papers/volume19/16-241/16-241.pdf
+  * (thesis): http://www.cs.cmu.edu/~weiyu/Adams_Wei_Yu_Homepage_files/thesis/thesis.pdf
