@@ -1,5 +1,7 @@
 # Argument Passing
-Technical Learning System 08/23/2020
+Technical Learning System Exploration:
+  * 08/23/2020 (background research, starting porting code over to separate repo)
+  * 08/30/2020 (finalized v0 of repo; added tests, validated code, and ensured installability)
 
 ## Motivation
 Argument parsing is something that is done in some manner for every project. However simple it appears, however, it can be both (1) more complicated, and (2) have implications on the broader project's API and suitability to best-practices than we expect. Some examples:
@@ -47,5 +49,4 @@ I'll focus on 2 things here:
 ## My Code
 Based on this, admittedly preliminary literature review, I think there is still a use case for my code, at least for now. I still want to be able to easily translate from command line args to jupyter notebook arguments, and I want to be able to trivially write and read args from files. Later functionality, like (1) improved validation (again, regardless of medium), (2) better composability for nested models, and (3) support for more complicated argument types (e.g., file objects) could also be nice.
 
-My utility is tracked here: https://github.com/mmcdermott/multisource_args
-It is currently untested, and not really even released, but I'll aim to address that next week, as well as the biggest issue in the project (that it requires passing the spec twice, once to the dataclass, and once to argparse).
+My utility is tracked here: https://github.com/mmcdermott/multisource_args. Currently, though it requires you to specify the argument parsing spec twice (once as a dataclass, once in argparse), it does have nice utilities for writing to and reading from files, both in abstract and from the commandline. The utility is tested, can be installed via pip (from the github), and plans are in place (but will require additional work) to streamline the interface by eliminating the duplicated spec issue.
