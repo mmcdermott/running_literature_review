@@ -1,6 +1,6 @@
 # Running Literature Review
 
-Here I'll maintain a running record of literature I've read, topics I've learned about, etc., to help cement my own learnings and allow others to benefit from it (eventually)
+Here I'll maintain a running record of literature I've read, topics I've learned about, etc., to help cement my own learnings and allow others to benefit from it (eventually). The list below is not necessarily up to date.
 
 ## Paper/Topic Queue
   - [ ] [Neural ODEs](https://arxiv.org/abs/1806.07366)
