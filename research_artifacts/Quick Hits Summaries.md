@@ -1,11 +1,17 @@
 # Research Paper Quick Hits
-This doc contains brief notes on _skimmed_ papers (no more than 20 min) per paper, which ultimately becomes a feeder into the more in depth notes in `README.md`. Format:
+This doc contains brief notes on _skimmed_ papers (no more than 20 min) per paper, which ultimately becomes a feeder into the more in depth notes in `README.md`. 
+
+### Acronyms
+  1. WDTMT?: "What does this mean, technically?"
+  2. ITT?: "Is this true?"
+  
+### Expected Format
 
 ```
 # [Paper_Title](paper_link)
   * **Logistics**:
     - Citation (key points: publication venue, date, authors)
-    - # of citations of this work & as-of date
+    - \# of citations of this work & as-of date
     - Author institutions
     - Time Range: START - END
   * **Summary**:
@@ -19,6 +25,7 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
       1)
       2)
       3)
+    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
   * **Detailed Methodology**:
     Detailed description of underlying methodology
   * **Pros**:
@@ -53,6 +60,7 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
       2) [Belief Propagation Algorithm](https://www.aaai.org/Papers/AAAI/1982/AAAI82-032.pdf), Judea Pearl, AAAI '82, 1004 citations.
         - They build on this algorithm to operate over the tree of ancestors.
       3) None
+    - Warrants deeper dive in main doc? Not at present.
   * **Detailed Methodology**:
     HAP breaks down attention propagation into two message-passing phases:
       1) Bottom-up propagation: the embedding for node i is updated via attention computation over its immediate _ancestors_ (& itself).
@@ -78,30 +86,51 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
 
 # [HiTANet: Hierarchical Time-Aware Attention Networks for Risk Prediction on Electronic Health Records](https://dl.acm.org/doi/abs/10.1145/3394486.3403107)
   * **Logistics**:
-    - Citation (key points: publication venue, date, authors)
-    - # of citations of this work & as-of date
-    - Author institutions
-    - Time Range: START - END
+    - Junyu Luo, Muchao Ye, Cao Xiao, and Fenglong Ma. 2020. HiTANet: Hierarchical Time-Aware Attention Networks for Risk Prediction on Electronic Health Records. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining (KDD '20). Association for Computing Machinery, New York, NY, USA, 647–656. DOI:https://doi.org/10.1145/3394486.3403107
+    - \# of citations of this work & as-of date
+    - Penn State & IQVIA
+    - Time Range: 11:47am - 12:12pm (not finished yet)
   * **Summary**:
-    - _Single Big Problem/Question_ The single big problem the paper seeks to solve (1 sent).
-    - _Solution Proposed_ The proposed solution (1 sent).
-    - _Why hasn't this been done before?_ Why has nobody solved this problem in this way before? What hole in the literature does this paper fill? (1 sent).
+    - _Single Big Problem/Question_ Disease progression / risk progression is important, but traditionally done in a way that assumes stationarity (WDTMT?) and homogeneity across patients, which are unrealistic assumptions.
+    - _Solution Proposed_ The authors use a hierarchical, time-aware attention network (HiTANet) for progression/risk prediction leveraging time information at both local and global stages via a transformer with a time-aware key-query attention mechanism (WDTMT?)
+    - _Why hasn't this been done before?_
+      1) Attention networks are new?
     - _Experiments used to justify?_
-      1) List of experiments used to justify (tasks, data, etc.) -- full context.
+      1) Evaluated on three real-world datasets, showing gains of over 7% in F1 score on all datasets. Task is disease prediction task (COPD, Heart Failure, Kidney disease), against a variety of baselines including attention models, RNNs, baselines, and time-based models.
     - _Secret Terrible Thing_ What is the "secret terrible thing" of this paper?
     - 3 most relevant other papers:
-      1)
-      2)
-      3)
+        1) [Dipole](https://dl.acm.org/doi/abs/10.1145/3097983.3098088?casa_token=Cl3YdRF93SwAAAAA:SMVqk6aVi_Z_B9RhhTKdYJRq0l7rbiTMnpyUx2uRJ1MBiAkV5giWPETSu8RyBTyxtsYfNRjUdJF4qQ), Ma et al, KDD '17. This is both a comparison, and a methodological motivator
+      There are also 2 clear topic areas of relevance: (todo: add links to these papers)
+        1) Attention mechanisms for risk prediction (e.g., Retain, Dipole)
+        2) Time-aware models for disease prediction (e.g., T-LSTM, Retain EX, TimeLine, and ConCare)
+    - Warrants deeper dive in main doc? At least partially.
   * **Detailed Methodology**:
-    Detailed description of underlying methodology
+    HiTANet consists of two stages:
+      1) Local evaluation stage:
+         This stage deals with C1 (that historical information does not decay monotonically) via a Transformer, which learns time-aware attention weights for individual visits. It learns local attention weights for visits and an overall representation for each patient.
+      2) Global synthesis tage
+         This stage deals with C2 (that the importance of historical information varies across patients), by utilizing the per-patient representation produced in stage #1 via a transformer that generates a global attention weight for each visit. WDTMT?
+         
+    This paper still works with EHR data as sequences of codes -- no numerical data leveraged in this work.
+      
+    Technical details on stages:
+      1) Local:
+        1) Embed visit codes into embedding space
+        2) Embed time delta between visit and prior visit into latent space via 1-hidden layer NN. The time embedding layer has a square operation to ensure that the system moves rapidly away from zero as time-points grow larger, followed by a tanh interaction. This doesn't seem well justified to me, and is not ablated.
+        3) combine visit vector & time vector (vector containing time delta between visits, in days), 
   * **Pros**:
-    - List of big pros of the paper
+    - Lots of baselines / metrics
   * **Cons**:
-    - List of big cons of this paper
+    - No GRU-D, which seems a natural model given their framing, possibly? This is likely not included as their focus is strongly at the "visit sequence" level, not the "measurement sequence" level. Nonetheless, their method may be valuable in that context as well!
+    - No variance reported.
+    - Their critical claim that "existing models assume stationary information decay" isn't terribly well justified/explained. Maybe this is clear for those who have read the relevant related lit, but not for me.
+    - No validation of use of square operation.
+    - Relative position representations seems more justified than this use of continuoust timepoint embeddings. To further ensure locality is respected, though, they do use "local-biased attention", via dipole (WDTMT?).
   * **Open Questions**:
-    - List of open questions inspired by this paper
+    - Authors state: "However, existing studies implicitly assume the stationary progression during each time period, and thus take a homogeneous way to decay the information from previous time steps for all patients in their models." WDTMT? ITT?
   * **Extensions**:
-    - List of possible extensions to this paper, at any level of thought-out.
+    - Can these ideas be relevant to the appropriate use of sporadically measured labs in an inpatient context (within a single visit)?
+    - Would relative position representations (embed time delta directly) be a better vehicle here? Possibly in concert with changepoint detection?
   * **How to learn more**:
-    - List of terms/concepts/questions to investigate to learn more about this paper.
+    - Read Dipole 
+    - Read papers in category 2, above
