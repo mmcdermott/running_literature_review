@@ -40,6 +40,44 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
     - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
 
+# [Graph Meta Learning via Local Subgraphs](https://arxiv.org/pdf/2006.07889.pdf)
+  * **Logistics**:
+    - Huang, Kexin, and Marinka Zitnik. "Graph Meta Learning via Local Subgraphs." arXiv preprint arXiv:2006.07889 (2020).
+    - 0 (as of 6/2020)
+    - Harvard
+    - Time Range: 16:49 - 17:31 (day 1); START - END (day 2)
+  * **Summary**:
+    - Rapid adaption of a trained model for graph-structured data is difficult, and meta-learning on graph structured data is under-explored. In addition, current methods for this problem are limited in scope and do not scale well to large graphs.
+    - They propose "G-META", a novel meta-learning approach for graphs that uses "local subgraphs" to transfer subgraph-specific information and make the model learn the essential knowledge faster via meta-gradients (WDTMT?).
+    - Graph neural networks are relatively new.
+    - _Experiments used to justify?_
+      1) Experiments spanning 7 datasets and 9 baselines. 
+    - _Secret Terrible Thing_ What is the "secret terrible thing" of this paper?
+    - 3 most relevant other papers:
+      1) Maybe one of these? https://arxiv.org/abs/1905.09718, https://arxiv.org/abs/1912.09867, https://arxiv.org/abs/1909.01515, https://papers.nips.cc/paper/8389-learning-to-propagate-for-graph-meta-learning.pdf
+      2) Maybe one of these? https://www.cse.wustl.edu/~muhan/papers/KDD_2017.pdf, https://arxiv.org/abs/1810.00826, https://papers.nips.cc/paper/7763-link-prediction-based-on-graph-neural-networks.pdf
+      3) Maybe https://arxiv.org/abs/1905.07953, https://iclr.cc/virtual_2020/poster_BJe8pkHFwS.html#:~:text=We%20propose%20GraphSAINT%2C%20a%20graph,or%20edges%20across%20GCN%20layers.
+    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
+  * **Detailed Methodology**:
+    Firstly, note that they restict their notion of GNN to specifically message-passing NN.
+    
+    G-META can tackle 3 distinct meta learning problems. 
+      1) Single graph, disjoint labels (e.g., given a graph, learn how to predict labels `l_1^a, \ldots, l_n^a` at train time, then adapt this into learning how to predict labels `l_1^b, \ldots, l_m^b` at test time. Same graph means same node features, but new labels.
+      2) Multiple graphs, shared labels (e.g., given graph 1, learn how to classify nodes in a certain way, then in graph 2 perform the same task). My Question: Why is this meta-learning? If at train time you learn over a bunch of graphs, which are drawn from the same distribution as the test graph in an iid manner, this just seems like learning.
+      3) Multiple graphs & disjoint labels. Fig suggests that rather than this being just 1 & 2 in concert, this is more like I have lots of graphs on which I predict labels `l_j^a` but at test time I want to adapt to predicting `l_j^b` on the same collection of graphs.
+    G-META formulates this learning task as a subgraph prediction problem. Rather than classifying nodes, nodes are realized as embedded subgraphs, and these are used in the learning formulation. The authors show theoretical properties regarding how the use of local subgraphs can preserve certain inequality relationships about graphs ensuring that minimal informaiton is lost in this approach. This justifies its use over the entire graph, and enables this as a viable way to increase scalability.
+  * **Pros**:
+    - List of big pros of the paper
+  * **Cons**:
+    - List of big cons of this paper
+  * **Open Questions**:
+    - List of open questions inspired by this paper
+  * **Extensions**:
+    1) Why use single subgraphs? Why not a multi-scale resolution that captures both the local context and the global context of a node in its representation as a classification task and in meta-learning transfer?
+  * **How to learn more**:
+    - List of terms/concepts/questions to investigate to learn more about this paper.
+
+
 # [Hierarchical Attention Propagation for Healthcare Representation Learning](https://dl.acm.org/doi/abs/10.1145/3394486.3403067)
   * **Logistics**:
     - Muhan Zhang, Christopher R. King, Michael Avidan, and Yixin Chen. 2020. Hierarchical Attention Propagation for Healthcare Representation Learning. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining (KDD '20). Association for Computing Machinery, New York, NY, USA, 249–256. DOI:https://doi.org/10.1145/3394486.3403067
