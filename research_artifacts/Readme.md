@@ -135,6 +135,9 @@ This system realizes the whole timeseries probabilistically, with an initial lat
 ### Follow-up work
 This work has attracted a lot of follow-up work. What has that looked at?
 
+### Additional Resources
+  1. https://www.youtube.com/watch?v=YZ-_E7A3V2w
+
 # Theory of Deep Learning
 ## Variance & SGD (may extend topic later)
 ### [Variance Reduction In SGD By Distributed Importance Sampling](https://openreview.net/pdf?id=r8lrEqPpYF8wknpYt57j)
