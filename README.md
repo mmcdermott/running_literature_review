@@ -1,6 +1,6 @@
 # Running Literature Review
 
-Here I'll maintain a running record of literature I've read, topics I've learned about, etc., to help cement my own learnings and allow others to benefit from it (eventually). The list below is not necessarily up to date.
+Here I'll maintain a running record of literature I've read, topics I've learned about, etc., to help cement my own learnings and allow others to benefit from it (eventually--this is a stretch goal not yet realized). The list below is not remotely up to date in terms of papers I have read or want to read. As of now, this github is strictly for my own benefit, and all opinions are (obviously) my own and are recorded for solely my own posterity -- they aren't commentary on the works in any real sense, as that would require both (1) likely more thought, and (2) more careful communication to ensure my message is accurately conveyed. That all said, please feel free to leave any comments, suggestions, or thoughts via github issues.
 
 ## Paper/Topic Queue
   - [ ] [Neural ODEs](https://arxiv.org/abs/1806.07366)
