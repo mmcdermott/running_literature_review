@@ -5,6 +5,7 @@ Here I'll maintain a running record of literature I've read, topics I've learned
 ## Paper/Topic Queue
   - [ ] [Neural ODEs](https://arxiv.org/abs/1806.07366)
     - [ ] https://arxiv.org/abs/2002.08071
+    - [ ] https://papers.nips.cc/paper/8773-latent-ordinary-differential-equations-for-irregularly-sampled-time-series.pdf
   - [ ] [Deep Signatures](https://papers.nips.cc/paper/8574-deep-signature-transforms.pdf)
   - [ ] [Lottery Ticket Hypothesis](https://arxiv.org/abs/1803.03635)
     - [ ] https://arxiv.org/abs/2002.00585
