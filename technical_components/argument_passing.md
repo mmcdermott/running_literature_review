@@ -2,6 +2,7 @@
 Technical Learning System Exploration:
   * 08/23/2020 (background research, starting porting code over to separate repo)
   * 08/30/2020 (finalized v0 of repo; added tests, validated code, and ensured installability)
+  * 09/13/2020 (Added commentary on Hydra)
 
 ## Motivation
 Argument parsing is something that is done in some manner for every project. However simple it appears, however, it can be both (1) more complicated, and (2) have implications on the broader project's API and suitability to best-practices than we expect. Some examples:
@@ -26,6 +27,7 @@ I'll start this exploration by going through some existing resources I've found 
   * [`--docopt`](http://docopt.org/). `docopt` lets you define, rather than an immediate interface, a "Usage String," which serves both as a documentation, and by standardizing canonical best practices for such strings in unix systems, a definition of arguments.
   * [Click](https://click.palletsprojects.com/en/5.x/) Seems to be designed more with power in mind, rather than immediate usability (`argparse`) or the "magic" of going straing from a help string (`--docopt`). Click uses decorators, let's you decorate a function as a command, add arguments, etc. It is desigend to work across python 2 and 3, and [the authors have put definite thought into why this is necessary](https://click.palletsprojects.com/en/7.x/python3/), support things like colors in print output, easy integration with setuptools, typing, etc. Click seems like it would possibly be best for [large, complex applications](https://click.palletsprojects.com/en/7.x/complex/). I doubt most ML pipelines apply. Click also supports more advanced features, like [testing](https://click.palletsprojects.com/en/7.x/testing/), [terminal interaction](https://click.palletsprojects.com/en/7.x/utils/), [command line completion (if integrated through setuptools)](https://click.palletsprojects.com/en/7.x/bashcomplete/)
   * [Abseil](https://abseil.io/docs/python/quickstart) Google has their own utility, in Abseil. This is a bit different than other systems, in that it has a _distributed_ model for flags. Rather than, for example, you needing to define a single argument system in your "main" you define FLAGS for the interface of each part separately in their unique files. Then the global spec is combined based on python imports. Note that this speaks to the "composability" issue we identified above, at least in part. It also supports flag validators. It does, however, seem to have poor documentation and I don't know how effectively it would merge with Jupyter.
+  * (09/13/20 Entry) [Hydra](https://medium.com/pytorch/hydra-a-fresh-look-at-configuration-for-machine-learning-projects-50583186b710). At first glance, Hydra seems tailor made to this situation. I'm going to check it out in more detail and leave commentary below.
   
 There is also [this blog post](https://realpython.com/comparing-python-command-line-parsing-libraries-argparse-docopt-click/) which serves to compare the three libraries. Additionally, [Click has a comparison page](https://click.palletsprojects.com/en/5.x/why/) as well.
 
@@ -50,3 +52,17 @@ I'll focus on 2 things here:
 Based on this, admittedly preliminary literature review, I think there is still a use case for my code, at least for now. I still want to be able to easily translate from command line args to jupyter notebook arguments, and I want to be able to trivially write and read args from files. Later functionality, like (1) improved validation (again, regardless of medium), (2) better composability for nested models, and (3) support for more complicated argument types (e.g., file objects) could also be nice.
 
 My utility is tracked here: https://github.com/mmcdermott/multisource_args. Currently, though it requires you to specify the argument parsing spec twice (once as a dataclass, once in argparse), it does have nice utilities for writing to and reading from files, both in abstract and from the commandline. The utility is tested, can be installed via pip (from the github), and plans are in place (but will require additional work) to streamline the interface by eliminating the duplicated spec issue.
+
+## Hydra
+Hydra is a new system (v1 on Sep. 3, 2020) for dynamic, nestable configuration files. At first blush, I think it is likely _the_ right solution for what my code is intended to do. It builds on [OmegaConf](https://omegaconf.readthedocs.io/en/latest/index.html) which is something I also should've found in my initial search. I think the likely failure in search here was that I was primarily thinking of this as a "command line/argument management system", because that's how I ended up here, but given how appropriately file-centric the final system is, I should've searched for things in the reverse direction, as a "config file management system". Hydra supports some nice features, inclduing:
+  * Native support for sweeping via Ax: https://hydra.cc/docs/plugins/ax_sweeper/
+  * Overridding default configuration files: https://hydra.cc/docs/advanced/hydra-command-line-flags/#--config-path-cp
+    - Bonus, _having_ default configuration files! That's a winner.
+  * Native support for Jupyter notebooks: https://hydra.cc/docs/advanced/jupyter_notebooks/
+    So, this is underwhelming. Firstly, the notebook they link to doesn't actually exist, but when you navigate manually to the _actual_ notebook, it doesn't really do what I'm looking for. That said, I think you can just build the config namespace object yourself and you'll be fine as you would in any other case. Or, similarly, you can also use a structured configuration object and instatinate the config class yourself.
+  * Native support for unit testing Hydra-driven applications: https://hydra.cc/docs/advanced/unit_testing/
+  * Native support for slurm launching: https://hydra.cc/docs/plugins/submitit_launcher/
+  * There's commentary in the community for how to integrate this with things like PyTorch Lightning: https://towardsdatascience.com/keeping-up-with-pytorch-lightning-and-hydra-31e8ed70b2cc
+  * Structured configs, are, I think, the full answer to replace my package. They let you use dataclasses to define configurations, and you can associate validation as well.
+  
+I have one question left -- can you combine structured configurations and user-specified overwrite flat config files? [Here](https://hydra.cc/docs/tutorials/structured_config/intro) is where to look to find the answers.
