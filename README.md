@@ -40,3 +40,6 @@ Here I'll maintain a running record of literature I've read, topics I've learned
   - GNNs Meta List: https://github.com/thunlp/GNNPapers
   - Misc
     - [ ] https://arxiv.org/abs/2007.05611
+    
+Tech things:
+  - [ ] https://medium.com/pytorch/pytorch-lightning-bolts-from-boosted-regression-on-tpus-to-pre-trained-gans-5cebdb1f99fe
