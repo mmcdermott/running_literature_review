@@ -31,5 +31,6 @@ Here I'll maintain a running record of literature I've read, topics I've learned
       - [ ] https://arxiv.org/abs/1905.12265
       - [ ] https://www.semanticscholar.org/paper/GCC%3A-Graph-Contrastive-Coding-for-Graph-Neural-Qiu-Chen/91fb815361fdbf80ff15ce4d783a41846bd99232
       - [ ] https://academic.oup.com/bioinformatics/article/36/4/1241/5581350
+  - GNNs Meta List: https://github.com/thunlp/GNNPapers
   - Misc
     - [ ] https://arxiv.org/abs/2007.05611
