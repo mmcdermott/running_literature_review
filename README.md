@@ -31,6 +31,12 @@ Here I'll maintain a running record of literature I've read, topics I've learned
       - [ ] https://arxiv.org/abs/1905.12265
       - [ ] https://www.semanticscholar.org/paper/GCC%3A-Graph-Contrastive-Coding-for-Graph-Neural-Qiu-Chen/91fb815361fdbf80ff15ce4d783a41846bd99232
       - [ ] https://academic.oup.com/bioinformatics/article/36/4/1241/5581350
+  - Deep Metric Learning:
+    - [ ] https://openaccess.thecvf.com/content_cvpr_2018/html/Duan_Deep_Adversarial_Metric_CVPR_2018_paper.html
+    - [ ] https://arxiv.org/abs/1903.05503
+    - [ ] https://arxiv.org/abs/1803.00942
+    - [ ] https://arxiv.org/abs/1503.03832
+    - [ ] https://arxiv.org/abs/1706.07567
   - GNNs Meta List: https://github.com/thunlp/GNNPapers
   - Misc
     - [ ] https://arxiv.org/abs/2007.05611
