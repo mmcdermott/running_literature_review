@@ -16,7 +16,7 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
     - Time Range: START - END
   * **Summary**:
     - _Single Big Problem/Question_ The single big problem the paper seeks to solve (1 sent).
-    - _Solution Proposed_ The proposed solution (1 sent).
+    - _Solution Proposed/Answer Found_ The proposed solution (1 sent).
     - _Why hasn't this been done before?_ Why has nobody solved this problem in this way before? What hole in the literature does this paper fill? (1 sent).
     - _Experiments used to justify?_
       1) List of experiments used to justify (tasks, data, etc.) -- full context.
@@ -39,6 +39,39 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
   * **How to learn more**:
     - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
+
+# [Predicting What You Already Know Helps: Provable Self-Supervised Learning](https://arxiv.org/abs/2008.01064)
+  * **Logistics**:
+    - Lee JD, Lei Q, Saunshi N, Zhuo J. Predicting What You Already Know Helps: Provable Self-Supervised Learning. arXiv preprint arXiv:2008.01064. 2020 Aug 3.
+    - 1 09/16/2020
+    - Princeton, UT Austin.
+    - Time Range: 10:00am - 10:27am
+  * **Summary**:
+    - _Single Big Problem/Question_ Why does self-supervised pre-training help?
+    - _Solution Proposed/Answer Found_ The authors quantify how approximate independence between pre-training task allows one to learn representations that can solve downstream tasks with significantly reduced sample complexity
+    - _Why hasn't this been done before?_ Pre-training is exploding over the last 2 years, leading to greater demand for theoretical models explaining this phenomena
+    - _Experiments/theorey used to justify?_ They present theory based on relating conditional independence of input, pre-training task, and downstream task establishing their claims, and validate this theory with simulation experiments and experiments on the SST dataset and the Yearbook dataset.
+      1) List of experiments used to justify (tasks, data, etc.) -- full context.
+    - _Secret Terrible Thing_ Their theory only covers the case of (1) a single `Y` and (2) a fixed `\psi` representation of `X_1`, when in reality we'd actually work with a (potentially variable) representation of `X`. This difference is, in many cases, critical, I think.
+    - 3 most relevant other papers:
+      1)
+      2)
+      3)
+    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
+  * **Detailed Methodology**:
+    Authors begin with the following remark: In certain cases, given `X_1` being the underlying object (e.g., an image of a person with the face occluded), `X_2` being the self-supervised target (e.g., the true face of an image), and `Y` being the target of interest in a downstream task (e.g., the person's identity). In this case, provided you know `Y`, you can infer `X_2` reasonably well independent of `X_1`. This therefore implies that `X_1 \propto X_2 | Y`, and further implies that to predict `X_1 \to X_2`, we internally must be travelling through `Y`. That last leap, I think is a little wrong. For example, suppose in my training set there are only 2 people, despite the fact that `Y`s label space is actuall 1000 people. In that setting, it is true that `X_1 \propto X_2 | Y`, but it is also true that there is a "simpler" variable `B` flagging which of the two people the person is that also satisfies that description, and `B` does not fully inform `Y` (they account for this in their theory by commenting on the necessary rank of the covariance matrix between `X_2` and `Y`). Another flaw with this toy example -- in my final task, I'm not actually trying to go `X_1 \to Y`; I'm really trying to go `X_2 \to Y`, b/c that's the most informative section of the image. So, the fact that `X_1 \to X_2` (maybe) has to go through `Y` doesn't seem relevant. More relevant than the `X_1 \to Y` part of this proposed flow is the `Y \to X_2` part. This maybe implies using invertible NNs for the pre-training task, then reversing them in fine-tuning would be beneficial?
+  * **Pros**:
+    - List of big pros of the paper
+  * **Cons**:
+    - List of big cons of this paper
+  * **Open Questions**:
+    - How does this theory extended to cases where there are many `Y`s of interest, as in the case of BERT? This can be partially handled 
+  * **Extensions**:
+    - List of possible extensions to this paper, at any level of thought-out.
+  * **How to learn more**:
+    - List of terms/concepts/questions to investigate to learn more about this paper.
+  * **Other Notes**:
+    - pre-text task = pre-training task
 
 # [Graph Meta Learning via Local Subgraphs](https://arxiv.org/pdf/2006.07889.pdf)
   * **Logistics**:
