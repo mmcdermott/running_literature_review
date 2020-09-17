@@ -12,7 +12,7 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
 ### To categorize
 
 ### Shortlist (5 max, unordered)
-  - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract
+  - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract (in progress)
 
 ### Classic Papers
   - TODO
@@ -22,6 +22,7 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   - [ ] [Lottery Ticket Hypothesis](https://arxiv.org/abs/1803.03635)
     - [ ] https://arxiv.org/abs/2002.00585
     - [ ] https://arxiv.org/abs/1911.11134
+    - [ ] https://ai.googleblog.com/2020/09/improving-sparse-training-with-rigl.html
     
 #### Representation Learning
 ##### Self Supervised Representation Learning in General
@@ -72,6 +73,10 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
 #### Clinical & Biomedical Modeling (e.g., task-oriented, rather than representation oriented)
   - [ ] https://arxiv.org/pdf/2007.09483.pdf
   - [ ] https://arxiv.org/abs/2006.12777
+  
+#### Efficient Network Architectures
+##### Transformers
+  - [ ] https://arxiv.org/pdf/2009.06732.pdf
     
 ## Tech Stack Reading / Tutorial Queue:
   - [ ] https://medium.com/pytorch/pytorch-lightning-bolts-from-boosted-regression-on-tpus-to-pre-trained-gans-5cebdb1f99fe
