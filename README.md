@@ -10,42 +10,54 @@ Here I'll maintain a running record of literature I've read, topics I've learned
 ## Paper/Topic Queue
 Maintenance is at a best effort level. Until decided otherwise, this won't be sorted by topic, the relevant sub-works will be nested.
 ### To categorize
+
+### Shortlist (5 max, unordered)
+  - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract
   - [ ] https://arxiv.org/pdf/2008.01064.pdf
 
-### Shortlist (5 max)
+### Classic Papers
   - TODO
 
-### Unstructured Papers
+### Topic-Structured Papers
+#### Deep Learning Theory
   - [ ] [Lottery Ticket Hypothesis](https://arxiv.org/abs/1803.03635)
     - [ ] https://arxiv.org/abs/2002.00585
     - [ ] https://arxiv.org/abs/1911.11134
-  - Self Supervised Representation Learning
-    - [ ] https://arxiv.org/abs/2002.08822
-    - [ ] https://arxiv.org/abs/2006.01095
-  - Multi-task Learning
-    - [ ] https://arxiv.org/abs/1905.07553
-  - Pre-training
-    - Graphs
-      - [ ] https://arxiv.org/pdf/2001.05140.pdf
-      - [ ] https://arxiv.org/abs/1905.12265
-      - [ ] https://www.semanticscholar.org/paper/GCC%3A-Graph-Contrastive-Coding-for-Graph-Neural-Qiu-Chen/91fb815361fdbf80ff15ce4d783a41846bd99232
-      - [ ] https://academic.oup.com/bioinformatics/article/36/4/1241/5581350
-  - Deep Metric Learning:
-    - [ ] https://openaccess.thecvf.com/content_cvpr_2018/html/Duan_Deep_Adversarial_Metric_CVPR_2018_paper.html
-    - [ ] https://arxiv.org/abs/1903.05503
-    - [ ] https://arxiv.org/abs/1803.00942
-    - [ ] https://arxiv.org/abs/1503.03832
-    - [ ] https://arxiv.org/abs/1706.07567
+    
+#### Representation Learning
+##### Self Supervised Representation Learning in General
+  - [ ] https://arxiv.org/pdf/2008.01064.pdf
+  - [ ] https://arxiv.org/abs/2002.08822: Relevant to adversarial pre-training
+  - [ ] https://arxiv.org/abs/2006.01095
+##### Pre-training
+###### Biomedical > Proteins
+  - [ ] https://openreview.net/pdf?id=SygLehCqtm
+  - [ ] https://www.biorxiv.org/content/10.1101/2020.01.23.917682v1
+  - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract
+
+###### Clinical
+  - [ ] https://arxiv.org/pdf/2006.08600.pdf
+  
+###### Graphs
+  - [ ] https://arxiv.org/pdf/2001.05140.pdf
+  - [ ] https://arxiv.org/abs/1905.12265
+  - [ ] https://www.semanticscholar.org/paper/GCC%3A-Graph-Contrastive-Coding-for-Graph-Neural-Qiu-Chen/91fb815361fdbf80ff15ce4d783a41846bd99232
+  - [ ] https://academic.oup.com/bioinformatics/article/36/4/1241/5581350
+  
+##### Deep Metric Learning:
+  - [ ] https://openaccess.thecvf.com/content_cvpr_2018/html/Duan_Deep_Adversarial_Metric_CVPR_2018_paper.html
+  - [ ] https://arxiv.org/abs/1903.05503
+  - [ ] https://arxiv.org/abs/1803.00942
+  - [ ] https://arxiv.org/abs/1503.03832
+  - [ ] https://arxiv.org/abs/1706.07567
+
+#### Multi-task Learning
+  - [ ] https://arxiv.org/abs/1905.07553
+  
   - GNNs Meta List: https://github.com/thunlp/GNNPapers
   - Misc
     - [ ] https://arxiv.org/abs/2007.05611
 
-### Project-Area Specific Papers
-Here I'll record papers that are primarily recorded for project-specific use-cases. Papers may be duplicated across lists. This is not an exhaustive list of topics / projects, just the most relevant immediate subset.
-
-#### Biomedical Pre-training Algorithms
-#### Clinical & Biomedical Representation Learning
-  - [ ] https://arxiv.org/pdf/2006.08600.pdf
 #### Imputation
   - [X] [Neural ODEs](https://arxiv.org/abs/1806.07366)
     - [ ] https://arxiv.org/abs/2002.08071
@@ -56,6 +68,7 @@ Here I'll record papers that are primarily recorded for project-specific use-cas
   - General
     - [ ] https://link.springer.com/content/pdf/10.1007/s41666-020-00076-2.pdf
     - [ ] https://proceedings.icml.cc/static/paper_files/icml/2020/3129-Paper.pdf
+
 #### Clinical & Biomedical Modeling (e.g., task-oriented, rather than representation oriented)
   - [ ] https://arxiv.org/pdf/2007.09483.pdf
   - [ ] https://arxiv.org/abs/2006.12777
