@@ -13,9 +13,10 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
 
 ### Shortlist (5 max, unordered)
   - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract (in progress)
+  - [ ] https://dl.acm.org/doi/pdf/10.1145/3394486.3403110
 
 ### Classic Papers
-  - TODO
+  - Meta-list: https://github.com/beamlab-hsph/journalclub
 
 ### Topic-Structured Papers
 #### Deep Learning Theory
@@ -29,6 +30,7 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   - [X] https://arxiv.org/pdf/2008.01064.pdf
   - [ ] https://arxiv.org/abs/2002.08822: Relevant to adversarial pre-training
   - [ ] https://arxiv.org/abs/2006.01095
+  
 ##### Pre-training
 ###### Biomedical > Proteins
   - Meta-list: https://github.com/yangkky/Machine-learning-for-proteins
@@ -73,6 +75,7 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
 #### Clinical & Biomedical Modeling (e.g., task-oriented, rather than representation oriented)
   - [ ] https://arxiv.org/pdf/2007.09483.pdf
   - [ ] https://arxiv.org/abs/2006.12777
+  - [ ] https://dl.acm.org/doi/pdf/10.1145/3394486.3403110
   
 #### Efficient Network Architectures
 ##### Transformers
