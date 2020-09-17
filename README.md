@@ -13,7 +13,6 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
 
 ### Shortlist (5 max, unordered)
   - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract
-  - [ ] https://arxiv.org/pdf/2008.01064.pdf
 
 ### Classic Papers
   - TODO
@@ -26,7 +25,7 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
     
 #### Representation Learning
 ##### Self Supervised Representation Learning in General
-  - [ ] https://arxiv.org/pdf/2008.01064.pdf
+  - [X] https://arxiv.org/pdf/2008.01064.pdf
   - [ ] https://arxiv.org/abs/2002.08822: Relevant to adversarial pre-training
   - [ ] https://arxiv.org/abs/2006.01095
 ##### Pre-training
