@@ -1,5 +1,5 @@
 # Research Paper Quick Hits
-This doc contains brief notes on _skimmed_ papers (no more than 20 min) per paper, which ultimately becomes a feeder into the more in depth notes in `README.md`. 
+This doc contains brief notes on _skimmed_ papers (no more than 20 min) per paper, which ultimately becomes a feeder into the more in depth notes in `README.md`. Papers are loosely organized into project/topic buckets.
 
 ### Acronyms
   1. WDTMT?: "What does this mean, technically?"
@@ -8,12 +8,12 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
 ### Expected Format
 
 ```
-# [Paper_Title](paper_link)
+## [Paper_Title](paper_link)
   * **Logistics**:
     - Citation (key points: publication venue, date, authors)
     - \# of citations of this work & as-of date
     - Author institutions
-    - Time Range: START - END
+    - Time Range: DATE (START - END)
   * **Summary**:
     - _Single Big Problem/Question_ The single big problem the paper seeks to solve (1 sent).
     - _Solution Proposed/Answer Found_ The proposed solution (1 sent).
@@ -40,40 +40,59 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
     - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
 
-# [Predicting What You Already Know Helps: Provable Self-Supervised Learning](https://arxiv.org/abs/2008.01064)
+# Structured Biomedcial Pre-training
+## [Generative probabilistic biological sequence models that account for mutational variability](https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract)
   * **Logistics**:
-    - Lee JD, Lei Q, Saunshi N, Zhuo J. Predicting What You Already Know Helps: Provable Self-Supervised Learning. arXiv preprint arXiv:2008.01064. 2020 Aug 3.
-    - 1 09/16/2020
-    - Princeton, UT Austin.
-    - Time Range: 10:00am - 10:27am
+    - Weinstein EN, Marks DS. Generative probabilistic biological sequence models that account for mutational variability. bioRxiv. 2020 Jan 1.
+    - 0 as of 9/17/2020
+    - Harvard Medical School Departments of Biophysics & Systems Bio
+    - Time Range: 09/17/2020 (9:52am - 11:02am)
   * **Summary**:
-    - _Single Big Problem/Question_ Why does self-supervised pre-training help?
-    - _Solution Proposed/Answer Found_ The authors quantify how approximate independence between pre-training task allows one to learn representations that can solve downstream tasks with significantly reduced sample complexity
-    - _Why hasn't this been done before?_ Pre-training is exploding over the last 2 years, leading to greater demand for theoretical models explaining this phenomena
-    - _Experiments/theorey used to justify?_ They present theory based on relating conditional independence of input, pre-training task, and downstream task establishing their claims, and validate this theory with simulation experiments and experiments on the SST dataset and the Yearbook dataset.
-      1) List of experiments used to justify (tasks, data, etc.) -- full context.
-    - _Secret Terrible Thing_ Their theory only covers the case of (1) a single `Y` and (2) a fixed `\psi` representation of `X_1`, when in reality we'd actually work with a (potentially variable) representation of `X`. This difference is, in many cases, critical, I think.
+    - _Single Big Problem/Question_ Large-scale sequencing is really informative, but current methods use multiple sequence alignment, which is unreliable and vulnerable to statistical anomalies which limit their utility.
+    - _Solution Proposed/Answer Found_ They introduce the MuE emission distribution which is a generalization of classical models and accounts for possible sequence substitutions, insertions, and deletions, and allows the application of generic models to model sequence data (e.g., neural networks).
+    - _Why hasn't this been done before?_ The utility of probabilistic sequence modeling is rising rapidly given increase in available computational power and the importance of being able to integrate arbitrary ML models into these pipelines is also more important than ever. 
+    - _Experiments used to justify?_ They show theoretically that MuE generalizes classical models, and empirically that H-MuE models can infer representations indicative of immune repertoires, functional proteins, and forecast evolution of pathogens. Specifically: 
+    - _Secret Terrible Thing_ It's 59 pages.
     - 3 most relevant other papers:
       1)
       2)
       3)
-    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
+    - Warrants deeper dive in main doc? Yes -- I'm bleeding some of that through to here.
   * **Detailed Methodology**:
-    Authors begin with the following remark: In certain cases, given `X_1` being the underlying object (e.g., an image of a person with the face occluded), `X_2` being the self-supervised target (e.g., the true face of an image), and `Y` being the target of interest in a downstream task (e.g., the person's identity). In this case, provided you know `Y`, you can infer `X_2` reasonably well independent of `X_1`. This therefore implies that `X_1 \propto X_2 | Y`, and further implies that to predict `X_1 \to X_2`, we internally must be travelling through `Y`. That last leap, I think is a little wrong. For example, suppose in my training set there are only 2 people, despite the fact that `Y`s label space is actuall 1000 people. In that setting, it is true that `X_1 \propto X_2 | Y`, but it is also true that there is a "simpler" variable `B` flagging which of the two people the person is that also satisfies that description, and `B` does not fully inform `Y` (they account for this in their theory by commenting on the necessary rank of the covariance matrix between `X_2` and `Y`). Another flaw with this toy example -- in my final task, I'm not actually trying to go `X_1 \to Y`; I'm really trying to go `X_2 \to Y`, b/c that's the most informative section of the image. So, the fact that `X_1 \to X_2` (maybe) has to go through `Y` doesn't seem relevant. More relevant than the `X_1 \to Y` part of this proposed flow is the `Y \to X_2` part. This maybe implies using invertible NNs for the pre-training task, then reversing them in fine-tuning would be beneficial?
+    Generative models readily exist for continuous state vectors in the sciences, but biological sequences are tricky. In order to generalize continuous models to biological sequences, people often rely on an emission distribution, which takes continuous vectors and generates discrete outputs. Good emission distributions should (1) generate the right kind of data, (2) capture common variability in the data, and (3) be convenient for modelling.
+    
+    Mutational Emission (MuE) distribution is a generative model for biological sequences that accounts for biological variability. Hierarchical MuE (H-MuE) models use continuous state-space models + the MuE distribution. MuE satisfies all 3 goals -- it is designed specifically w/ biological sequences in mind, and also has an analytically tractable and differentiable likelihood function, enabling inference of H-MuE parameters from data via SGD & variational inference.
+    
+    What is the MuE distribution? Two step generative process: First, a "latent" sequence is drawn `v_i \sim p(v | \theta)`, where `i` is not the index sequentially but instead the index into the dataset of sequences to model (e.g. `y_i \in \{y_1, \ldots, y_N\}`). This `v_i` is a probability distribution over an "ancestral sequence" logo, and is a matrix of shape `M \times D`. -- what is `M`? Ancestral sequence length. What is `D`? Sequence element vocabulary. `y_i` is then generated from `MuE(x_i = \softmax(v_i), c, a, \ell)`, where `c, a, \ell` describe, respectively, insertion sequence probabilities, indel probabilities, and substitution probabilities. Softmax is over the `D` dimension, so `D` must be the sequence vocabulary size. The goal, then, when given a set of sequences `y_i`, is to learn the parameters of the `H-MuE` model via variational inference to maximize the likelihood of the data given the parameters (or the posterior likelihood, depending on framing, presumably).
+    
+    But this still hasn't answered our prompting question. What is the MuE distribution? It's a structured HMM, with initial transition vector `a^{(i)}`, transition matrix `a^{(t)}` (I think this superscript notation is not meant to be index, but instead different variables all lumped together under `a` -- e.g., I don't think `a^{(i+1)}` is defined), and discrete emission matrix `e = (\xi \cdot x + \zeta \cdot c) \cdot \ell`, where `\xi` and `\zeta` are fixed constant matricies of shape `K \times M` and `K \times (M + 1)`. `c`, the previously described insertion sequence probability parameter, is of shape `(M+1) \times D`, and `\ell`, the previously defined substitution parameter, has shape `D \times B`. `c` and `\ell` are also defined to be row normalized (rows sum to 1) like `x`. Here, we've introduced two new parameters, `K` and `B` -- `K = 2(M+1)` is the size of the Markov chain state space, and `B` is the alphabet size of the observed sequence. Recall that `x`, being the ancestral sequence, has shape `M \times D`, so `\xi \cdot x` has shape `K \times D`, and `\zeta \cdot c` also has shape `K \times D`, so `e = (\xi \cdot x + \zeta \cdot c) \cdot \ell` has shape `K \times B`. This makes sense, as it is tracking the emission probability for each state in the markov model.
+    Some additional restrictions: `\xi` and `\zeta` are both indicator matrices, where `\xi_{k, m} = \delta_{k, 2m}` and `\zeta_{k, m} = \delta_{k, 2m-1}`. What does this imply? This means that
+    
+    `(\xi \cdot x)_{i, j} = \sum_{r = 1}^{M} \xi_{i, r} x_{r, j} = \sum_{r = 1}^{M} \delta_{i, 2r} x_{r, j} = \begin{cases} 0 & \text{if } i \bmod 2 = 1 \\ x_{i / 2, j} & \text{otherwise.} \end{cases}`
+    
+    and 
+    
+    `(\zeta \cdot c)_{i, j} = \sum_{r=1}^{M+1} \zeta_{i, r} c_{r, j} = \sum_{r=1}^{M+1} \delta_{i, 2r-1} c_{r, j} = \begin{cases} 0 & \text{if i \bmod 2 = 0 \\ c_{\frac{i+1}{2}, j} & \text{otherwise.}`
+    
+    Thus, their sum is going to alternate along dim-0, first capturing the slice `x_{i, :}`, then capturing the slice `c_{i+1, :}`, and so on. As dim-0 is the state-space dimension, this means that there will be a state in this HMM for (1) each position in the ancestor sequence, and (2) a possible insertion in each gap in the ancestor sequence. Hence, the full state space is exactly `M` (positions) + `M-1` internal gaps, plus `2` boundary gaps, for a total of `2M + 1`. This is... almost right. Where's the extra `1` coming from? Current hypothesis, this is a typo -- in reality, `K = 2M + 1`. Or, perhaps the extra state is the stop state? But given by current construction that last row would be all zeros, I'm not sure I understand how that would be captured.
+    
+    Last restriction -- how do transitions work? Well, `a^{(t)}` must satisfy the restriction that `a^{(t)}_{k, k'} = 0` for all `k, k'` such that (1) state `k` is accessible from the initial state, and (2) `k' + k'\bmod 2 - k + k\bmod 2 \le 0`. What does this mean? We will find out later.
+    
+    A few questions:
+      0) Why the separation between "insertion sequence probabiliteis" and "indel sequence probabilities"? Is the former _what_ is inserted, and the latter _whether something is inserted/deleted_?
+      1) What does "size of the Markov chain state space" mean here? Traditional definition implies this is the size of the emission vocabulary -- i.e., the number of states. That doesn't feel right here -- `K = 2(M+1)` is more states than the output sequence is likely to have. Is this simply larger to account for insertions?
   * **Pros**:
     - List of big pros of the paper
   * **Cons**:
-    - List of big cons of this paper
+    - Not the clearest.
   * **Open Questions**:
-    - How does this theory extended to cases where there are many `Y`s of interest, as in the case of BERT? This can be partially handled 
+    - List of open questions inspired by this paper
   * **Extensions**:
     - List of possible extensions to this paper, at any level of thought-out.
   * **How to learn more**:
     - List of terms/concepts/questions to investigate to learn more about this paper.
-  * **Other Notes**:
-    - pre-text task = pre-training task
 
-# [Graph Meta Learning via Local Subgraphs](https://arxiv.org/pdf/2006.07889.pdf)
+## [Graph Meta Learning via Local Subgraphs](https://arxiv.org/pdf/2006.07889.pdf)
   * **Logistics**:
     - Huang, Kexin, and Marinka Zitnik. "Graph Meta Learning via Local Subgraphs." arXiv preprint arXiv:2006.07889 (2020).
     - 0 (as of 6/2020)
@@ -110,8 +129,8 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
   * **How to learn more**:
     - List of terms/concepts/questions to investigate to learn more about this paper.
 
-
-# [Hierarchical Attention Propagation for Healthcare Representation Learning](https://dl.acm.org/doi/abs/10.1145/3394486.3403067)
+# Clinical Representation Learning / Pre-training
+## [Hierarchical Attention Propagation for Healthcare Representation Learning](https://dl.acm.org/doi/abs/10.1145/3394486.3403067)
   * **Logistics**:
     - Muhan Zhang, Christopher R. King, Michael Avidan, and Yixin Chen. 2020. Hierarchical Attention Propagation for Healthcare Representation Learning. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining (KDD '20). Association for Computing Machinery, New York, NY, USA, 249–256. DOI:https://doi.org/10.1145/3394486.3403067
     - 0 (9/1/2020)
@@ -155,7 +174,7 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
     - Solve con 3: decay of information across layer.
   * **How to learn more**: N/A
 
-# [HiTANet: Hierarchical Time-Aware Attention Networks for Risk Prediction on Electronic Health Records](https://dl.acm.org/doi/abs/10.1145/3394486.3403107)
+## [HiTANet: Hierarchical Time-Aware Attention Networks for Risk Prediction on Electronic Health Records](https://dl.acm.org/doi/abs/10.1145/3394486.3403107)
   * **Logistics**:
     - Junyu Luo, Muchao Ye, Cao Xiao, and Fenglong Ma. 2020. HiTANet: Hierarchical Time-Aware Attention Networks for Risk Prediction on Electronic Health Records. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining (KDD '20). Association for Computing Machinery, New York, NY, USA, 647–656. DOI:https://doi.org/10.1145/3394486.3403107
     - \# of citations of this work & as-of date
@@ -205,3 +224,44 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
   * **How to learn more**:
     - Read Dipole 
     - Read papers in category 2, above
+
+
+# Unstructured
+## [Predicting What You Already Know Helps: Provable Self-Supervised Learning](https://arxiv.org/abs/2008.01064)
+  * **Logistics**:
+    - Lee JD, Lei Q, Saunshi N, Zhuo J. Predicting What You Already Know Helps: Provable Self-Supervised Learning. arXiv preprint arXiv:2008.01064. 2020 Aug 3.
+    - 1 09/16/2020
+    - Princeton, UT Austin.
+    - Time Range: 09/16/20 (10:00am - 10:27am), 09/17/20 (9:24am - 9:44am)
+  * **Summary**:
+    - _Single Big Problem/Question_ Why does self-supervised pre-training help?
+    - _Solution Proposed/Answer Found_ The authors quantify how approximate independence between pre-training task allows one to learn representations that can solve downstream tasks with significantly reduced sample complexity
+    - _Why hasn't this been done before?_ Pre-training is exploding over the last 2 years, leading to greater demand for theoretical models explaining this phenomena
+    - _Experiments/theorey used to justify?_ They present theory based on relating conditional independence of input, pre-training task, and downstream task establishing their claims, and validate this theory with simulation experiments and experiments on the SST dataset and the Yearbook dataset.
+      1) List of experiments used to justify (tasks, data, etc.) -- full context.
+    - _Secret Terrible Thing_ Their theory only covers the case of (1) a single `Y` and (2) a fixed `\psi` representation of `X_1`, when in reality we'd actually work with a (potentially variable) representation of `X`. This difference is, in many cases, critical, I think.
+    - 3 most relevant other papers: Unknown
+    - Warrants deeper dive in main doc? Not at present.
+  * **Detailed Methodology**:
+    Authors begin with the following remark: In certain cases, given `X_1` being the underlying object (e.g., an image of a person with the face occluded), `X_2` being the self-supervised target (e.g., the true face of an image), and `Y` being the target of interest in a downstream task (e.g., the person's identity). In this case, provided you know `Y`, you can infer `X_2` reasonably well independent of `X_1`. This therefore implies that `X_1 \propto X_2 | Y`, and further implies that to predict `X_1 \to X_2`, we internally must be travelling through `Y`. That last leap, I think is a little wrong. For example, suppose in my training set there are only 2 people, despite the fact that `Y`s label space is actuall 1000 people. In that setting, it is true that `X_1 \propto X_2 | Y`, but it is also true that there is a "simpler" variable `B` flagging which of the two people the person is that also satisfies that description, and `B` does not fully inform `Y` (they account for this in their theory by commenting on the necessary rank of the covariance matrix between `X_2` and `Y`). Another flaw with this toy example -- in my final task, I'm not actually trying to go `X_1 \to Y`; I'm really trying to go `X_2 \to Y`, b/c that's the most informative section of the image. So, the fact that `X_1 \to X_2` (maybe) has to go through `Y` doesn't seem relevant. More relevant than the `X_1 \to Y` part of this proposed flow is the `Y \to X_2` part. This maybe implies using invertible NNs for the pre-training task, then reversing them in fine-tuning would be beneficial?
+    
+    They go through a number of proofs, quantifying how much sample complexity they need to learn a linear downstream task model atop a fixed representation `\psi` learned from `X_1 \to X_2` in various cases. They cover:
+      * Gaussian Random Variables (Exact solution, Exact assumptions)
+      * General Random Variables (Exact assumptions & Approximate assumptions, sufficiently quantified -- one particular point they cover is when you need to introduce another latent variable to "fill out" the covariance relationship between X_2 and the target)
+      * General Function Classes
+      
+    These analyses are always capped by possible performance of `X_1 \to Y` and `X_1 \to X_2`; however, under assumption of CI, these two quantities are related through their analyses, I believe. E.g., if `X_1` is not at all predictive of `Y` (if `X_1 \perp Y`), and CI holds, then `X_1 \perp X_2`? That's not quite true -- but suppose that `\Cov(X_2, Y)` is full rank -- then it may hold? B/c otherwise any inference about `X_2` from `X_1` would also be informative about `Y`.
+  * **Pros**:
+    - Nice theoretical framework, subject to concern that in reality, more common situation is `X_1 \to X_2` as pre-training/pretext, and `(X_1, X_2) \to Y` as fine-tune, or `X_1 \to X_2` on domain `D_PT`, then `X_1 \to Y` on domain `D_FT`, both of which are different.
+    - Extensive theoretical analyses, across different levels of assumption matching. Quantification of how much assumption mismatch hinders result discovery.
+    - Multi-modal real-world experiments.
+  * **Cons**:
+    - Theoretical framework is adjacent to real-world setting. They don't examine this discrepancy or comment on it, as far as I can tell.
+  * **Open Questions**:
+    - How does this theory extended to cases where there are many `Y`s of interest, as in the case of BERT? This can be partially handled 
+  * **Extensions**:
+    - List of possible extensions to this paper, at any level of thought-out.
+  * **How to learn more**:
+    - List of terms/concepts/questions to investigate to learn more about this paper.
+  * **Other Notes**:
+    - pre-text task = pre-training task
