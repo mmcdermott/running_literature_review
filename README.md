@@ -31,6 +31,7 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   - [ ] https://arxiv.org/abs/2006.01095
 ##### Pre-training
 ###### Biomedical > Proteins
+  - Meta-list: https://github.com/yangkky/Machine-learning-for-proteins
   - [ ] https://openreview.net/pdf?id=SygLehCqtm
   - [ ] https://www.biorxiv.org/content/10.1101/2020.01.23.917682v1
   - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract
