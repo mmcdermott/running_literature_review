@@ -10,6 +10,7 @@ Here I'll maintain a running record of literature I've read, topics I've learned
 ## Paper/Topic Queue
 Maintenance is at a best effort level. Until decided otherwise, this won't be sorted by topic, the relevant sub-works will be nested.
 ### To categorize
+  - https://arxiv.org/abs/2007.05611
 
 ### Shortlist (5 max, unordered)
   - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract (in progress)
@@ -57,9 +58,10 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
 #### Multi-task Learning
   - [ ] https://arxiv.org/abs/1905.07553
   
-  - GNNs Meta List: https://github.com/thunlp/GNNPapers
-  - Misc
-    - [ ] https://arxiv.org/abs/2007.05611
+#### GNNs
+  - Meta Lists:
+    - https://github.com/thunlp/GNNPapers
+    - https://twitter.com/PetarV_93/status/1306689702020382720
 
 #### Imputation
   - [X] [Neural ODEs](https://arxiv.org/abs/1806.07366)
