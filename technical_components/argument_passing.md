@@ -66,3 +66,5 @@ Hydra is a new system (v1 on Sep. 3, 2020) for dynamic, nestable configuration f
   * Structured configs, are, I think, the full answer to replace my package. They let you use dataclasses to define configurations, and you can associate validation as well.
   
 I have one question left -- can you combine structured configurations and user-specified overwrite flat config files? [Here](https://hydra.cc/docs/tutorials/structured_config/intro) is where to look to find the answers.
+
+See https://github.com/mmcdermott/test_project_hydra_lightning_ax for a test project using Hydra
