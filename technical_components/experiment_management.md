@@ -52,3 +52,5 @@ How will this system fare with
   7) Auto-hyperparameter tuning systems, e.g., Optuna/Hyperopt/Ax-Botorch?
     a) [Lightning + Optuna](https://medium.com/pytorch/using-optuna-to-optimize-pytorch-lightning-hyperparameters-ce1cc1a034a)
        This seems like it works pretty well. Optuna even has a [specific callback integration](https://optuna.readthedocs.io/en/latest/reference/integration.html#optuna.integration.PyTorchLightningPruningCallback) for Lightning to support early pruning of trials. An example of this in action is [here](https://github.com/optuna/optuna/blob/master/examples/pytorch_lightning_simple.py).
+       
+See https://github.com/mmcdermott/test_project_hydra_lightning_ax for a test project using Hydra for a test system using Lightning (in progress).
