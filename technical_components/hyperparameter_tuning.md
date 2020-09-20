@@ -10,7 +10,7 @@ There are a number of systems one could use for hyperparameter tuning. A current
   * [Hyperopt](http://hyperopt.github.io/hyperopt/)
   * [RayTune](https://docs.ray.io/en/latest/tune/index.html) (specific comparison [note](https://docs.ray.io/en/latest/tune/index.html#why-choose-tune))
   * Optuna, [website](https://optuna.org/), or [paper](https://arxiv.org/pdf/1907.10902.pdf)
-  * [Botorch/Ax](https://ax.dev/tutorials/tune_cnn.html)
+  * [Botorch/Ax](https://ax.dev/tutorials/tune_cnn.html) - See https://github.com/mmcdermott/test_project_hydra_lightning_ax for a test project using Hydra for a test system using Botorch / Ax (in progress).
   * [AutoPytorch](https://www.automl.org/automl/autopytorch/)
   
 Meta-lists:
