@@ -11,6 +11,8 @@ Here I'll maintain a running record of literature I've read, topics I've learned
 Maintenance is at a best effort level. Until decided otherwise, this won't be sorted by topic, the relevant sub-works will be nested.
 ### To categorize
   - https://arxiv.org/abs/2007.05611
+  - https://arxiv.org/pdf/2009.02189v1.pdf
+  - https://arxiv.org/pdf/2009.07417v1.pdf
 
 ### Shortlist (5 max, unordered)
   - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract (in progress)
