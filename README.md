@@ -15,6 +15,8 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   - https://arxiv.org/pdf/2009.07417v1.pdf
   - https://www.sciencedirect.com/science/article/abs/pii/S1047320320301425
   - https://arxiv.org/abs/2003.11755
+  - https://arxiv.org/abs/2007.02835
+  - https://arxiv.org/abs/2006.08218
 
 ### Shortlist (5 max, unordered)
   - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract (in progress)
