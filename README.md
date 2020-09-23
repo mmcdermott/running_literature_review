@@ -17,6 +17,18 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   - https://arxiv.org/abs/2003.11755
   - https://arxiv.org/abs/2007.02835
   - https://arxiv.org/abs/2006.08218
+  - https://arxiv.org/abs/1809.00732
+  - https://arxiv.org/pdf/2005.00574.pdf
+  - https://arxiv.org/abs/2005.12766
+  - https://www.aclweb.org/anthology/D19-5509.pdf
+  - https://proceedings.icml.cc/static/paper_files/icml/2020/5645-Paper.pdf
+  - https://arxiv.org/abs/1706.07567
+  - https://arxiv.org/abs/1503.03832
+  - https://arxiv.org/abs/1803.00942
+  - https://arxiv.org/abs/1903.05503
+  - http://groups.csail.mit.edu/medg/ftp/min/MinSoYeon-meng-eecs-2020.pdf
+  - https://arxiv.org/pdf/2003.07853.pdf
+  
 
 ### Shortlist (5 max, unordered)
   - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract (in progress)
