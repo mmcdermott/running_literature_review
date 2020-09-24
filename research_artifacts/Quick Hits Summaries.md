@@ -6,7 +6,28 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
   2. ITT?: "Is this true?"
   
 ### Expected Format
+#### Summary v1 (~ 15 min)
+Goal is to decide if should be read or not in depth.
+```
+## [Paper_Title](paper_link)
+  * **Logistics**:
+    - Citation (key points: publication venue, date, authors)
+    - Time Range: DATE (START - END)
+  * **Summary**:
+    - _Single Big Problem/Question_ The single big problem the paper seeks to solve (1 sent).
+    - _Solution Proposed/Answer Found_ The proposed solution (1 sent).
+    - _Experiments used to justify?_ 1-2 sentences or list on experiments
+  * **Key Questions**:
+    - Key questions (such that answers are necessary to decide if should continue or not).
+  * **Key Strengths**:
+    - List of big pros of the paper
+  * **Key Weaknesses**:
+    - List of big cons of this paper
+  * **Warrants further read**: Y/N
+```
 
+#### Summary v2 (~ 30 min)
+Goal is to give a full, complete summary of the paper.
 ```
 ## [Paper_Title](paper_link)
   * **Logistics**:
@@ -28,9 +49,9 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
     - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
   * **Detailed Methodology**:
     Detailed description of underlying methodology
-  * **Pros**:
+  * **Key Strengths**:
     - List of big pros of the paper
-  * **Cons**:
+  * **Key Weaknesses**:
     - List of big cons of this paper
   * **Open Questions**:
     - List of open questions inspired by this paper
@@ -39,6 +60,54 @@ This doc contains brief notes on _skimmed_ papers (no more than 20 min) per pape
   * **How to learn more**:
     - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
+# Uncategorized
+## [Imbalanced Image Classification with Complement Cross Entropy](https://arxiv.org/pdf/2009.02189v1.pdf)
+  * **Logistics**:
+    - Kim Y, Lee Y, Jeon M. Imbalanced Image Classification with Complement Cross Entropy. arXiv preprint arXiv:2009.02189. 2020 Sep 4.
+    - Time Range: 09/24/2020 (12:35pm - 12:46pm)
+  * **Summary**:
+    - _Single Big Problem/Question_ Learning on imbalanced data is hard b/c cross-entropy loss mostly ignores output scores on wrong class (ITT?). A strategy proposed to address this is the use of complement cross entropy, but the proposed existing strategy is inefficient. This work makes it more efficient.
+    - _Solution Proposed/Answer Found_ Uses "Complement Cross Entropy (CCE)" which sums the standard cross-entropy of prediction and the complement cross entropy (weighted by a balancing factor that normalizes scale), which is the mean of the sample-wise entropy on incorrect classes per each single batch. Note they don't propose this -- it is proposed first in [8](https://arxiv.org/abs/1903.01182). Instead, they just make it more efficient, summing losses instead of doing a 2-step procedure.
+    - _Experiments used to justify?_ CIFAR-10 & 100 (with artificially induced class imbalance), Road Marking Dataset. They compare to ERM, COT [8](https://arxiv.org/abs/1903.01182), and focal loss \[24]. 
+  * **Key Questions**:
+    1. What is CCE, mathematically? What assumptions does it reflect / probabilistic quantities does optimizing for it optimize?
+  * **Key Strengths**:
+    - Does better than COT (maybe, no variance reported).
+  * **Key Weaknesses**:
+    - Doesn't introduce Complement cross entropy -- may thus not be worth reading primarily.
+    - No Theory
+  * **Warrants further read**: N, but should check out [8](https://arxiv.org/pdf/1903.01182.pdf)
+  
+## [COMPLEMENT OBJECTIVE TRAINING](https://arxiv.org/pdf/1903.01182.pdf)
+  * **Logistics**:
+    - Chen HY, Wang PH, Liu CH, Chang SC, Pan JY, Chen YT, Wei W, Juan DC. Complement Objective Training. InInternational Conference on Learning Representations 2018 Sep 27.
+    - Time Range: 09/24/2020 (12:48pm - 12:55pm)
+  * **Summary**:
+    - _Single Big Problem/Question_ Learning on imbalanced data is hard b/c cross-entropy loss mostly ignores output scores on wrong class (ITT?). A strategy proposed to address this is the use of complement cross entropy
+    - _Solution Proposed/Answer Found_ Uses "Complement Objective Entropy (COT)" which alternates between optimizing the standard cross-entropy of prediction and the complement cross entropy, which is the mean of the sample-wise entropy on incorrect classes per each single batch. Optimizing this loss encourages the model to yield uniform (maximal entropy) predictions across incorrect samples, which authors postulate improves generalizability by ensuring a larger gap between correct + incorrect examples.
+    - _Experiments used to justify?_ A bunch. 
+  * **Key Questions**:
+    1. Does this make model more vulnerable to adversarial examples? _No, in contrast, it's apparently *more* robust!_
+    2. Why not just sum losses? Unclear -- that is what is done in paper above.
+  * **Key Strengths**:
+    - Neat approach to improve classification performance, especially in classes of class imbalance.
+  * **Key Weaknesses**:
+    - No real theory -- why does this help, what does it optimize, probabilistically? Is it convergence speed, or true improved optimality? Does it lead to biases in predicted probabilities for cases with true uncertainty?
+  * **Warrants further read**: No, it isn't relevant to my work.
+  
+## [Too Much Information Kills Information: A Clustering Perspective](https://arxiv.org/pdf/2009.07417v1.pdf)
+  * **Logistics**:
+    - Xu Y, Chau V, Wu C, Zhang Y, Zissimopoulos V, Zou Y. Too Much Information Kills Information: A Clustering Perspective. arXiv preprint arXiv:2009.07417. 2020 Sep 16.
+    - Time Range: 09/24/2020 (12:56pm - 1:10pm)
+  * **Summary**:
+    - _Single Big Problem/Question_ Clustering is important, but is often (in particular, for variance-based `k`-clustering, which seeks to find a `k` sized partition of a dataset so as to minimize the sum of intra-cluster variances) computationally intensive, requiring careful initialization and potentially many passes through the entire dataset. Additionally, many existing clustering algorithms don't produce _balanced clusters_, where clusters must obey size constraints, is itself at computationally hard.
+    - _Solution Proposed/Answer Found_ A new algorithm based on random sampling that yields provably good `k`-clustering results or, under an extension, balanced `k`-clustering tasks with hard constraints. This method not only yields strong clusters, but does so with less data, requiring only 7% of the data to yield clusters competitive with `k`-means and `k`-means++. This method works by taking a small random sample of the overall datasets, generating all possible k-clusters in this random subset, using the centroids induced by this sset to define clusters in the full dataset, and picking the best possible clustering out of those.
+    - _Experiments used to justify?_  They use both theory and some numerical analyses on several datasets, both synthetic (generation process unspecified) and the real-world Cloud dataset.
+  * **Key Strengths**:
+    - Nice theoretical analysis showing that sampling based algorithm works well here.
+  * **Key Weaknesses**:
+    - Not sure this evaluation is fair (depends on whether they use train/test split), whether this scaling makes sense -- how much will you need on real datasets for this to matter? -- and whether or not this is any different than just a true random cluster search. Not sure they compare to the right baselines too (e.g., many runs of k-means on their random subset then pick the best one).
+  * **Warrants further read**: N - isn't relevant to my research at present and not sure it is sufficiently theoretically of interest.
 
 # Structured Biomedcial Pre-training
 ## [Generative probabilistic biological sequence models that account for mutational variability](https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract)
