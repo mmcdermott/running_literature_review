@@ -11,8 +11,7 @@ Here I'll maintain a running record of literature I've read, topics I've learned
 Maintenance is at a best effort level. Until decided otherwise, this won't be sorted by topic, the relevant sub-works will be nested.
 ### To categorize
   - https://arxiv.org/abs/2007.05611
-  - https://arxiv.org/pdf/2009.02189v1.pdf
-  - https://arxiv.org/pdf/2009.07417v1.pdf
+  
   - https://www.sciencedirect.com/science/article/abs/pii/S1047320320301425
   - https://arxiv.org/abs/2003.11755
   - https://arxiv.org/abs/2007.02835
@@ -28,11 +27,10 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   - https://arxiv.org/abs/1903.05503
   - http://groups.csail.mit.edu/medg/ftp/min/MinSoYeon-meng-eecs-2020.pdf
   - https://arxiv.org/pdf/2003.07853.pdf
-  
 
 ### Shortlist (5 max, unordered)
   - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract (in progress)
-  - [ ] https://dl.acm.org/doi/pdf/10.1145/3394486.3403110
+  - [X] https://dl.acm.org/doi/pdf/10.1145/3394486.3403110
 
 ### Classic Papers
   - Meta-list: https://github.com/beamlab-hsph/journalclub
@@ -43,7 +41,13 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
     - [ ] https://arxiv.org/abs/2002.00585
     - [ ] https://arxiv.org/abs/1911.11134
     - [ ] https://ai.googleblog.com/2020/09/improving-sparse-training-with-rigl.html
-    
+##### Training under class imbalance
+  - [X] https://arxiv.org/pdf/2009.02189v1.pdf
+  - [X] https://arxiv.org/pdf/1903.01182.pdf
+  
+#### Clustering
+  - [X] https://arxiv.org/pdf/2009.07417v1.pdf
+ 
 #### Representation Learning
 ##### Self Supervised Representation Learning in General
   - [X] https://arxiv.org/pdf/2008.01064.pdf
