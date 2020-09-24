@@ -5,11 +5,44 @@ In this document I'll summarize discrete research artifacts I've read, leaving n
 Template
 ```
 # Topic
-## [PAPER_TITLE](<LINK>)
+## [PAPER_TITLE](LINK)
 ### Summary
 ### Notes Section 1
 ...
 ```
+# Machine Learning for Computational Biology
+## [Deep Learning of High-Order Interactions for Protein Interface Prediction](https://dl.acm.org/doi/pdf/10.1145/3394486.3403110)
+  > Liu Y, Yuan H, Cai L, Ji S. Deep Learning of High-Order Interactions for Protein Interface Prediction. InProceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining 2020 Aug 23 (pp. 679-687).
+  
+### Summary
+This work analyzes the task of protein interface prediction. This task takes in two proetins, one called the ligand protein with amino acid sequences of length `N_l` and the other the receptor protein of length `N_r`, and predicts over the dense `N_l \times N_r` output space which amino acids will interact in the resulting protein complex. Existing approaches for this problem have either represented proteins as simple sequences, graphs, or 3D structures alone, and have not considered all representations in concert. Additionally, the key related work [12](http://papers.nips.cc/paper/7231-protein-interface-prediction-using-graph-convolutional-networks.pdf) on which they base their analyses treats the prediction of each possible interface point as an independent prediction, which ignores interactions between possible interface pairs (e.g., a medium affinity possible interface might serve as an interface in one protein complex, but in another the (locally) same interface candidate with a similar affinity may not serve as an interface b/c a higher-affinity option exists nearby which is used instead). This analogy is a bit off, because using a GNN to represent the nodes (as [12](http://papers.nips.cc/paper/7231-protein-interface-prediction-using-graph-convolutional-networks.pdf) does) actually can build into a node's representation knowledge of the other nodes available, so each prediction between amino acid `i` in the ligand and `j` in the receptor can actually have all the information about the whole ligand protein and receptor protein, but practically it is likely fair as this level of information aggregation is unlikely to emerge, I think.
+
+### Methodology
+This method first uses a graph model, using protein affinities as edges in the graph to produce rich node features. Next, a sequence model (in original amino acid order) produces a unified representation of all features.. Next, they use the sequential model outputs to construct a 3D representation where the dim-3 slice at dim-0 `i` and dim-1 `j` represents the combination of the ligand node features `i` and receptor node features `j`, combination either being just summation or concatenation. This 3D matrix is then processed via a 3D CNN model to a 2D matrix consisting of probabilities of an interface at a various `i,j` amino acid combination.
+
+Their GNN approach seems relatively simple/standard. The immediate neighborhood around a node (1-hop) is summarized with node- and edge- specific matrices weighting the neighborhood, followed by (potentially weighted via softmax on a learned (global) vector `q`) averaging. 
+
+One interesting note -- they also perform a form of data augmentation by simultaneously predicting internal interactions within a protein as well as interfaces across the proteins.
+
+#### Training Strategy
+This is a big model they're ultimately proposing to work with, so they employ a specialized training strategy breaking apart proteins into smaller sub-graphs
+
+### Experiments
+They work across 3 datasets, compare to a number of baselines, and tune hyperparameters with grid search.
+  
+### Key Take-aways
+1. The weighted average approach appears to be slightly better than the raw averaging approach.
+2. Long-distance relationships at the GNN level don't appear to be super important -- only 2 GNN layers are needed for optimal performance.
+3. Augmenting with in-protein contact prediction is valuable.
+4. As far as I can tell they don't offer commentary on the effect of their subsampled training paradigm.
+
+### Questions / Comments
+  1. It isn't clear to me why their featurization approach is inherently richer than one relying on 3D structures alone.
+  2. Why use GNN + Sequence Model? Seems like you could just impose sequential order as another edge type in graph.
+  3. Relatedly, is amino acid affinity the most effective kind of graph for protein representation? What about using this as a factor in informing attention in a transformer (thinking of that as an efficient fully connected GNN)?
+  4. This seems inefficient. We anticipate protein interface prediction to be a sparse problem (e.g., most pairs don't interact). Is there anything we can leverage to increase efficiency given that expectation of sparsity? Are there any insights from image segmentation, or sparse transformers, for example?
+  5. How does their subsampling procedure for proteins make sense given their claim that long-distance relationships are important? Is there any global aggregation? Does subsampled size matter?
+
 
 # Pre-training
 ## [Variance-reduced Language Pretraining via a Mask Proposal Network](https://arxiv.org/abs/2008.05333v1)
