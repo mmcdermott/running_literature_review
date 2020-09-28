@@ -115,7 +115,7 @@ Goal is to give a full, complete summary of the paper.
     - Chen M, Ju CJ, Zhou G, Chen X, Zhang T, Chang KW, Zaniolo C, Wang W. Multifaceted protein–protein interaction prediction based on siamese residual rcnn. Bioinformatics. 2019 Jul 15;35(14):i305-14.
     - 28 citations as of 09/28/20
     - UCLA
-    - Time Range: 09/28/20 (15:09 - 15:36)
+    - Time Range: 09/28/20 (main paper: 15:09 - 15:36, extending papers: 15:36 - )
   * **Summary**:
     - _Single Big Problem/Question_ Sequence-based protein-protein interaction (PPI) prediction is challenging, especially the more challenging sub-problems of interaction type prediction and binding affinity estimation.
     - _Solution Proposed/Answer Found_ Chen et al. propose the PPI Prediction based on a Twin Residual RCNN (PIPR) model, which use a twin residual CNN model to encode protein sequences and predict protein interaction.
@@ -129,9 +129,13 @@ Goal is to give a full, complete summary of the paper.
     - _Secret Terrible Thing_ Unclear
     - 3 most relevant other papers:
       1) Dataset Papers
-      2) 
+      2) Alternative, graph-centric approaches, that may be multi-modal in nature:
+        a) [Bio-JOE](https://www.biorxiv.org/content/10.1101/2020.06.15.153692v1.full.pdf) This paper produces a multi-modal KG embedding of biological networks for predicting interactions between COVID and human proteins. No sequence modelling component, but still likely warrants a citation in our paper.
+        b) [This work](https://www.sciencedirect.com/science/article/pii/S2162253120302547) uses sequences and embedded GO terms simultaneously, but their overlap with us is minimal.
       3) Citing (downstream) papers:
         a) [MuPIPR](https://academic.oup.com/nargab/article/2/2/lqaa015/5781175): Very much like PIPR, but using an ELMO inspired contextual language-model representation of the amino acid seq rather than word2vec inspired, and focused solely on SKEMPI. Unclear if they actually beat PIPR, though.
+        b) [Transforming the Language of Life](https://www.biorxiv.org/content/10.1101/2020.06.15.153643v1.full.pdf) uses a transformer PRoBERTa model to do PPI detection, on their homebrewed human Binary PPI "HIPPIE" dataset. On this dataset, they beat all baselines handily (by a suspicious margin).
+        c) 
     - Warrants deeper dive in main doc? Yes, if used in downstream project.
   * **Detailed Methodology**:
     - Both proteins passed through same (twin) Res Recurrent CNN (Res RCNN), then element-wise multiplied, and fed through a ff net for prediction. 
@@ -148,7 +152,7 @@ Goal is to give a full, complete summary of the paper.
     - Extend to protein interface prediction?
     - Extend to `n`-ary interactions?
   * **How to learn more**:
-    - 
+    - Need to look at more citing papers to see if there is a better benchmarking source.
 
 
 ## [Generative probabilistic biological sequence models that account for mutational variability](https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract)
