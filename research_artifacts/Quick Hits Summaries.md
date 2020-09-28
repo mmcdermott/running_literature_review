@@ -110,6 +110,47 @@ Goal is to give a full, complete summary of the paper.
   * **Warrants further read**: N - isn't relevant to my research at present and not sure it is sufficiently theoretically of interest.
 
 # Structured Biomedcial Pre-training
+## [Multifaceted protein–protein interaction prediction based on Siamese residual RCNN](https://academic.oup.com/bioinformatics/article/35/14/i305/5529260)
+  * **Logistics**:
+    - Chen M, Ju CJ, Zhou G, Chen X, Zhang T, Chang KW, Zaniolo C, Wang W. Multifaceted protein–protein interaction prediction based on siamese residual rcnn. Bioinformatics. 2019 Jul 15;35(14):i305-14.
+    - 28 citations as of 09/28/20
+    - UCLA
+    - Time Range: 09/28/20 (15:09 - 15:36)
+  * **Summary**:
+    - _Single Big Problem/Question_ Sequence-based protein-protein interaction (PPI) prediction is challenging, especially the more challenging sub-problems of interaction type prediction and binding affinity estimation.
+    - _Solution Proposed/Answer Found_ Chen et al. propose the PPI Prediction based on a Twin Residual RCNN (PIPR) model, which use a twin residual CNN model to encode protein sequences and predict protein interaction.
+    - _Why hasn't this been done before?_ PPI prediction has historically been done using hand-crafted expert features. This is just one more instance of ML being integrated more and more closely into the biomedical sciences.
+    - _Experiments used to justify?_
+      1) Guo's datasets: A collection of balanced datasets from various species for binary prediction of PPI.
+      2) STRING datasets: Randomly sampled proteins from STRING (subject to sequence identity constraints) with multi-class PPI labels.
+      3) SKEMPI dataset: Protein binding affinity data from SKEMPI. 3047 binding affinity (K_d) changes upon mutation within a protein complex.
+      
+      In addition, they also compare to a large number of baselines.
+    - _Secret Terrible Thing_ Unclear
+    - 3 most relevant other papers:
+      1) Dataset Papers
+      2) 
+      3) Citing (downstream) papers:
+        a) [MuPIPR](https://academic.oup.com/nargab/article/2/2/lqaa015/5781175): Very much like PIPR, but using an ELMO inspired contextual language-model representation of the amino acid seq rather than word2vec inspired, and focused solely on SKEMPI. Unclear if they actually beat PIPR, though.
+    - Warrants deeper dive in main doc? Yes, if used in downstream project.
+  * **Detailed Methodology**:
+    - Both proteins passed through same (twin) Res Recurrent CNN (Res RCNN), then element-wise multiplied, and fed through a ff net for prediction. 
+    - Raw amino acid sequences are used, featurized via (1) pre-trained amino acid embeddings (word2vec style, not pre-trained style) and (2) one-hot encoding of 7 clusters of amino acids based on electrochemical properties.
+    - RCNN is a multi-layer network, with one layer consisting of convolutions -> max pooling -> bidirectional GRU -> output, with a residual connection between the convolutional pooling output and the GRU output. The final output is obtained by a convolution layer followed by global average pooling.
+  * **Key Strengths**:
+    - Sensible Architecture, Robust Comparisons, & Strong results
+    - Comparison on 3 versions of task -- binary, multiclass, and K_d prediction.
+  * **Key Weaknesses**:
+    - No ablation studies on architecture.
+  * **Open Questions**:
+    - Has this been tried with protein pre-training systems? If not, why not?
+  * **Extensions**:
+    - Extend to protein interface prediction?
+    - Extend to `n`-ary interactions?
+  * **How to learn more**:
+    - 
+
+
 ## [Generative probabilistic biological sequence models that account for mutational variability](https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract)
   * **Logistics**:
     - Weinstein EN, Marks DS. Generative probabilistic biological sequence models that account for mutational variability. bioRxiv. 2020 Jan 1.
