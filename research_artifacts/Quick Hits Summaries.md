@@ -110,6 +110,42 @@ Goal is to give a full, complete summary of the paper.
   * **Warrants further read**: N - isn't relevant to my research at present and not sure it is sufficiently theoretically of interest.
 
 # Structured Biomedcial Pre-training
+## [Neuro-symbolic representation learning on biological knowledge graphs](https://academic.oup.com/bioinformatics/article/33/17/2723/3760100)
+  * **Logistics**:
+    - Alshahrani M, Khan MA, Maddouri O, Kinjo AR, Queralt-Rosinach N, Hoehndorf R. Neuro-symbolic representation learning on biological knowledge graphs. Bioinformatics. 2017 Sep 1;33(17):2723-30.
+    - Cited by 67
+    - Time Range: 9/29/20 (13:51 - 13:55)
+  * **Summary**:
+    - _Single Big Problem/Question_ Featurize biomedical KGs.
+    - _Solution Proposed/Answer Found_ Combine symbolig logic & NN approaches/
+    - _Experiments used to justify?_ 
+  * **Key Questions**:
+    - How do they integrate KG graph-level features and node-level features, if at all? They don't
+  * **Key Strengths**: (skipped)
+  * **Key Weaknesses**: (skipped)
+  * **Warrants further read**: No; it only applies graph level reasoning.
+
+
+## [Annotating Gene Ontology terms for protein sequences with the Transformer model
+](https://www.biorxiv.org/content/10.1101/2020.01.31.929604v1.abstract)
+  * **Logistics**:
+    - Duong DB, Gai L, Uppunda A, Le D, Eskin E, Li JJ, Chang KW. Annotating Gene Ontology terms for protein sequences with the Transformer model. bioRxiv. 2020 Jan 1.
+    - Time Range: 9/29/20 (13:43 - 13:51)
+  * **Summary**:
+    - _Single Big Problem/Question_ Predict GO terms given a sequence, potentially augmented with additional data.
+    - _Solution Proposed/Answer Found_ Transformers outperform CNNs.
+    - _Experiments used to justify?_ Comparsion with DeepGO
+  * **Key Questions**:
+    - How do they encode PPI interactions? Using [Neuro-symbolic representation learning on biological knowledge graphs](https://academic.oup.com/bioinformatics/article/33/17/2723/3760100).
+  * **Key Strengths**:
+    - Reasonable comparison
+    - Nice model
+    - Nice ablations
+  * **Key Weaknesses**:
+    - No methodological novelty
+  * **Warrants further read**: No, but one of its references does: [Neuro-symbolic representation learning on biological knowledge graphs](https://academic.oup.com/bioinformatics/article/33/17/2723/3760100).
+
+
 ## [Multifaceted protein–protein interaction prediction based on Siamese residual RCNN](https://academic.oup.com/bioinformatics/article/35/14/i305/5529260)
   * **Logistics**:
     - Chen M, Ju CJ, Zhou G, Chen X, Zhang T, Chang KW, Zaniolo C, Wang W. Multifaceted protein–protein interaction prediction based on siamese residual rcnn. Bioinformatics. 2019 Jul 15;35(14):i305-14.
@@ -135,7 +171,7 @@ Goal is to give a full, complete summary of the paper.
       3) Citing (downstream) papers:
         a) [MuPIPR](https://academic.oup.com/nargab/article/2/2/lqaa015/5781175): Very much like PIPR, but using an ELMO inspired contextual language-model representation of the amino acid seq rather than word2vec inspired, and focused solely on SKEMPI. Unclear if they actually beat PIPR, though.
         b) [Transforming the Language of Life](https://www.biorxiv.org/content/10.1101/2020.06.15.153643v1.full.pdf) uses a transformer PRoBERTa model to do PPI detection, on their homebrewed human Binary PPI "HIPPIE" dataset. On this dataset, they beat all baselines handily (by a suspicious margin).
-        c) 
+        c) [Conjoint Feature Representation of Gene Ontology and...](https://www.sciencedirect.com/science/article/pii/S2162253120302547) this paper uses sequence and GO terms to do PPI prediction, achieving best in class performance, albeit leveraging additional data you're unlikely to have about proteins which are truly novel.
     - Warrants deeper dive in main doc? Yes, if used in downstream project.
   * **Detailed Methodology**:
     - Both proteins passed through same (twin) Res Recurrent CNN (Res RCNN), then element-wise multiplied, and fed through a ff net for prediction. 
