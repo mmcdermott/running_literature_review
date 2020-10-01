@@ -110,6 +110,55 @@ Goal is to give a full, complete summary of the paper.
   * **Warrants further read**: N - isn't relevant to my research at present and not sure it is sufficiently theoretically of interest.
 
 # Structured Biomedcial Pre-training
+## [Contrastive Multi-View Representation Learning on Graphs](https://proceedings.icml.cc/static/paper_files/icml/2020/1971-Paper.pdf)
+  * **Logistics**:
+    - Hassani K, Khasahmadi AH. Contrastive Multi-View Representation Learning on Graphs. arXiv preprint arXiv:2006.05582. 2020 Jun 10.
+    - Cited by 3
+    - Time Range: 10/1/20 (13:49 - 13:57)
+  * **Summary**:
+    - _Single Big Problem/Question_ Node & graph level pre-training via contrastive learning, and asking whether findings in traditional multi-view representation learning generalize to graphs.
+    - _Solution Proposed/Answer Found_ They use a diffusion algorithm to generate "another view" of a graph (looks like this just means adding or changing edges?) of a graph, then extracts subgraphs and embeds them, pushing the two subgraphs to be close to one another with a contrastive loss to push them to be apart from other, non-diffused graphs.
+    - _Experiments used to justify?_ They examine 3 node classification tasks and 5 graph classification tasks, and compare to a large number of baselines.
+  * **Key Questions**:
+    - How does their objective really work? Does "diffusing" a graph in this way really make sense? What structural assumptions does it make?
+  * **Key Strengths**:
+    - Use both node-classification and graph classification.
+  * **Key Weaknesses**:
+    - Unsure about their diffusion estimation.
+  * **Warrants further read**: Y, to answer key question, and only if graph pre-training / unsupervised graph learning becomes relevant.
+
+## [CAGNN: Cluster-Aware Graph Neural Networks for Unsupervised Graph Representation Learning](https://arxiv.org/pdf/2009.01674.pdf)
+  * **Logistics**:
+    - Zhu Y, Xu Y, Yu F, Wu S, Wang L. CAGNN: Cluster-Aware Graph Neural Networks for Unsupervised Graph Representation Learning. arXiv preprint arXiv:2009.01674. 2020 Sep 3.
+    - Time Range: 10/1/20 (13:36 - 13:44)
+  * **Summary**:
+    - _Single Big Problem/Question_ Unsupervised graph representation learning 
+    - _Solution Proposed/Answer Found_ Zhu et al. use a clustering over the node embeddings as a self-supervised prediction objective for a GNN model, which is further augmented by strengthing intra-cluster edges and culling inter-cluster edges.
+    - _Experiments used to justify?_ Zhu et al. use their method for graph pre-training, then perform node classification over Cora, Citeseer, and Pubmed citation networks, predicting article subject categories, using sparse BOW features for nodes, along with analyzing a node clustering task, with node classification labels being used to gauge cluster quality.
+  * **Key Strengths**:
+    - Reasonable experiments and nice results.
+  * **Key Weaknesses**:
+    - This seems to assume a particular kind of graph topology; namely, a  similarity graph structure. Graphs where connectivity patterns, rather than shortest-path distance, denote similarity, would likely fare poorly here.
+    - They don't compare to GPT-GNN.
+    - I'm concerned about degernative solutions to their task, though they try to solve this problem by requiring clusters to b equipartitioned and use an overclustering strategy (which has been previously explored).
+  * **Warrants further read**: Maybe
+
+## [GPT-GNN: Generative Pre-Training of Graph Neural Networks](https://dl.acm.org/doi/abs/10.1145/3394486.3403237?casa_token=S0J-HgsB_S8AAAAA:hmhyd5r-zWUvnsEV9GMfwWJbmVDGHslhCi-XPNBQ-eYnWRGIJSsCdMSHAmQupt0vbYEkDzGEQrmJ9g)
+  * **Logistics**:
+    - Hu Z, Dong Y, Wang K, Chang KW, Sun Y. GPT-GNN: Generative Pre-Training of Graph Neural Networks. InProceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining 2020 Aug 23 (pp. 1857-1867).
+    - Cited by 1
+    - Time Range: 10/1/20 (13:24 - 13:34)
+  * **Summary**:
+    - _Single Big Problem/Question_ Pre-training over graphs for node-classification, link prediction, or subgraph classification (though they only empirically analyze node classification).
+    - _Solution Proposed/Answer Found_ Hu et al propose a generative pre-training objective based on masked graph generation, masking both nodes and edges.
+    - _Experiments used to justify?_ Comparison across the open academic grpah and the amazon graph for node classification, comparing to graph autoencoder, graph sage, and graph infomax. They also show that the HGT offers strong performance as the base model here.
+  * **Key Strengths**:
+    - Strong experimental results, reasonable idea.
+  * **Key Weaknesses**:
+    - Only analyzes node classification, in practice.
+  * **Warrants further read**: Y, and in addition the [Heterogenous Graph Transformer](https://dl.acm.org/doi/abs/10.1145/3366423.3380027?casa_token=neLIzbBgs70AAAAA:9PVQ1y_5p06rxyI28--hR5D6dGFH2e9_FBEJoxh_SxwJCYMOCiRHjil_lU8tyFDY3klfyx15OUuzsA) paper also warrants a look.
+
+
 ## [Neuro-symbolic representation learning on biological knowledge graphs](https://academic.oup.com/bioinformatics/article/33/17/2723/3760100)
   * **Logistics**:
     - Alshahrani M, Khan MA, Maddouri O, Kinjo AR, Queralt-Rosinach N, Hoehndorf R. Neuro-symbolic representation learning on biological knowledge graphs. Bioinformatics. 2017 Sep 1;33(17):2723-30.
