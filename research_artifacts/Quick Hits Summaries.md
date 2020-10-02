@@ -61,6 +61,45 @@ Goal is to give a full, complete summary of the paper.
     - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
 # Uncategorized
+## [The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks
+](https://arxiv.org/abs/1803.03635)
+  * **Logistics**:
+    - Frankle J, Carbin M. The lottery ticket hypothesis: Finding sparse, trainable neural networks. arXiv preprint arXiv:1803.03635. 2018 Mar 9.
+    - 175 (as of 10/2/20)
+    - MIT CSAIL
+    - Time Range: 10/2/20 (13:35 - 13:58)
+  * **Summary**:
+    - _Single Big Problem/Question_ Question: Why do neural networks work and can we (and if so how can we) find small subnetworks which we can train from the start to achieve comparable performance?
+    - _Solution Proposed/Answer Found_ The authors discover that the small, subnetworks identified via NN pruning methods (which traditionally obtain nearly the same performance as the original network) actually _can_ be trained successfully to acheive the same performance numbers. In addition they build on this to propose _iterative pruning_, in which they partially train a network, prune to the "winning ticket so far", then zero everything else out and continue training, until they perform another round of iterative pruning.
+    - _Why hasn't this been done before?_ Unclear. May be one of those super rare examples of "nobody thought to check that before".
+    - _Experiments used to justify?_
+      1) Experiments on MNIST and CIFAR
+    - _Secret Terrible Thing_ This requires warmup for deeper networks at larger learning rates. More complex networks require more specialized pruning strategies.
+    - 3 most relevant other papers:
+      1) Canonical pruning papers
+      2) Any connections to optimization literature
+      3) Follow up works:
+    - Warrants deeper dive in main doc? Yes, eventually.
+  * **Detailed Methodology**:
+    It's actually really simple: Train for a time, then set the lowest n% of weights to 0, then iterate.
+  * **Key Strengths**:
+    - Impressive results with simple setup
+    - Lots of theoretical implications
+    - Winning tickets also generalize better.
+  * **Key Weaknesses**:
+    - Figures aren't great.
+  * **Open Questions**:
+    - Lots... Why is this how NNs work, does this apply to all architectures, can we improve performance or generalizability by finding more than 1 winning ticket (perhaps by re-randomly initializing weights rather than setting to 0 during iterative pruning), do our training regimes prioritize one ticket over several, what does this imply about learning, optimization, or generalization?
+  * **Extensions**:
+    - Randomly re-initialize weights of non winning ticket to generate more winners?
+    - Can we predict the winning ticket in advance given network structure at initialization? 
+    - Can we generate winning initializations?
+    - Can we partially prune a network?
+    - My thinking is that the winning ticket starts in a region of the optimization landscape that has, by chance, a convex path to a strong local optima. If this is true, we should be able to design an objective function that doesn't permit the system to learn winning tickets. Can we do this?
+  * **How to learn more**:
+    - Read more on pruning & follow-on work.
+
+
 ## [Imbalanced Image Classification with Complement Cross Entropy](https://arxiv.org/pdf/2009.02189v1.pdf)
   * **Logistics**:
     - Kim Y, Lee Y, Jeon M. Imbalanced Image Classification with Complement Cross Entropy. arXiv preprint arXiv:2009.02189. 2020 Sep 4.
