@@ -61,6 +61,71 @@ Goal is to give a full, complete summary of the paper.
     - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
 # Uncategorized
+## [The Lottery Ticket Hypothesis for Pre-trained BERT Networks](https://arxiv.org/pdf/2007.12223.pdf)
+  * **Logistics**:
+    - Chen T, Frankle J, Chang S, Liu S, Zhang Y, Wang Z, Carbin M. The Lottery Ticket Hypothesis for Pre-trained BERT Networks. arXiv preprint arXiv:2007.12223. 2020 Jul 23.
+    - Texas A&M, MIT CSAIL
+    - Time Range: 10/2/20 (16:14 - 16:27 (stopped due to time))
+  * **Summary**:
+    - _Single Big Problem/Question_ Does BERT follow the lottery ticket hypothesis?
+    - _Solution Proposed/Answer Found_ Yes, sort-of. Winning tickets are found in BERT systems, and beyond this subnetworks found at pre-training time _transfer_ to subnetworks for downstream tasks. However, something new is found, which is that subnetworks for FT tasks can be detected at initialization, unlike in general domain.
+    - _Why hasn't this been done before?_ 
+    - _Experiments used to justify?_ 
+    - _Secret Terrible Thing_ 
+    - 3 most relevant other papers:
+      1) 
+      2) 
+      3)
+    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
+  * **Detailed Methodology**:
+  * **Key Strengths**:
+    - 
+  * **Key Weaknesses**:
+    - 
+  * **Open Questions**:
+    - 
+  * **Extensions**:
+    - 
+  * **How to learn more**:
+    - 
+
+## [Rigging the Lottery: Making All Tickets Winners](https://arxiv.org/pdf/1911.11134.pdf)
+  * **Logistics**:
+    - Evci U, Gale T, Menick J, Castro PS, Elsen E. Rigging the lottery: Making all tickets winners. arXiv preprint arXiv:1911.11134. 2019 Nov 25.
+    - 16 by 10/2/2020
+    - Google Brain, Deep Mind
+    - Time Range: 10/2/20 (15:38 - 16:11)
+  * **Summary**:
+    - _Single Big Problem/Question_ We want to train sparse neural networks from scratch that acheive comparable results as dense neural networks (e.g., just train the winning lottery tickets).
+    - _Solution Proposed/Answer Found_ 
+    - _Why hasn't this been done before?_ Lottery ticket is relatively recent (2018).
+    - _Experiments used to justify?_ An extensive set of benchmarks used to validate RigL.
+      1) TODO
+    - _Secret Terrible Thing_ 
+    - 3 most relevant other papers:
+      1) Lottery Ticket
+      2) Unstructured sparsity: https://myrtle.ai/wp-content/uploads/2019/06/IEEEformatMyrtle.ai_.21.06.19_b.pdf, https://arxiv.org/pdf/2008.11849.pdf
+      3)
+    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
+  * **Detailed Methodology**:
+    RigL uses the following algorithm: 
+      1) Start with random sparsity. Train a while.
+      2) Randomly update sparsity by eliminating edges based on magnitude, adding in edges based on instantaneous gradient information (WDTMT?)
+      3) Repeat
+    The really interesting part is how they _add_ edges. This requires computing gradients of the sparse parameters, which they somehow do in a manner that doesn't yield tons of increased computation! Turns out they don't do this cleverly. They comute them in a dense manner, then discard them promptly. If they can't store them all, then they compute them in an online manner and only store the top-k.
+  * **Key Strengths**:
+    - Strong evaluation & results
+  * **Key Weaknesses**:
+    - Unstructured sparsity may not buy you as much
+    - Still need to compute dense gradients
+  * **Open Questions**:
+    - Would this work for BERT? In PyTorch?
+    - Most interesting -- there are no lottery tickets in RigL. In RigL, all tickets seem to win. Why?
+  * **Extensions**:
+    - Can you leverage gradients of higher layers to inform which gradients need be computed at lower form? This might be able to be done by just using low-resolution (e.g. 16-bit or 8-bit precision) for early gradient calculation, so things fall to zero.
+    - Can this be compbined with adaptive [unstructured sparsity](https://arxiv.org/pdf/2008.11849.pdf) computation?
+  * **How to learn more**:
+ 
 ## [The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks
 ](https://arxiv.org/abs/1803.03635)
   * **Logistics**:
