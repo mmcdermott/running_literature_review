@@ -65,17 +65,20 @@ Goal is to give a full, complete summary of the paper.
   * **Logistics**:
     - Chen T, Frankle J, Chang S, Liu S, Zhang Y, Wang Z, Carbin M. The Lottery Ticket Hypothesis for Pre-trained BERT Networks. arXiv preprint arXiv:2007.12223. 2020 Jul 23.
     - Texas A&M, MIT CSAIL
-    - Time Range: 10/2/20 (16:14 - 16:27 (stopped due to time))
+    - Time Range: 10/2/20 (16:14 - 16:27 (stopped due to time)), 10/5/20 (13:35 - 13:59)
   * **Summary**:
     - _Single Big Problem/Question_ Does BERT follow the lottery ticket hypothesis?
-    - _Solution Proposed/Answer Found_ Yes, sort-of. Winning tickets are found in BERT systems, and beyond this subnetworks found at pre-training time _transfer_ to subnetworks for downstream tasks. However, something new is found, which is that subnetworks for FT tasks can be detected at initialization, unlike in general domain.
-    - _Why hasn't this been done before?_ 
+    - _Solution Proposed/Answer Found_ The findings here are nuanced. A couple of points:
+      * They find true _winning tickets_ in BERT's pre-trained weights when examining downstream tasks, which hasn't been observed with deep CNNs or Transformers in general. This indicates that BERT's pre-training does some of the "dense initialization" discussed below.
+      * In tasks without winning tickets, they still find matching subneteworks, albeit some that require a bit more dense training first to exist. This poses a natural question -- is there any correlation between the requirement to do dense pre-training and a failure to see pre-training improve performance most dramatically?
+      * They find that winning tickets for MLM (and nearly only MLM) transfer universally to downstream tasks.
+    - _Why hasn't this been done before?_ Lottery ticket is new, but this actually _has_ been done if not quite before, then at least concurrently, via [Prasanna et al's](https://arxiv.org/abs/2005.00561) study, that the authors contrast against that explicitly in this work.
     - _Experiments used to justify?_ 
     - _Secret Terrible Thing_ 
     - 3 most relevant other papers:
-      1) 
-      2) 
-      3)
+      1) "In larger-scale settings for computer vision and natural language processing, the lottery ticket methodology can only find matching subnetworks at an early point in training rather than at random initialization.... The phase of ptraining prior to this point can be seen as dense pre-training that creates an initialization amenable to sparsification. This pre-training can even occur using a self-supervised task rather than the supervised downstream task [19](https://openreview.net/forum?id=Hkl1iRNFwS)[20](https://openaccess.thecvf.com/content_CVPR_2020/html/Chen_Adversarial_Robustness_From_Self-Supervised_Pre-Training_to_Fine-Tuning_CVPR_2020_paper.html)." Read those two citations.
+      2) "Finding matching subnetworks with the lottery ticket methodology is expensive... However, the resulting subnetworks transfer between related tasks [21](http://papers.nips.cc/paper/8739-one-ticket-to-win-them-all-generalizing-lottery-ticket-initializations-across-datasets-and-optimizers)[22](https://arxiv.org/abs/1905.07785)."
+      3) "Although the lottery ticket hypothesis has been evaluated in the context of NLP and transformers [17](https://arxiv.org/abs/1906.02768)[18](https://arxiv.org/abs/2003.02389)[23](https://arxiv.org/abs/1902.09574), it remains poorly understood in the context of pre-trained BERT models... A concurrent study [24](https://arxiv.org/abs/2005.00561) also examines the lottery ticket hypothesis for BERTs."
     - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
   * **Detailed Methodology**:
   * **Key Strengths**:
@@ -83,7 +86,7 @@ Goal is to give a full, complete summary of the paper.
   * **Key Weaknesses**:
     - 
   * **Open Questions**:
-    - 
+    - Is there any correlation between the requirement to do dense pre-training and a failure to see pre-training improve performance most dramatically?
   * **Extensions**:
     - 
   * **How to learn more**:
@@ -126,8 +129,7 @@ Goal is to give a full, complete summary of the paper.
     - Can this be compbined with adaptive [unstructured sparsity](https://arxiv.org/pdf/2008.11849.pdf) computation?
   * **How to learn more**:
  
-## [The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks
-](https://arxiv.org/abs/1803.03635)
+## [The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks](https://arxiv.org/abs/1803.03635)
   * **Logistics**:
     - Frankle J, Carbin M. The lottery ticket hypothesis: Finding sparse, trainable neural networks. arXiv preprint arXiv:1803.03635. 2018 Mar 9.
     - 175 (as of 10/2/20)
