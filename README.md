@@ -11,7 +11,7 @@ Here I'll maintain a running record of literature I've read, topics I've learned
 Maintenance is at a best effort level. Until decided otherwise, this won't be sorted by topic, the relevant sub-works will be nested.
 ### To categorize
   - https://arxiv.org/abs/2007.05611
-  
+  - https://openreview.net/forum?id=Hkl1iRNFwS
   - https://www.sciencedirect.com/science/article/abs/pii/S1047320320301425
   - https://arxiv.org/abs/2003.11755
   - https://arxiv.org/abs/2007.02835
@@ -37,10 +37,13 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
 
 ### Topic-Structured Papers
 #### Deep Learning Theory
-  - [ ] [Lottery Ticket Hypothesis](https://arxiv.org/abs/1803.03635)
+  - [X] [Lottery Ticket Hypothesis](https://arxiv.org/abs/1803.03635)
     - [ ] https://arxiv.org/abs/2002.00585
-    - [ ] https://arxiv.org/abs/1911.11134
-    - [ ] https://ai.googleblog.com/2020/09/improving-sparse-training-with-rigl.html
+    - [ ] http://papers.nips.cc/paper/8739-one-ticket-to-win-them-all-generalizing-lottery-ticket-initializations-across-datasets-and-optimizers
+    - [ ] 
+    - [X] https://arxiv.org/abs/2007.12223
+    - [X] https://arxiv.org/abs/1911.11134
+    - [X] https://ai.googleblog.com/2020/09/improving-sparse-training-with-rigl.html
 ##### Training under class imbalance
   - [X] https://arxiv.org/pdf/2009.02189v1.pdf
   - [X] https://arxiv.org/pdf/1903.01182.pdf
