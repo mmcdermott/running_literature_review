@@ -61,6 +61,38 @@ Goal is to give a full, complete summary of the paper.
     - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
 # Uncategorized
+## [Empirical Study of the Benefits of Overparameterization in Learning Latent Variable Models ](paper_link)
+  * **Logistics**:
+    - Buhai RD, Halpern Y, Kim Y, Risteski A, Sontag D. Empirical Study of the Benefits of Overparameterization in Learning Latent Variable Models. arXiv preprint arXiv:1907.00030. 2019.
+    - 5 as of 10/05/2020
+    - MIT, Harard, CMU, Google
+    - Time Range: 10/05/2020 (15:34 - 16:00)
+  * **Summary**:
+    - _Single Big Problem/Question_ Understanding why overparametrization (training a very large model) is helpful without harming statistical performance, _in particular for unsupervised models_.
+    - _Solution Proposed/Answer Found_ The authors perform an empirical study of different aspects of overparameterization in unsupervised latent variable models, finding that, like supervised models, overparametrization is widely helpful in this domain as well and has minimal harm. They also provide a concrete algorithm to discard false latent variables based on their prior probability and similarity to other discarded latent variables. Most interestingly, they _refute_ the possible explanation that overparametrization helps b/c within the large number of latent variables for an overparametrized model exist some that are very close to the true latent variables by tracking "matching" to latent variables over training.
+    - _Why hasn't this been done before?_ Unclear.
+    - _Experiments used to justify?_ A battery of experiments across network types and synthetic datasets.
+      1) List of experiments used to justify (tasks, data, etc.) -- full context.
+    - _Secret Terrible Thing_ What is the "secret terrible thing" of this paper?
+    - 3 most relevant other papers:
+      1) The supervised case: "[Zhang et al. (2016)](Understanding deep learning requires rethinking generalization)... showed that some neural network architectures that demonstrate strong performance on benchmark datasets are so massively overparameterized that they can “memorize" large image data sets (they can perfectly fit a completely random data set of the same size). Subsequent theoretical work provided mathematical explanations of some of these phenomena ([Allen-Zhu et al., 2018](http://papers.nips.cc/paper/8847-learning-and-generalization-in-overparameterized-neural-networks-going-beyond-two-layers); [Allen-Zhu & Li, 2019](http://papers.nips.cc/paper/9221-can-sgd-learn-recurrent-neural-networks-with-provable-generalization))."
+      2)
+      3)
+    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
+  * **Detailed Methodology**:
+    Detailed description of underlying methodology
+  * **Key Strengths**:
+    - List of big pros of the paper
+  * **Key Weaknesses**:
+    - List of big cons of this paper
+  * **Open Questions**:
+    - List of open questions inspired by this paper
+  * **Extensions**:
+    - List of possible extensions to this paper, at any level of thought-out.
+  * **How to learn more**:
+    - List of terms/concepts/questions to investigate to learn more about this paper.
+
+
 ## [The Lottery Ticket Hypothesis for Pre-trained BERT Networks](https://arxiv.org/pdf/2007.12223.pdf)
   * **Logistics**:
     - Chen T, Frankle J, Chang S, Liu S, Zhang Y, Wang Z, Carbin M. The Lottery Ticket Hypothesis for Pre-trained BERT Networks. arXiv preprint arXiv:2007.12223. 2020 Jul 23.
