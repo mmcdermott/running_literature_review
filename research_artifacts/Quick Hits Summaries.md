@@ -65,33 +65,35 @@ Goal is to give a full, complete summary of the paper.
   * **Logistics**:
     - Chen T, Frankle J, Chang S, Liu S, Zhang Y, Wang Z, Carbin M. The Lottery Ticket Hypothesis for Pre-trained BERT Networks. arXiv preprint arXiv:2007.12223. 2020 Jul 23.
     - Texas A&M, MIT CSAIL
-    - Time Range: 10/2/20 (16:14 - 16:27 (stopped due to time)), 10/5/20 (13:35 - 13:59)
+    - Time Range: 10/2/20 (16:14 - 16:27), 10/5/20 (13:35 - 13:59, 15:12 - 15:51)
   * **Summary**:
     - _Single Big Problem/Question_ Does BERT follow the lottery ticket hypothesis?
     - _Solution Proposed/Answer Found_ The findings here are nuanced. A couple of points:
       * They find true _winning tickets_ in BERT's pre-trained weights when examining downstream tasks, which hasn't been observed with deep CNNs or Transformers in general. This indicates that BERT's pre-training does some of the "dense initialization" discussed below.
       * In tasks without winning tickets, they still find matching subneteworks, albeit some that require a bit more dense training first to exist. This poses a natural question -- is there any correlation between the requirement to do dense pre-training and a failure to see pre-training improve performance most dramatically?
-      * They find that winning tickets for MLM (and nearly only MLM) transfer universally to downstream tasks.
+      * They find that winning tickets for MLM (and nearly only MLM) transfer universally to downstream tasks. For other tasks with large training sets, there is also some transferrability, though much less, and transferrability doesn't seem improved if using the initial pre-trained BERT weights rather than only partially rewound weights.
     - _Why hasn't this been done before?_ Lottery ticket is new, but this actually _has_ been done if not quite before, then at least concurrently, via [Prasanna et al's](https://arxiv.org/abs/2005.00561) study, that the authors contrast against that explicitly in this work.
-    - _Experiments used to justify?_ 
-    - _Secret Terrible Thing_ 
+    - _Experiments used to justify?_ Examines a vareity of lottery ticket pruning strategies on BERT fine-tuning tasks and a variety of relevant comparisons.
+    - _Secret Terrible Thing_ No inductive take-aways, just observations. Other than that, no.
     - 3 most relevant other papers:
       1) "In larger-scale settings for computer vision and natural language processing, the lottery ticket methodology can only find matching subnetworks at an early point in training rather than at random initialization.... The phase of ptraining prior to this point can be seen as dense pre-training that creates an initialization amenable to sparsification. This pre-training can even occur using a self-supervised task rather than the supervised downstream task [19](https://openreview.net/forum?id=Hkl1iRNFwS)[20](https://openaccess.thecvf.com/content_CVPR_2020/html/Chen_Adversarial_Robustness_From_Self-Supervised_Pre-Training_to_Fine-Tuning_CVPR_2020_paper.html)." Read those two citations.
       2) "Finding matching subnetworks with the lottery ticket methodology is expensive... However, the resulting subnetworks transfer between related tasks [21](http://papers.nips.cc/paper/8739-one-ticket-to-win-them-all-generalizing-lottery-ticket-initializations-across-datasets-and-optimizers)[22](https://arxiv.org/abs/1905.07785)."
       3) "Although the lottery ticket hypothesis has been evaluated in the context of NLP and transformers [17](https://arxiv.org/abs/1906.02768)[18](https://arxiv.org/abs/2003.02389)[23](https://arxiv.org/abs/1902.09574), it remains poorly understood in the context of pre-trained BERT models... A concurrent study [24](https://arxiv.org/abs/2005.00561) also examines the lottery ticket hypothesis for BERTs."
-    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
+    - Warrants deeper dive in main doc? Yes, time permitting.
   * **Detailed Methodology**:
+    - Is mostly just a list of comparisons of fine-tuning results of various levels of IMP models.
   * **Key Strengths**:
-    - 
+    - Asks the right questions, in reasonable ways.
+    - Findings are quite observationally interesting -- that MLM leads to best in class transfer performance in particular.
+    - Could be impactful that IMP on MLM PT weights can lead to smaller BERTs that yield very similar performances.
   * **Key Weaknesses**:
-    - 
+    - Doesn't offer any inductive understanding -- I don't know how to predict based on these results what would happen were I to run iterative magnitude pruning on a protein model, for example.
+    - Doesn't try to do any pruning during pre-training. That'd be the really powerful finding -- that one could do pruning during pre-training and still obtain excellent outputs.
   * **Open Questions**:
     - Is there any correlation between the requirement to do dense pre-training and a failure to see pre-training improve performance most dramatically?
   * **Extensions**:
-    - 
-  * **How to learn more**:
-    - 
-
+    - IMP during pre-training
+    
 ## [Rigging the Lottery: Making All Tickets Winners](https://arxiv.org/pdf/1911.11134.pdf)
   * **Logistics**:
     - Evci U, Gale T, Menick J, Castro PS, Elsen E. Rigging the lottery: Making all tickets winners. arXiv preprint arXiv:1911.11134. 2019 Nov 25.
@@ -109,7 +111,7 @@ Goal is to give a full, complete summary of the paper.
       1) Lottery Ticket
       2) Unstructured sparsity: https://myrtle.ai/wp-content/uploads/2019/06/IEEEformatMyrtle.ai_.21.06.19_b.pdf, https://arxiv.org/pdf/2008.11849.pdf
       3)
-    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
+    - Warrants deeper dive in main doc? Not at present, but if I pursue a project in this space then yes.
   * **Detailed Methodology**:
     RigL uses the following algorithm: 
       1) Start with random sparsity. Train a while.
