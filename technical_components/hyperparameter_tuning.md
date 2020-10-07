@@ -1,6 +1,8 @@
 # Hyperparameter Tuning
 ## Work Log:
   * 08/30/2020 - began speccing out this investigation (only 15 minutes allocated)
+  * 09/20/2020 - began tech investigation of integrated project with PyTorch Lightning and Ax for hyperparameter search, [here](https://github.com/mmcdermott/test_project_hydra_lightning_ax).
+  * 10/07/2020 - continued tech investigation, started on hyperparameter search portion. Notes added below.
 
 ## Goal
 Hyperparameter tuning is essential. This is especially true for Deep Learning systems in comparison with other baseline methods. There are two realms of concern of interest to me in this investigation. The former is more technical, and will be the focus on the practical component of this investigation. The latter is more theoretical in nature. I detail both of these in detail below. At the end of this doc I'll also put some comments in about hyperparameter tuning in other contexts (e.g., non deep learning; scikit-learn, for example).
@@ -33,6 +35,9 @@ Some example questions here:
 ## Notes
 Largely, these notes will focus on the empirical questions -- how do the various systems differ, which one seems to work best, notes on working through any tutorials, etc.
 
+### 10/07/2020 Updates
+Based on my preliminary explorations, which largely leverages documentation and the most basic start of exploring Ax in code, I'm thinking that Optuna is looking like the winner here. Hyperopt, I know from prior use, has its own hurdles that Optuna handles better. Ax's documentation shows some pretty plots, but it is much less well documented, and doesn't support some things I think I'd want (e.g., conditional search spaces). Neither Optuna nor Ax seems to support custom parameter types, which is unfortunate, but that can be worked around. Hydra's integration with Ax is possibly compelling, but it remains to be seen how much I want to use Hydra at all.
+
 ### Empirical Comparison of Frameworks
 A central point here is to think about what the goals/requirements are of the system. For example, a few considerations:
   * ML Library (e.g., PyTorch, Tensorflow, general, etc.)
@@ -40,10 +45,10 @@ A central point here is to think about what the goals/requirements are of the sy
   * 
 
 ### Brief notes on theoretical questions.
-Broadly, these questions speak to two areas: model comparison & automated hyperparameter tuning. Some possible good resources (will be) listed below. These may get promoted for lit review analysis
+Broadly, these questions speak to two areas: model comparison & automated hyperparameter tuning. Some possible good resources (will be) listed below. These may get promoted for lit review analysis.
 
 #### Model Comparison
 #### Automated Hyperparameter Tuning
    
 ### Hyperparameter tuning for non deep-learning
-Scikit-learn also has some 
+Scikit-learn also has some helpers for this.
