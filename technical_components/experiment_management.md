@@ -54,3 +54,7 @@ How will this system fare with
        This seems like it works pretty well. Optuna even has a [specific callback integration](https://optuna.readthedocs.io/en/latest/reference/integration.html#optuna.integration.PyTorchLightningPruningCallback) for Lightning to support early pruning of trials. An example of this in action is [here](https://github.com/optuna/optuna/blob/master/examples/pytorch_lightning_simple.py).
        
 See https://github.com/mmcdermott/test_project_hydra_lightning_ax for a test project using Hydra for a test system using Lightning (in progress).
+
+### Notes from [pratical tests](https://github.com/mmcdermott/test_project_hydra_lightning_ax)
+##### 10/07/2020
+Honestly, Lightning is pretty great to use. It is relatively well documented and pretty easy to set-up. I've still not tried any of the more complex use-cases outlined above, but many of them have documented solutions in Lightning's docs, so I'm not too concerned. I'll think of this as my default project starter from here on, I think.
