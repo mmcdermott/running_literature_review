@@ -249,6 +249,24 @@ Goal is to give a full, complete summary of the paper.
     - Not sure this evaluation is fair (depends on whether they use train/test split), whether this scaling makes sense -- how much will you need on real datasets for this to matter? -- and whether or not this is any different than just a true random cluster search. Not sure they compare to the right baselines too (e.g., many runs of k-means on their random subset then pick the best one).
   * **Warrants further read**: N - isn't relevant to my research at present and not sure it is sufficiently theoretically of interest.
 
+# QA
+## [What Disease does this Patient Have? A Large-scale Open Domain Question Answering Dataset from Medical Exams](https://arxiv.org/pdf/2009.13081.pdf)
+  * **Logistics**:
+    - Jin D, Pan E, Oufattole N, Weng WH, Fang H, Szolovits P. What Disease does this Patient Have? A Large-scale Open Domain Question Answering Dataset from Medical Exams. arXiv preprint arXiv:2009.13081. 2020 Sep 28.
+    - Time Range: 10/15/20 (13:41 - 13:51)
+  * **Summary**:
+    - _Single Big Problem/Question_ Lack of medical-domain multiple-choice QA datasets
+    - _Solution Proposed/Answer Found_ Build MedQA (3 versions; English, Traditional Chinese, Simplified Chinese)
+    - _Experiments used to justify?_ Baselines 
+  * **Key Strengths**:
+    - Strong dataset, with well defined questions and answers, sourced from medical board exams in US, Mainland China, and Taiwan. 
+    - Evidence base collected & documented, with assessment of viability.
+    - Nice analysis of failure cases
+  * **Key Weaknesses**:
+    - Limited relevance to emrQA (dataset is multiple choice, not free-text) and no methodological novelty (which is intentional, as this is a QA dataset paper).
+  * **Warrants further read**: Maybe, pending EMRQA project.
+
+
 # Structured Biomedcial Pre-training
 ## [Contrastive Multi-View Representation Learning on Graphs](https://proceedings.icml.cc/static/paper_files/icml/2020/1971-Paper.pdf)
   * **Logistics**:
