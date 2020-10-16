@@ -249,6 +249,72 @@ Goal is to give a full, complete summary of the paper.
     - Not sure this evaluation is fair (depends on whether they use train/test split), whether this scaling makes sense -- how much will you need on real datasets for this to matter? -- and whether or not this is any different than just a true random cluster search. Not sure they compare to the right baselines too (e.g., many runs of k-means on their random subset then pick the best one).
   * **Warrants further read**: N - isn't relevant to my research at present and not sure it is sufficiently theoretically of interest.
 
+# Latent Graph Learning
+## [On the Bottleneck of Graph Neural Networks and its Practical Implications](https://arxiv.org/pdf/2006.05205.pdf)
+  * **Logistics**:
+    - Alon U, Yahav E. On the Bottleneck of Graph Neural Networks and its Practical Implications. arXiv preprint arXiv:2006.05205. 2020 Jun 9.
+    - Technion
+    - Time Range: 10/16/2020 (18:39 - 18:51)
+  * **Summary**:
+    - _Single Big Problem/Question_ Can graph neural networks truly effectively summarize information across arbitrarily sized graphs?
+    - _Solution Proposed/Answer Found_ No -- there exists an inherent bottleneck in GNNs -- information across an exponentially growing set of nodes is "squashed" into a fixed-size embedding at the neighborhood aggregation step. This prevents the GNN from allowing information to flow from distant nodes and cripples the passage of long-range information. This is particularly true for GNNs that absorb information equally across edges. 
+    - _Why hasn't this been done before?_ GNNs are relatively new? This is theoretical analysis.
+    - _Experiments used to justify?_ 
+      1) Controlled synthetic problem to demonstrate the existence of the problem
+      2) Analytical & empirical analyses of GCN and GIN that demonstrate they are more sucsesptible.
+      3) Show that "breaking" the bottleneck (by adding a fully connected graph layer at the top of their network, allowing full connection) improves performance on 3 real-world datasets.
+    - _Secret Terrible Thing_ This same argument also applies to CNNs, but doesn't seem to be a problem there. Why is that?
+    - 3 most relevant other papers:
+      1) Classic GNN papers
+      2)
+      3)
+    - Warrants deeper dive in main doc? Yes
+  * **Detailed Methodology**:
+    
+  * **Key Strengths**:
+    - List of big pros of the paper
+  * **Key Weaknesses**:
+    - No theoretical analysis proving existence of bottleneck
+    - I'm not totally convinced by their theoretical examples -- of course you need to increase the embedding size with larger graphs, but they don't. 
+  * **Open Questions**:
+    - My graph transformer idea!
+  * **Extensions**:
+    - List of possible extensions to this paper, at any level of thought-out.
+  * **How to learn more**:
+    - List of terms/concepts/questions to investigate to learn more about this paper.
+
+## [Grale: Designing Networks for Graph Learning](https://arxiv.org/pdf/2007.12002.pdf)
+  * **Logistics**:
+    - Halcrow J, Mosoi A, Ruth S, Perozzi B. Grale: Designing Networks for Graph Learning. InProceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining 2020 Aug 23 (pp. 2523-2532).
+    - Google Research, YouTube
+    - Time Range: 10/16/2020 (18:28 - 18:38)
+  * **Summary**:
+    - _Single Big Problem/Question_ How should one construct a high-quality, sparse graph optimal for semi-supervised learning given a collection of weaker, more dense graphs?
+    - _Solution Proposed/Answer Found_ Grale -- a scalable method for graph design which fuses together different measures of potentially weak similarity to create a graph which exhibits high task-specific homophily.
+    - _Why hasn't this been done before?_ GNNs are relatively new, and this problem is one that will only present at scale and in industrial applications -- in research, we can design alternate models or pick other settings that don't have the weak graph problem.
+    - _Experiments used to justify?_
+      1) Case study to use Grale to flag abuse classification problems on YouTube over 100s of Millions of items, in which Grale (by enabling a semi-supervised approach atop rule-based and content-based classifiers) improves recall by 89%.
+      2) Experiments on two other datasets: USPS & MNIST (WDTMT?).
+    - _Secret Terrible Thing_ This only applies to a single task of interest -- in many contexts, we'd like to use a single graph for many tasks, rather than having to re-design the graph each time. Pending scalability concerns, it may not even be feasible to build a copy of the graph each time.
+    - 3 most relevant other papers:
+      1)
+      2)
+      3)
+    - Warrants deeper dive in main doc? Not at present -- skipping rest of paper.
+  * **Detailed Methodology**:
+    Detailed description of underlying methodology
+  * **Key Strengths**:
+    - List of big pros of the paper
+  * **Key Weaknesses**:
+    - List of big cons of this paper
+  * **Open Questions**:
+    - List of open questions inspired by this paper
+  * **Extensions**:
+    - List of possible extensions to this paper, at any level of thought-out.
+  * **How to learn more**:
+    - List of terms/concepts/questions to investigate to learn more about this paper.
+
+
 # QA
 ## [What Disease does this Patient Have? A Large-scale Open Domain Question Answering Dataset from Medical Exams](https://arxiv.org/pdf/2009.13081.pdf)
   * **Logistics**:
@@ -265,7 +331,6 @@ Goal is to give a full, complete summary of the paper.
   * **Key Weaknesses**:
     - Limited relevance to emrQA (dataset is multiple choice, not free-text) and no methodological novelty (which is intentional, as this is a QA dataset paper).
   * **Warrants further read**: Maybe, pending EMRQA project.
-
 
 # Structured Biomedcial Pre-training
 ## [Contrastive Multi-View Representation Learning on Graphs](https://proceedings.icml.cc/static/paper_files/icml/2020/1971-Paper.pdf)
