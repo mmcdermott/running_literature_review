@@ -10,6 +10,8 @@ Here I'll maintain a running record of literature I've read, topics I've learned
 ## Paper/Topic Queue
 Maintenance is at a best effort level. Until decided otherwise, this won't be sorted by topic, the relevant sub-works will be nested.
 ### To categorize
+  - https://arxiv.org/abs/1806.00848
+  - https://arxiv.org/pdf/1811.08790.pdf
   - https://arxiv.org/abs/2001.05140
   - https://arxiv.org/pdf/2002.03427.pdf#page=10&zoom=100,384,464
   - https://openreview.net/forum?id=hga6dk7nxFB
