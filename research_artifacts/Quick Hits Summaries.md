@@ -250,6 +250,69 @@ Goal is to give a full, complete summary of the paper.
   * **Warrants further read**: N - isn't relevant to my research at present and not sure it is sufficiently theoretically of interest.
 
 # Latent Graph Learning
+## [Dynamic Graph CNN for Learning on Point Clouds](https://arxiv.org/pdf/1801.07829.pdf)
+  * **Logistics**:
+    - Kazi A, Cosmo L, Navab N, Bronstein M. Differentiable Graph Module (DGM) Graph Convolutional Networks. arXiv preprint arXiv:2002.04999. 2020 Feb 11.
+    - Cited by 6 as of 10/19/20
+    - Technical University of Munich, Germany, ICL, JHU, University of Lugano, Twitter.
+    - Time Range: 10/19/2020 (13:54 - 14:02 \[not done yet\])
+  * **Summary**:
+    - _Single Big Problem/Question_ How can we do graph learning when the graph is dynamic or unknown?
+    - _Solution Proposed/Answer Found_ Differentiable Graph Module, a learnable module predicting edge probability in the graph relevant for the task, and trained in an end to end fashion.
+    - _Why hasn't this been done before?_ 1) GNNs are still somewhat new, 2) differentiable static operations are also new, 3) simultaneous learning and use of structure is a major challenge.
+    - _Experiments used to justify?_ 
+      1) Experiments across multiple domains
+    - _Secret Terrible Thing_ Unknown
+    - 3 most relevant other papers:
+      1) DGCNN
+      2) 
+    - Warrants deeper dive in main doc? Yes
+  * **Detailed Methodology**:
+    - Graph edges are computed probabilistically based on euclidean distance between (featurized) nodes.
+    - Graphs are then sampled using Gumbel-top-k trick (similar to what we do in adversarial protein pre-training work.
+    - 
+  * **Key Strengths**:
+    - Strong results and methodology.
+  * **Key Weaknesses**:
+    - For segmentation task, compares to DGCNN even though that isn't SOTA on an of those categoreis, and the improvements observed here are not typically enough to punt it into SOTA territory.
+  * **Open Questions/Extensions**:
+    - Do you need to actually sample a graph in this setting? Or can you just use the probabilities wholesale via a GNN optimized for complete graphs?
+    - Can we take advantage of the unstructured sparsity here somehow?
+
+## [Dynamic Graph CNN for Learning on Point Clouds](https://arxiv.org/pdf/1801.07829.pdf)
+  * **Logistics**:
+    - Wang Y, Sun Y, Liu Z, Sarma SE, Bronstein MM, Solomon JM. Dynamic graph cnn for learning on point clouds. Acm Transactions On Graphics (tog). 2019 Oct 10;38(5):1-2.
+    - Cited by 738 as of 10/19/2020.
+    - MIT, UC Berkeley, ICL
+    - Time Range: 10/19/2020 (13:26 - 13:52)
+  * **Summary**:
+    - _Single Big Problem/Question_ Processing point clouds is hindered by the lack of inherent topology in the space -- e.g., no graph connecting the points.
+    - _Solution Proposed/Answer Found_ The authors propose using a dynamic graph that updates throughout the propagation of the network to add an inferred topology over the point cloud, which is then levergaed to improve processing of the point clouds.
+    - _Why hasn't this been done before?_ Traditionally, graphs are assumed to be static and presented with data -- learning graphs from data is a harder task, and hasn't been connected to point cloud analyses previously, as point cloud modelling seems to be a relatively slow-moving field (most citations on this point are from 2015, 2017 or earlier).
+    - _Experiments used to justify?_ 
+      1) They perform analysis on several datasets and compare against a battery of benchmarks.
+      3) They perform ablations to investigate the utility of their approach
+    - _Secret Terrible Thing_ Unknown
+    - 3 most relevant other papers:
+      1) Non-local neural networks stuff
+      2) Point cloud stuff
+      3) learning graphs stuff
+      4) GNN
+    - Warrants deeper dive in main doc? Yes
+  * **Detailed Methodology**:
+    - graph is a kNN graph, where NN set is updated after each layer
+  * **Key Strengths**:
+    - Strong results, very intelligent approach.
+  * **Key Weaknesses**:
+    - Unclear how they're getting around this, but re-computing the NN graph after each layer of the Net must be _expensive_. Their model reports being more efficient than other approaches, so I don't understand this, but... No, wait, I think I follow. Each sample in their setting is a point _cloud_ not a point, so they are only re-doing the NN within a single sample, not across the whole dataset, and their individual samples must be small. Still, though, this raises the question of whether or not there aren't smarter ways to do this.
+    - Their segmentation results don't seem that great? They don't comment on this much, though, so I wonder if I'm misunderstanding their evaluation. 
+  * **Open Questions/Extensions**:
+    - _How_ do they efficiently compute the pairwise distances? This doesn't appear to be answered in the main body.
+    - Can graph be learned with classification rather than euclidean distance?
+    - So this method looks like it is doing something like learning over instances, with a transformer aspect over all instances in the dataset to add in non-local information. Would a CLS analog help? Then are we also marrying neural turing machine / global RW block with learning over whole dataset?
+    - Is there any relationship here to the PT perspective?
+    - Is there any relationship here with interpolation based learning?
+
 ## [On the Bottleneck of Graph Neural Networks and its Practical Implications](https://arxiv.org/pdf/2006.05205.pdf)
   * **Logistics**:
     - Alon U, Yahav E. On the Bottleneck of Graph Neural Networks and its Practical Implications. arXiv preprint arXiv:2006.05205. 2020 Jun 9.
@@ -276,13 +339,9 @@ Goal is to give a full, complete summary of the paper.
   * **Key Weaknesses**:
     - No theoretical analysis proving existence of bottleneck
     - I'm not totally convinced by their theoretical examples -- of course you need to increase the embedding size with larger graphs, but they don't. 
-  * **Open Questions**:
+  * **Open Questions/Extensions**:
     - My graph transformer idea!
-  * **Extensions**:
-    - List of possible extensions to this paper, at any level of thought-out.
-  * **How to learn more**:
-    - List of terms/concepts/questions to investigate to learn more about this paper.
-
+    
 ## [Grale: Designing Networks for Graph Learning](https://arxiv.org/pdf/2007.12002.pdf)
   * **Logistics**:
     - Halcrow J, Mosoi A, Ruth S, Perozzi B. Grale: Designing Networks for Graph Learning. InProceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining 2020 Aug 23 (pp. 2523-2532).
