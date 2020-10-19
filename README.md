@@ -10,6 +10,33 @@ Here I'll maintain a running record of literature I've read, topics I've learned
 ## Paper/Topic Queue
 Maintenance is at a best effort level. Until decided otherwise, this won't be sorted by topic, the relevant sub-works will be nested.
 ### To categorize
+  - https://arxiv.org/pdf/2005.12766.pdf
+  - https://www.aclweb.org/anthology/D19-5509.pdf
+  - https://arxiv.org/abs/1803.00942
+  - https://arxiv.org/abs/1706.07567
+  - https://arxiv.org/abs/1903.05503
+  - https://openaccess.thecvf.com/content_cvpr_2018/html/Duan_Deep_Adversarial_Metric_CVPR_2018_paper.html
+  - https://arxiv.org/pdf/1809.11099.pdf
+  - https://arxiv.org/pdf/2010.03574.pdf
+  - https://arxiv.org/pdf/2010.04279.pdf
+  - https://deepai.org/publication/neural-databases
+  - https://academic.oup.com/jamia/advance-article/doi/10.1093/jamia/ocaa139/5920826
+  - https://pubmed.ncbi.nlm.nih.gov/17238291/
+  - https://arxiv.org/pdf/2010.01450.pdf
+  - https://arxiv.org/pdf/2010.02318.pdf
+  - https://arxiv.org/pdf/2008.13574.pdf
+  - https://www.nature.com/articles/nbt0210-128/
+  - https://academic.oup.com/jamia/advance-article-abstract/doi/10.1093/jamia/ocaa164/5906103
+  - https://deepai.org/publication/understanding-self-supervised-learning-with-dual-deep-networks
+  - https://arxiv.org/pdf/1911.08089.pdf
+  - https://arxiv.org/pdf/2010.03746.pdf
+  - https://deepai.org/publication/pooling-methods-in-deep-neural-networks-a-review
+  - https://deepai.org/publication/towards-a-mathematical-understanding-of-neural-network-based-machine-learning-what-we-know-and-what-we-don-t
+  - https://www.sciencedirect.com/science/article/pii/S002002552030935X
+  - https://arxiv.org/pdf/2009.10195.pdf
+  - https://link.springer.com/chapter/10.1007/978-3-030-60946-7_11
+  - https://arxiv.org/pdf/2009.13081.pdf
+  - https://arxiv.org/pdf/2010.06595.pdf
   - https://arxiv.org/abs/2007.05611
   - https://openreview.net/forum?id=Hkl1iRNFwS
   - https://www.sciencedirect.com/science/article/abs/pii/S1047320320301425
