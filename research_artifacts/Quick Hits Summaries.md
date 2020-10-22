@@ -250,7 +250,7 @@ Goal is to give a full, complete summary of the paper.
   * **Warrants further read**: N - isn't relevant to my research at present and not sure it is sufficiently theoretically of interest.
 
 # Latent Graph Learning
-## [Dynamic Graph CNN for Learning on Point Clouds](https://arxiv.org/pdf/1801.07829.pdf)
+## [Differentiable Graph Module (DGM) for Graph Convolutional Networks](https://arxiv.org/pdf/2002.04999.pdf)
   * **Logistics**:
     - Kazi A, Cosmo L, Navab N, Bronstein M. Differentiable Graph Module (DGM) Graph Convolutional Networks. arXiv preprint arXiv:2002.04999. 2020 Feb 11.
     - Cited by 6 as of 10/19/20
@@ -392,6 +392,7 @@ Goal is to give a full, complete summary of the paper.
   * **Warrants further read**: Maybe, pending EMRQA project.
 
 # Structured Biomedcial Pre-training
+
 ## [Contrastive Multi-View Representation Learning on Graphs](https://proceedings.icml.cc/static/paper_files/icml/2020/1971-Paper.pdf)
   * **Logistics**:
     - Hassani K, Khasahmadi AH. Contrastive Multi-View Representation Learning on Graphs. arXiv preprint arXiv:2006.05582. 2020 Jun 10.
@@ -429,16 +430,63 @@ Goal is to give a full, complete summary of the paper.
   * **Logistics**:
     - Hu Z, Dong Y, Wang K, Chang KW, Sun Y. GPT-GNN: Generative Pre-Training of Graph Neural Networks. InProceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining 2020 Aug 23 (pp. 1857-1867).
     - Cited by 1
-    - Time Range: 10/1/20 (13:24 - 13:34)
+    - UCLA, MSR
+    - Time Range: 10/1/20 (13:24 - 13:34), 10/22 (09:18 - 09:50)
   * **Summary**:
     - _Single Big Problem/Question_ Pre-training over graphs for node-classification, link prediction, or subgraph classification (though they only empirically analyze node classification).
     - _Solution Proposed/Answer Found_ Hu et al propose a generative pre-training objective based on masked graph generation, masking both nodes and edges.
-    - _Experiments used to justify?_ Comparison across the open academic grpah and the amazon graph for node classification, comparing to graph autoencoder, graph sage, and graph infomax. They also show that the HGT offers strong performance as the base model here.
+    - _Why hasn't this been done before?_ Why has nobody solved this problem in this way before? What hole in the literature does this paper fill? (1 sent).
+    - _Secret Terrible Thing_ What is the "secret terrible thing" of this paper?
+    - _Experiments used to justify?_ Comparison across the open academic grpah and the amazon graph for node classification, comparing to graph autoencoder, graph sage, and graph infomax. They also show that the HGT offers strong performance as the base model here. TODO: details.
+    - 3 most relevant other papers: TODO
+    - Warrants deeper dive in main doc? Y, and in addition the [Heterogenous Graph Transformer](https://dl.acm.org/doi/abs/10.1145/3366423.3380027?casa_token=neLIzbBgs70AAAAA:9PVQ1y_5p06rxyI28--hR5D6dGFH2e9_FBEJoxh_SxwJCYMOCiRHjil_lU8tyFDY3klfyx15OUuzsA) paper also warrants a look.
+  * **Detailed Methodology**:
+    - First step is to model likelihood over graphs (`p(G;\theta)`). How to do this? Most methods assume an _order_ to the nodes (albeit one that is arbitrary). Then, autoregressive factorizations can be used -- e.g., the probability of the graph is the probability of the first node multiplied by the probability of the rest of the graph conditioned on the first node and its outgoing edges. They do the same here (eq. 2).
+    - How do you actually model the probability of the new node given the rest of the graph? Well, you can do this in an autoregressive manner. E.g., `p(X_i, E_i | X_{<i}, E_{<i}) = p(X_i | ...) p(E_i | X_i, ...)`, and you can further do the same for the edges in `E_i` in an arbitrary order --- Note that in practice, however, in this work, they assume each edge generated is independent of every other edge generated.
+    - How do they actually do this, technically? The authors use a standard decode architecture to impute their masked nodes, and a pretty standard setup for edge generation as well. One note of something they do differently is separate each masked node into an "Attribute Generation Node" and an "Edge Generation Node". They do this such that both nodes have identical edge structures, and the attribute generation node also has an additional outgoing edge to the edge generation node. The attribute generation node is initialized with a `[MASK]` embedding and the edge generation node with the true node embedding. 
   * **Key Strengths**:
     - Strong experimental results, reasonable idea.
   * **Key Weaknesses**:
     - Only analyzes node classification, in practice.
-  * **Warrants further read**: Y, and in addition the [Heterogenous Graph Transformer](https://dl.acm.org/doi/abs/10.1145/3366423.3380027?casa_token=neLIzbBgs70AAAAA:9PVQ1y_5p06rxyI28--hR5D6dGFH2e9_FBEJoxh_SxwJCYMOCiRHjil_lU8tyFDY3klfyx15OUuzsA) paper also warrants a look.
+    - Their is a pathway for attribute leakage in this system, via the edge generation nodes and retained observed edges for the node. This violates their theoretical guarantees, I think, at least for attribute generation.
+    - Their system is using teacher forcing, or something like it, as the edge generation is always based on the true node embeddings. This is fine for the purposes of their pre-training strategy, but if they really wanted to use this system to generate graphs wholesale, it would be problematic.
+  * **Open Questions**:
+    - List of open questions inspired by this paper
+  * **Extensions**:
+    - List of possible extensions to this paper, at any level of thought-out.
+  * **How to learn more**:
+    - List of terms/concepts/questions to investigate to learn more about this paper.
+
+## [Heterogeneous Graph Transformer](https://dl.acm.org/doi/abs/10.1145/3366423.3380027?casa_token=neLIzbBgs70AAAAA:9PVQ1y_5p06rxyI28--hR5D6dGFH2e9_FBEJoxh_SxwJCYMOCiRHjil_lU8tyFDY3klfyx15OUuzsA)
+  * **Logistics**:
+    - Hu Z, Dong Y, Wang K, Sun Y. Heterogeneous graph transformer. InProceedings of The Web Conference 2020 2020 Apr 20 (pp. 2704-2710).
+    - 28 citations (10/22/2020)
+    - UCLA, MSR
+    - Time Range: 10/22/20 (09:52 - 09:59)
+  * **Summary**:
+    - _Single Big Problem/Question_ How to model heterogeneous graphs?
+    - _Solution Proposed/Answer Found_ Heterogenous Graph Transformer (HGT) architecture has specialized attention mechanisms for disparate node- and edge- types. Instead of using parametrized edge types, this system also incorporates node types of the endpoints of the edge, and these are used to actually parametrize the weight matrices directly for calculating attention over each edge, thus allowing nodes and edges of different types to maintain separate representation spaces. (why is this desirable)?
+    - _Why hasn't this been done before?_ GNNs are under active development now, but large scale systems, methods, and data are new. Plus, transformers are still fresh.
+    - _Experiments used to justify?_
+      1) List of experiments used to justify (tasks, data, etc.) -- full context.
+    - _Secret Terrible Thing_ What is the "secret terrible thing" of this paper?
+    - 3 most relevant other papers:
+      1)
+      2)
+      3)
+    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
+  * **Detailed Methodology**:
+    Detailed description of underlying methodology
+  * **Key Strengths**:
+    - List of big pros of the paper
+  * **Key Weaknesses**:
+    - List of big cons of this paper
+  * **Open Questions**:
+    - List of open questions inspired by this paper
+  * **Extensions**:
+    - List of possible extensions to this paper, at any level of thought-out.
+  * **How to learn more**:
+    - List of terms/concepts/questions to investigate to learn more about this paper.
 
 
 ## [Neuro-symbolic representation learning on biological knowledge graphs](https://academic.oup.com/bioinformatics/article/33/17/2723/3760100)
