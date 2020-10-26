@@ -61,6 +61,41 @@ Goal is to give a full, complete summary of the paper.
     - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
 # Uncategorized
+## [Neural Ordinary Differential Equations for Intervention Modeling](https://arxiv.org/pdf/2010.08304.pdf)
+  * **Logistics**:
+    - Gwak D, Sim G, Poli M, Massaroli S, Choo J, Choi E. Neural Ordinary Differential Equations for Intervention Modeling. arXiv preprint arXiv:2010.08304. 2020 Oct 16.
+    - Korea University, KAIST, University of Tokyo
+    - Time Range: 10/26/2020 09:24 - 09:58
+  * **Summary**:
+    - _Single Big Problem/Question_ Neural ODEs have emereged as a compelling framework for modeling irregular timeseries, but are not applicable to interventional data, which presents with both internal evolution of the timeseries as well as changing external inputs. 
+    - _Solution Proposed/Answer Found_ The authors develope IMODE, a nove neural ODE method capable of working with interventional data by employing two ODE functions to separately handle observations and interventions.
+    - _Why hasn't this been done before?_ Neural ODEs are still new, so this is directly building on existing research.
+    - _Experiments used to justify?_
+      1) Synthetic Experiments
+      2) Real-world medical record datasets.
+    - _Secret Terrible Thing_ 
+    - 3 most relevant other papers:
+      1) [Neural Jump Stochastic Differential Equations](https://papers.nips.cc/paper/9177-neural-jump-stochastic-differential-equations.pdf)
+      2)
+      3)
+    - Warrants deeper dive in main doc? Yes -- if nothing else, just to better understand the methodology here.
+  * **Detailed Methodology**:
+    So this is pretty complicated, and relies non-trivially on the formulation of the NJSDE framework. This system uses impulse differential equations, in which the system evolves under continuous dynamics for most of the time, (governed by some differential equation rules), but at discrete, irregular times, impulsive interventions impact the state in discrete jumps. Here, the authors have several distinct variables -- `h`, which is the overall "system state", `z_x`, which is the latent observational space, and `z_a`, which is the latent interventional (action, hence the "a") space. These evolve via continuous Neural DEs `f_{\psi, \theta, \phi}`, and jump DEs `g_{\theta, \phi}` -- why no `g_\psi`, you ask -- well, the assumption is that the impulse jump affects the latent spaces explicitly, but not the observed state itself, so dynamics in the observed space is always continuous, but the "velocity" so to speak varys in a discontinuous fashion. Note, however, that under this system, jumps affect both observation and intervention, which is interesting -- given that, why are they separate? Could we just do jumps on the interventional space?
+    
+    The system is trained on a reconstruction endpoint, going from `h` to the observed space `x`, only at observation points `x_{t_k}` (e.g., when the jumps are active). 
+  * **Key Strengths**:
+    - This is minor, but it has a nice summary of existing attempts to use the Neural ODE framework for medical timeseries.
+    - Nice synthetic dataset experiments.
+  * **Key Weaknesses**:
+    - I don't buy some of their "System-Specific Variants of IMODE" content. They seem to be trying to make first principles claims but aren't doing so with true proofs so it doesn't really seem correct to me.
+  * **Open Questions**:
+    - Under this framing, there is a clear and natural separation between observation points and non-observation points, which makes sense and seems to reflect reality. This begs the question of whether or the distribution `x_{t_k}` is different than that of `x_{\not t_k}` -- can we ever see the "observational space" at a _non_ observational time? This feels almost quantumy as a way to think about things.
+  * **Extensions**:
+    - List of possible extensions to this paper, at any level of thought-out.
+  * **How to learn more**:
+    - List of terms/concepts/questions to investigate to learn more about this paper.
+
+
 ## [Empirical Study of the Benefits of Overparameterization in Learning Latent Variable Models ](paper_link)
   * **Logistics**:
     - Buhai RD, Halpern Y, Kim Y, Risteski A, Sontag D. Empirical Study of the Benefits of Overparameterization in Learning Latent Variable Models. arXiv preprint arXiv:1907.00030. 2019.
