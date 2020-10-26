@@ -10,6 +10,15 @@ Here I'll maintain a running record of literature I've read, topics I've learned
 ## Paper/Topic Queue
 Maintenance is at a best effort level. Until decided otherwise, this won't be sorted by topic, the relevant sub-works will be nested.
 ### To categorize
+  - https://www.nature.com/articles/s42256-020-0210-5
+  - https://arxiv.org/pdf/2008.04063.pdf
+  - https://www.vanderschaar-lab.com/papers/2020_Clairvoyance.pdf
+  - https://papers.nips.cc/paper/9177-neural-jump-stochastic-differential-equations.pdf
+  - https://arxiv.org/pdf/2010.09394.pdf
+  - https://arxiv.org/pdf/2010.08012.pdf
+  - https://arxiv.org/pdf/2010.10391.pdf
+  - https://arxiv.org/pdf/2010.03951.pdf
+  - https://link.springer.com/article/10.1007/s41666-020-00075-3
   - https://arxiv.org/abs/1806.00848
   - https://arxiv.org/pdf/1811.08790.pdf
   - https://arxiv.org/abs/2001.05140
@@ -129,6 +138,7 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
     - [ ] https://arxiv.org/abs/2002.08071
     - [ ] https://papers.nips.cc/paper/8773-latent-ordinary-differential-equations-for-irregularly-sampled-time-series.pdf
     - [ ] http://papers.nips.cc/paper/8957-gru-ode-bayes-continuous-modeling-of-sporadically-observed-time-series.pdf
+    - [X] https://arxiv.org/pdf/2010.08304.pdf
   - [ ] [Deep Signatures](https://papers.nips.cc/paper/8574-deep-signature-transforms.pdf)
     - [ ] https://arxiv.org/abs/2005.12359
   - General
