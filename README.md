@@ -10,6 +10,9 @@ Here I'll maintain a running record of literature I've read, topics I've learned
 ## Paper/Topic Queue
 Maintenance is at a best effort level. Until decided otherwise, this won't be sorted by topic, the relevant sub-works will be nested.
 ### To categorize
+  - https://www.sciencedirect.com/science/article/abs/pii/S0883944120306213
+  - https://arxiv.org/pdf/2007.11838.pdf
+  - https://arxiv.org/pdf/2010.11465.pdf
   - https://www.nature.com/articles/s42256-020-0210-5
   - https://arxiv.org/pdf/2008.04063.pdf
   - https://www.vanderschaar-lab.com/papers/2020_Clairvoyance.pdf
