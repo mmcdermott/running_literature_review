@@ -61,6 +61,20 @@ Goal is to give a full, complete summary of the paper.
     - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
 # Uncategorized
+## [Trajectory Inspection: A Method for Iterative Clinician-Driven Design of Reinforcement Learning Studies](https://arxiv.org/pdf/2010.04279.pdf)
+  * **Logistics**:
+    - Ji CX, Oberst M, Kanjilal S, Sontag D. Trajectory Inspection: A Method for Iterative Clinician-Driven Design of Reinforcement Learning Studies. arXiv preprint arXiv:2010.04279. 2020 Oct 8.
+    - Time Range: 10/29/20 (09:58 - 10:01)
+  * **Summary**:
+    - _Single Big Problem/Question_ Treatment policies learned via reinforcement learning (RL) from observational health data are sensitive to subtle choices in study design.
+    - _Solution Proposed/Answer Found_ The authors propose Trajectory Inspection, an iterative method to aid in study design for clinical RL applications. This approach finds predicted treatment trajectories that are especially aggressive and the corresponding modeled clinical trajectory accompanying those policies alongside the real course of the hospitalization to identify possible modeling issues.
+    - _Experiments used to justify?_ They apply this approach to recent work on RL for inpatient sepsis management, identifying several issues related to study design.
+  * **Key Strengths**:
+    - Well written abstract, great idea, very useful in practice.
+  * **Key Weaknesses**:
+    - Need to read more to find out.
+  * **Warrants further read**: Y/N
+
 ## [Neural Ordinary Differential Equations for Intervention Modeling](https://arxiv.org/pdf/2010.08304.pdf)
   * **Logistics**:
     - Gwak D, Sim G, Poli M, Massaroli S, Choo J, Choi E. Neural Ordinary Differential Equations for Intervention Modeling. arXiv preprint arXiv:2010.08304. 2020 Oct 16.
