@@ -61,6 +61,41 @@ Goal is to give a full, complete summary of the paper.
     - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
 # Uncategorized
+## [Deep Contextual Clinical Prediction with Reverse Distillation](https://arxiv.org/abs/2007.05611)
+  * **Logistics**:
+    - Kodialam RS, Boiarsky R, Sontag D. Deep Contextual Clinical Prediction with Reverse Distillation. arXiv preprint arXiv:2007.05611. 2020 Jul 10.
+    - MIT
+    - Time Range: 11/5/2020 (10:55 - 11:35)
+  * **Summary**:
+    - _Single Big Problem/Question_ Make deep learning algorithms match or exceed the performance of simpler baseline models (e.g., linear model).
+    - _Solution Proposed/Answer Found_ Authors propose "Reverse Distillation," which pre-trains deep models by using high-performing linear models for initialization. In particular, the authors propose "Self Attention with Reverse Distillation" (SARD), an architecture that combines contextual embeddings, temporal embeddings, self-attention mechanisms, and reverse distillation to offer significant improvements for processing longitudinal insurance claims data.
+    - _Why hasn't this been done before?_ It probably has -- unclear yet what is new about this as compared to prior approaches.
+    - _Experiments used to justify?_
+      Prediction on a) End-of-Life (EoL), b) Surgical Procedure (Surgery), and c) Likelihood of hospitalization (LoH) task on a dataset of 121.6k Medicare patients in OMOP format, with a single train/val/test split. They compare against four baselines: 2 LR models, a self-attention architecture without reverse distillation (this is an ablation, not a baseline!), and RETAIN (prior SOTA).
+    - _Secret Terrible Thing_ There are some really obvious things to compare to here that are missing. What about just taking the output of the linear model `g_w` and passing that into the deep network `f_\theta` as an input (either in the timeseries, or at the output, etc.)? What about ensembling / multiple-instance-learning? What about residual learning? Similarly, is it the distillation or the `\zeta` training that is most helpful here? It seems `\zeta` in this case (the feature engineering associated with the linear model) involves a fair bit of domain knowledge.
+    - 3 most relevant other papers:
+      1) Knowledge distillation.
+      2) Combination of baseline & neural models.
+      3) RETAIN (prior SOTA).
+    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes) Not really
+  * **Detailed Methodology**:
+    - Reverse Distillation:
+      Reverse distillation is inspire by standard knowledge distillation paradigm. Let us take as given a binary prediction model 
+      `f_\theta: \mathcal X \to \[0, 1\]` and a linear model `g_w: \mathcal X \to \[0, 1\]` defined by `g_w(x) = \sigma(w^T \zeta(x))` where `\sigma` is the sigmoid function, and `\zeta` is a fixed _feature engineering_ transformation `\zeta: \mathcal X \to \mathbb{R}^d` based on heuristic domain knowledge. Note that the linear model may outperform `f_\theta` for several reasons, including regularization, simplicity, and the quality of `\zeta` (this seems superficial to me -- surely `f_\theta` could also take as input `\zeta(x)`). Reverse distillation trains `f_\theta` over `\theta` so as to minimize the KL divergence between the bernoulli distributions introduced by `g_w` and `f_\theta`. At fine-tuning time, the model is trained via a weighted loss to both stay close to the linear model and to optimize direct predictive performance.
+    - SARD: 
+      SARD is a pretty standard transformer, with a deep set encoder used to represent a visit (which is a bag of codes) as the input embedding, a temporal embedding inspired by traditional sinusoidal positional embeddings for transformers, followed by a self-attention architecture, followed by a final convolution step and a max-pooling operation to consolidate to fixed-size.
+  * **Key Strengths**:
+    - Solves real problem
+    - Nice ablation, baseline comparison (though RF also would've been valuable), and interpretability analyses
+  * **Key Weaknesses**:
+    - Lots of missing key comparisons.
+    - No variances / significance testing.
+    - Some ablations would be nice -- e.g., is the convolution necessary?
+    - RD doesn't seem to add too much over SA w/o RD. 
+  * **Open Questions**:
+    - Is this amenable to generalization? From the context of the theory presented, I think probably, but it isn't presented as though it is, which I find confusing. Their theory says that the SARD model can perfectly mimic a linear model given perfect data, though how important that is I honestly don't know. This mostly just comes down to approximating the `\zeta`. 
+
+
 ## [Trajectory Inspection: A Method for Iterative Clinician-Driven Design of Reinforcement Learning Studies](https://arxiv.org/pdf/2010.04279.pdf)
   * **Logistics**:
     - Ji CX, Oberst M, Kanjilal S, Sontag D. Trajectory Inspection: A Method for Iterative Clinician-Driven Design of Reinforcement Learning Studies. arXiv preprint arXiv:2010.04279. 2020 Oct 8.
