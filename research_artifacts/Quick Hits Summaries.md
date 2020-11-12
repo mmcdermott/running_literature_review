@@ -61,6 +61,48 @@ Goal is to give a full, complete summary of the paper.
     - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
 # Uncategorized
+## [VIME: Extending the Success of Self- and Semi-supervised Learning to Tabular Domain](https://papers.nips.cc/paper/2020/file/7d97667a3e056acab9aaf653807b4a03-Paper.pdf)
+  * **Logistics**:
+    - Yoon J, Zhang Y, Jordon J, van der Schaar M. VIME: Extending the Success of Self-and Semi-supervised Learning to Tabular Domain. Advances in Neural Information Processing Systems. 2020;33.
+    - 0 (11/12/2020)
+    - Google, UCLA, Cambridge, Oxford
+    - Time Range: 11/12/2020 (10:10 - 10:55)
+  * **Summary**:
+    - _Single Big Problem/Question_ Self- and Semi-supervised learning frameworks have not been as successful on tabular data as they have on other modalities.
+    - _Solution Proposed/Answer Found_ The authors propose VIME, a pre-training method for tabular data revolving around value imputation and mask estimation. In addition, they propose a novel data augmentation method for tabular data specifically designed for sself- and semi-supervised learning frameworks.
+    - _Why hasn't this been done before?_ PT is making a big comeback, but limitations of being applicable only to imaging and text data are sharp.
+    - _Experiments used to justify?_
+      1) Apply their framework to multiple tabular datasets on a genomics dataset (UK Biobank, 400k patients) and a clinical dataset (Prostate Cancer UK + SEER datasets), comparing to a denoising auto-encoder (DAE) model and a [context encoder](https://openaccess.thecvf.com/content_cvpr_2016/html/Pathak_Context_Encoders_Feature_CVPR_2016_paper.html) (2016) model (for their self-supervised framework) and [MixUp](https://arxiv.org/abs/1710.09412) (2017) for their semi-supervised model, as well as supervised baselines.
+    - _Secret Terrible Thing_ Their main value-add really seems to be using self-SL and semi-SL together, not their actual framework. I'd be very curious to see how their baselines perform in a joint self- and semi- SL context.
+    - 3 most relevant other papers:
+      1) Existing tabular pre-training papers ([TabNet](https://arxiv.org/abs/1908.07442) and [TaBERT](https://arxiv.org/abs/2005.08314))
+      2) [MixUp](https://arxiv.org/abs/1710.09412)
+    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
+  * **Detailed Methodology**:
+    VIME incorporates both a self-supervised and a semi-supervised learning component. This is interesting, and imo (if it were necessary) could weaken the overall pitch for VIME -- if VIME requires you to do an expensive semi-supervised component during fine-tuning, that'd be unfortunate.
+      * Self-supervised Component:
+        In this component, they introduce two pretext tasks: _feature vector estimation_ and _mask vector estimation_. Their goal is to optimize a pretext model to recover an input sample (a feature vector) from its corrupted variant, at the same time as estimating the mask vector that has been applied to the sample. First, the system generates a binary mask vector according to a uniform distribution. The pretext generator model `g_m` then maps `(\vec x, \vec m) \mapsto \tilde{\vec x} = \vec m \cdot \bar{\vec x} + (1 - \vec m) \cdot \vec x`, where `\bar{\vec x}` is sampled from the iid approximation of the empirical distribution of `\vec x` induced by the empirical marginal distributions of each component separately.
+        
+        The pre-text task is solved by dividing it into two subtasks. First, the model predicts which features have been masked, and second it predicts the values of the corrupted features. These tasks are solved independently, not jointly. Notably, for the regression recovery task, they solve it with traditional euclidean regression, rather than with a probabilistic regression and joint loss.
+      * Semi-supervised Component:
+        In this component, the model utilizes the pre-trained encode (`e`) and the mask generator to generate a number of noised versions of the sample, then uses a consistency loss amongst all noised samples in addition to the supervised prediction loss to regularize the model to perturbation. They claim here that their perturbation is "learned" but it really isn't -- it's a static model utilizing uniform masking and empirical marginal sampling. It _could_ be learned, though, which is interesting.
+      * Experiments: Note that in all experiments (aside from ablations on the public datasets) they use VIME's self-supervised in _concert_ with the semi-supervised component whereas their baselines don't have that luxury.
+        - Genomics: They use a dataset of 400k patients data, consissting of around 700SNPs and 6 blood cell traits from the UK biobank. They treat SNPs as features and predict the 6 blood cell traits while varying the # of labeled points. Their supervised baseline is ElasticNet, rather than an MLP, as this has performed better than neural methods. That aside, they do show performance improvements (reductions in MSE) across all 6 blood types and in comparison to all baselines, fully supervised and self/semi-supervised methods. They skip the DAE here, which is not explained.
+        - Clinical: They use 28 clinical features, and predict treatment choice for the UK prostate cancer patients (2 binary prediction tasks). In the UK they have 10k labeled patients, which they augment with 200k unlabeled samples from teh US datasets. They split the UK dataset 50/50 for training + testing. They compare against DAE, Context Encoder, MixUp, and 3 supervised baselines, Logistic Regression, 2-layer Perceptron, and XGBoost, measuring AUROC as their metric. VIME shows improvements over everything. Here, as in before, the general order is self-supervised < SL < semi-supervised < VIME.
+        - Three Public Datasets: MNIST (interpreted tabularly), UCI Income, and UCI Blog, split 10/90 labeled, unlabeled. On these datasets, they also perform ablation studies, which help account for some of the limitations in their other comparisons. Namely, they use VIME in 3 manners -- SL only, self-SL only, or Semi-SL only. They find that SL only is comparable to the other SL models, self-SL only is similar to the other self-SL only, and semi-SL only is similar (albeit a bit better) than the semi-SL baseline. But, everything in concert shows synergistic gains. This, to me, suggests that their framework isn't really as important as the gains found in doing semi-SL and self-SL simultaneously.
+  * **Key Strengths**:
+    - Nice results. Best-in-class on all comparisons.
+    - Model is relatively clear and transparent.
+  * **Key Weaknesses**:
+    - Their main value-add really seems to be using self-SL and semi-SL together, not their actual framework. I'd be very curious to see how their baselines perform in a joint self- and semi- SL context.
+    - In the main paper, they don't say what the architecture of their encoder is and how it compares to their baselines? This might be a big factor!
+    - Their baselines are pretty simple, and I doubt they are SOTA. Their self-SL baselines are a DAE and a 2016 paper, and their semi-SL baseline is a 2017 paper. Surely there's been more done since then?
+  * **Open Questions**:
+    - Can the sampling process for the masked values be made more complicated? E.g., why not train a mask recover auto-encoder on the unlabeled data and use that? Maybe it is because we don't want it to be too good.
+    - Does it make sense to fully divide the two subtasks? Maybe so, as their encoder is shared, so they're really putting the meat of the solution for both tasks in the encoder.
+  * **Extensions**:
+    - Learning mask and obfuscation distributions.
+
 ## [Deep Contextual Clinical Prediction with Reverse Distillation](https://arxiv.org/abs/2007.05611)
   * **Logistics**:
     - Kodialam RS, Boiarsky R, Sontag D. Deep Contextual Clinical Prediction with Reverse Distillation. arXiv preprint arXiv:2007.05611. 2020 Jul 10.
