@@ -10,6 +10,18 @@ Here I'll maintain a running record of literature I've read, topics I've learned
 ## Paper/Topic Queue
 Maintenance is at a best effort level. Until decided otherwise, this won't be sorted by topic, the relevant sub-works will be nested.
 ### To categorize
+  - https://dl.acm.org/doi/pdf/10.1145/3368555.3384458
+  - https://ieeexplore.ieee.org/abstract/document/9224838
+  - https://arxiv.org/pdf/2010.11389.pdf
+  - https://arxiv.org/pdf/2010.12811.pdf
+  - https://arxiv.org/pdf/2010.16418.pdf
+  - https://deepai.org/publication/the-power-of-quantum-neural-networks
+  - https://deepai.org/publication/a-combinatorial-perspective-on-transfer-learning
+  - https://deepai.org/publication/a-survey-of-algorithmic-recourse-definitions-formulations-solutions-and-prospects
+  - https://watermark.silverchair.com/ocaa287.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAArwwggK4BgkqhkiG9w0BBwagggKpMIICpQIBADCCAp4GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMRA3ECsWMRJeyrvfwAgEQgIICb_GD-QbM-6xt9CbxeVwywmMmWMTOp2uDHKGF5IJljgBqfmNlyPpR7nhBFsIs56hLEFaOOc01OcFEaPw21KjhOm_HNOzw0RrlbxXnOhhEe82iU4J3BCbMp1u9dv2t-ouAgi5br9vN3vO4vCQhtO9luc2vzlYUTqBzryfZ_3hcNkZQJqF8rrFxdvAV5vig1m1Z4ljU51Z7UAwRhok3v3_b5dCY9WXkyKHot2vqw2v5dUo41u1LENbNvAXDbx6JSuVePvW2Ub_qfWByswNc0SsGITA9WfU5quyvAzpVtYvM7GYZih5sFXbxG51nLKLMJfrElCl7ydRde3A7OWa15SgvIjwhRNok3RgY6XzzHVloUP7RmDayN0nFZ4wpyTBl-joMCUeSDwLxwAQb1IhSSlW8MGfMTTRHg5sqAoLgZ5KcSjKUyydPbwa9T3V8ff7nSqA4ZcHMKa9ccrbXG0RSxCCgdSzhU03TZ3rWd6uSI-RzMs_2a1fxR3v_lUNyXSTLAnphG_jW73z5fKV5PG8rXmvCm24SFzKfqZmOYPtogsdE9GLpm2lhWy0nFC-XK526MQcNhu6AYcrUfXkVTfJdz2gZWEbg0xCE6GgzIVP15ZvJmNNC8TJvkUw9PYorbP2svTdZQ-X-gP_jRVjPMtkPE5hKsXkgAGIfifqJ9QsDPNKUbV8RocSvjmBz58hySyGtFcbfQw9yQSkfAvHft9UrbNwmEuRlHNmG9G1jco1Cuv7lt9LzNdLwwQwx_BxQPUtQ0tk8xCD4Smpp9lTQdzu_jPumZkiS_fpUMBswr7_wfbhUuoCWLWZJwh_SZIZbzXTE7vGL
+  - https://arxiv.org/pdf/2010.16056.pdf
+  - https://link.springer.com/chapter/10.1007/978-3-030-62469-9_7
+  - https://arxiv.org/abs/2011.02279
   - https://www.sciencedirect.com/science/article/abs/pii/S0883944120306213
   - https://arxiv.org/pdf/2007.11838.pdf
   - https://arxiv.org/pdf/2010.11465.pdf
