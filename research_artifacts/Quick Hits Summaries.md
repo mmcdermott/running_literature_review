@@ -61,6 +61,40 @@ Goal is to give a full, complete summary of the paper.
     - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
 # Uncategorized
+## [CliniQG4QA: Generating Diverse Questions for Domain Adaptation of Clinical Question Answering](https://arxiv.org/pdf/2010.16021.pdf)
+  * **Logistics**:
+    - Yue X, Yao Z, Lin S, Sun H. CliniQG4QA: Generating Diverse Questions for Domain Adaptation of Clinical Question Answering. arXiv preprint arXiv:2010.16021. 2020 Oct 30.
+    - Ohio State University, Abigail Wexner Research Institute at Nationwide Children's Hospital
+    - Time Range: 11/13/2020 (14:58 - )
+  * **Summary**:
+    - _Single Big Problem/Question_ Clinical QA is important, but current question generation (QG) models are too simplistic and do not generate sufficiently diverse questions, which damages their generalizability to novel contexts.
+    - _Solution Proposed/Answer Found_ This paper proposes a framework, CliniQG4GA, which leverages QG to synthesize QA pairs on new clinical contexts, along with a question-phrase-prediction (QPP) seq2seq model that can augment most QG models to increase diversity. Together, these changes better enable domain adaption to new clinical contexts.
+    - _Why hasn't this been done before?_ Clinical QA isn't still a huge field, and LMs/effective NLP data augmentation are currently all the rage motivated by improvements like BERT & GPT.
+    - _Experiments used to justify?_
+      1) They utilize their framework to improve the generalizability of QA models trained on emrQA going towards MIMIC-III as the target domain. Using their framework gives a boost of up to 8\% in exact match stats on the target domain.
+    - _Secret Terrible Thing_ 
+    - 3 most relevant other papers:
+      1) emrQA
+      2) [Question Generation](https://www.aclweb.org/anthology/P17-1123/)
+      3) Domain adaption works.
+    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
+  * **Detailed Methodology**:
+    - They generate a novel set of ~1300 QA pairs on MIMIC notes. Of these, 975 are human verified based on QG models, and 312 are fully new.
+    - Their QPP framework takes an answer snippet, and predicts a sequence of question phrase parts (e.g., "What treatment", "How often", "What dosage", etc.). This is still confusing to me, but seems, in essence, to be backing out the logical forms from the questions (or something like that). 
+    - TODO: rest of this section.
+  * **Key Strengths**:
+    - Shows marked improvements over using simple QG methods or directly trying to generalize from emrQA.
+  * **Key Weaknesses**:
+    - Only 312 of their questions are actually new.
+    - No statistical tests compared, and the differences aren't huge between BeamSearch and QPP
+    - It isn't clear to me, but they may be generating compound questions???
+  * **Other Notes/Questions**:
+    - They only use a 5% sample of the emrQA dataset to account for its redundancy... 
+    - Interestingly, the model does better on the "Human Generated" samples than it does on the "Human Verified" samples
+    - How would their system help on emrQA directly?
+    - Why not use QPP + Beam Search?
+
+
 ## [VIME: Extending the Success of Self- and Semi-supervised Learning to Tabular Domain](https://papers.nips.cc/paper/2020/file/7d97667a3e056acab9aaf653807b4a03-Paper.pdf)
   * **Logistics**:
     - Yoon J, Zhang Y, Jordon J, van der Schaar M. VIME: Extending the Success of Self-and Semi-supervised Learning to Tabular Domain. Advances in Neural Information Processing Systems. 2020;33.
