@@ -61,6 +61,46 @@ Goal is to give a full, complete summary of the paper.
     - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
 # Uncategorized
+## [Learning to Select the Best Forecasting Tasks for Clinical Outcome Prediction](https://proceedings.neurips.cc/paper/2020/file/abc99d6b9938aa86d1f30f8ee0fd169f-Paper.pdf)
+  * **Logistics**:
+    - Xue Y, Du N, Mottram A, Seneviratne M, Dai AM. Learning to Select Best Forecast Tasks for Clinical Outcome Prediction. Advances in Neural Information Processing Systems. 2020;33.
+    - Google
+    - Time Range: 12/09/2020 (15:25 - END)
+  * **Summary**:
+    - _Single Big Problem/Question_ Designing a meaningful set of PT tasks for a given FT context is difficult and can be inefficient to do by hand.
+    - _Solution Proposed/Answer Found_ This paper uses meta-learning and bi-level optimization to automatically learn a weighting vector \lambda for a weighted forecasting task used in pre-training.
+    - _Why hasn't this been done before?_ Meta-learning to optimize PT tasks combines several new developments, and builds directly on previous literature in a number of ways. Not documenting this fully as I had a project in a similar vein so am confident this timing makes sense.
+    - _Experiments used to justify?_ All with MIMIC-III, using the first 48 hours as input, with 48 prediction windows and *no* gap time.
+      1) Low Blood-pressure Detection
+      2) Imminent Mortality Prediction
+      3) Kidney Dysfunction Prediction
+      They test on each of these tasks pre-training natively, pre-training with their system, multi-task learning, direct supervised learning, etc.
+    - _Secret Terrible Thing_ Only MIMIC-III, only 3 tasks, with no gap times, on first 48 hours. In other words, very limited genearlizability over tasks and data. In addition, very limited learnability of PT task.
+    - 3 most relevant other papers:
+      1) Our work: https://arxiv.org/pdf/2007.10185.pdf (not cited)
+      2) Meta-learning (maybe in particular https://arxiv.org/abs/1803.02999)
+      3) https://arxiv.org/abs/1812.00490
+    - Warrants deeper dive in main doc? Yes
+  * **Detailed Methodology**:
+    They adopt a classical meta-learning setup: In the "Inner Loop", they optimize an encoder for their weighted self-supervised forecasting task, and in the "outer loop" this model is transferred and used for supervised prediction, with the weight for the forecasting weighting updated via meta-learning. Similar to many other methods, exactly solving this meta-learning task is challenging, so the authors adopt a first-order approximation, approximating their meta-gradient as the product of the gradient of their validation loss w.r.t. their encoder parameters _at the end of fine-tuning_, times the gradient of their encoder parameters _at the end of pre-training_ w.r.t. the weighting parameter. This effectively ignores the FT learning process in their gradient calculation.
+    
+    TODO: Probe this methodology in more depth. Seems like they may also be losing the pre-training algorighm dependence as well...
+  * **Key Strengths**:
+    - Positive Results
+    - Nice framing
+  * **Key Weaknesses**:
+    - Limited generalizability
+    - Heavy assumption burden in meta-learning formulation.
+  * **Open Questions**:
+    - Is learned task weighting super related to measurement frequency?
+    - Why does BP prefer Pretrain(down) to Pretrain(All)?
+    - Given the extensive overfitting documented in Figure 2, how does their system perform so well in real tests? Early stopping somehow? Seems in direct supervised learning, they ue early stopping, but not for their PT system. Instead they just do 5 epochs.
+  * **Extensions**:
+    - Whole meta- pre-training project.
+  * **How to learn more**:
+    - List of terms/concepts/questions to investigate to learn more about this paper.
+
+
 ## [CliniQG4QA: Generating Diverse Questions for Domain Adaptation of Clinical Question Answering](https://arxiv.org/pdf/2010.16021.pdf)
   * **Logistics**:
     - Yue X, Yao Z, Lin S, Sun H. CliniQG4QA: Generating Diverse Questions for Domain Adaptation of Clinical Question Answering. arXiv preprint arXiv:2010.16021. 2020 Oct 30.
