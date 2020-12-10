@@ -1084,17 +1084,6 @@ This is actually very similar to the architecture I proposed for Anna to study; 
 
 \[3\] https://arxiv.org/abs/1801.07606
 
-# Multi-task Learning
-## [Which Tasks Should be Learned Together in Multi-task Learning?](https://arxiv.org/pdf/1905.07553.pdf)
-### Summary
-This paper investigates multi-task learning in computer vision, and proposes a scheme to identify what subset of tasks should be learned together. In particular, their key problem is:
-> Given a set of tasks, T , and a computational budget b (e.g., maximum allowable inference time), what is the optimal way to assign tasks to networks with combined cost _≤ b_ such that a combined measure of task performances is maximized? - Page 2
-
-### Task-Relationships Among Multi-task Learning
-They find several notable findings:
-  1. More tasks = worse performance in comparison to ST models at the same (individual) capacity level, but outperform ST models that are restricted to 1/N of the capacity budget (given N tasks)
-  2. They link to another paper I should read: https://arxiv.org/abs/1804.08328 for a transfer task-specific mechanism.
-
 # Neural ODEs
 ## [Neural Ordinary Differential Equations](https://arxiv.org/pdf/1806.07366.pdf)
 ### Summary
