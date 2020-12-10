@@ -7,148 +7,107 @@ Here I'll maintain a running record of literature I've read, topics I've learned
   2. Finish structuring list below.
   3. Evaluate format
 
-## Paper/Topic Queue
+# Paper/Topic Queue
 Maintenance is at a best effort level. Until decided otherwise, this won't be sorted by topic, the relevant sub-works will be nested.
-### To categorize
-  - https://dl.acm.org/doi/pdf/10.1145/3368555.3384458
-  - https://ieeexplore.ieee.org/abstract/document/9224838
-  - https://arxiv.org/pdf/2010.11389.pdf
-  - https://arxiv.org/pdf/2010.12811.pdf
-  - https://arxiv.org/pdf/2010.16418.pdf
-  - https://deepai.org/publication/the-power-of-quantum-neural-networks
-  - https://deepai.org/publication/a-combinatorial-perspective-on-transfer-learning
-  - https://deepai.org/publication/a-survey-of-algorithmic-recourse-definitions-formulations-solutions-and-prospects
-  - https://watermark.silverchair.com/ocaa287.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAArwwggK4BgkqhkiG9w0BBwagggKpMIICpQIBADCCAp4GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMRA3ECsWMRJeyrvfwAgEQgIICb_GD-QbM-6xt9CbxeVwywmMmWMTOp2uDHKGF5IJljgBqfmNlyPpR7nhBFsIs56hLEFaOOc01OcFEaPw21KjhOm_HNOzw0RrlbxXnOhhEe82iU4J3BCbMp1u9dv2t-ouAgi5br9vN3vO4vCQhtO9luc2vzlYUTqBzryfZ_3hcNkZQJqF8rrFxdvAV5vig1m1Z4ljU51Z7UAwRhok3v3_b5dCY9WXkyKHot2vqw2v5dUo41u1LENbNvAXDbx6JSuVePvW2Ub_qfWByswNc0SsGITA9WfU5quyvAzpVtYvM7GYZih5sFXbxG51nLKLMJfrElCl7ydRde3A7OWa15SgvIjwhRNok3RgY6XzzHVloUP7RmDayN0nFZ4wpyTBl-joMCUeSDwLxwAQb1IhSSlW8MGfMTTRHg5sqAoLgZ5KcSjKUyydPbwa9T3V8ff7nSqA4ZcHMKa9ccrbXG0RSxCCgdSzhU03TZ3rWd6uSI-RzMs_2a1fxR3v_lUNyXSTLAnphG_jW73z5fKV5PG8rXmvCm24SFzKfqZmOYPtogsdE9GLpm2lhWy0nFC-XK526MQcNhu6AYcrUfXkVTfJdz2gZWEbg0xCE6GgzIVP15ZvJmNNC8TJvkUw9PYorbP2svTdZQ-X-gP_jRVjPMtkPE5hKsXkgAGIfifqJ9QsDPNKUbV8RocSvjmBz58hySyGtFcbfQw9yQSkfAvHft9UrbNwmEuRlHNmG9G1jco1Cuv7lt9LzNdLwwQwx_BxQPUtQ0tk8xCD4Smpp9lTQdzu_jPumZkiS_fpUMBswr7_wfbhUuoCWLWZJwh_SZIZbzXTE7vGL
-  - https://arxiv.org/pdf/2010.16056.pdf
-  - https://link.springer.com/chapter/10.1007/978-3-030-62469-9_7
-  - https://arxiv.org/abs/2011.02279
-  - https://www.sciencedirect.com/science/article/abs/pii/S0883944120306213
-  - https://arxiv.org/pdf/2007.11838.pdf
-  - https://arxiv.org/pdf/2010.11465.pdf
-  - https://www.nature.com/articles/s42256-020-0210-5
-  - https://arxiv.org/pdf/2008.04063.pdf
-  - https://www.vanderschaar-lab.com/papers/2020_Clairvoyance.pdf
-  - https://papers.nips.cc/paper/9177-neural-jump-stochastic-differential-equations.pdf
-  - https://arxiv.org/pdf/2010.09394.pdf
-  - https://arxiv.org/pdf/2010.08012.pdf
-  - https://arxiv.org/pdf/2010.10391.pdf
-  - https://arxiv.org/pdf/2010.03951.pdf
-  - https://link.springer.com/article/10.1007/s41666-020-00075-3
-  - https://arxiv.org/abs/1806.00848
-  - https://arxiv.org/pdf/1811.08790.pdf
-  - https://arxiv.org/abs/2001.05140
-  - https://arxiv.org/pdf/2002.03427.pdf#page=10&zoom=100,384,464
-  - https://openreview.net/forum?id=hga6dk7nxFB
-  - https://arxiv.org/abs/2002.02925
-  - https://www.nature.com/articles/s41591-020-1045-7
-  - https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa777/5904262?rss=1
-  - https://pubs.acs.org/doi/10.1021/acssynbio.0c00219
-  - https://arxiv.org/pdf/2005.12766.pdf
-  - https://www.aclweb.org/anthology/D19-5509.pdf
-  - https://arxiv.org/abs/1803.00942
-  - https://arxiv.org/abs/1706.07567
-  - https://arxiv.org/abs/1903.05503
-  - https://openaccess.thecvf.com/content_cvpr_2018/html/Duan_Deep_Adversarial_Metric_CVPR_2018_paper.html
-  - https://arxiv.org/pdf/1809.11099.pdf
-  - https://arxiv.org/pdf/2010.03574.pdf
-  - https://arxiv.org/pdf/2010.04279.pdf
-  - https://deepai.org/publication/neural-databases
-  - https://academic.oup.com/jamia/advance-article/doi/10.1093/jamia/ocaa139/5920826
-  - https://pubmed.ncbi.nlm.nih.gov/17238291/
-  - https://arxiv.org/pdf/2010.01450.pdf
-  - https://arxiv.org/pdf/2010.02318.pdf
-  - https://arxiv.org/pdf/2008.13574.pdf
-  - https://www.nature.com/articles/nbt0210-128/
-  - https://academic.oup.com/jamia/advance-article-abstract/doi/10.1093/jamia/ocaa164/5906103
-  - https://deepai.org/publication/understanding-self-supervised-learning-with-dual-deep-networks
-  - https://arxiv.org/pdf/1911.08089.pdf
-  - https://arxiv.org/pdf/2010.03746.pdf
-  - https://deepai.org/publication/pooling-methods-in-deep-neural-networks-a-review
-  - https://deepai.org/publication/towards-a-mathematical-understanding-of-neural-network-based-machine-learning-what-we-know-and-what-we-don-t
-  - https://www.sciencedirect.com/science/article/pii/S002002552030935X
-  - https://arxiv.org/pdf/2009.10195.pdf
-  - https://link.springer.com/chapter/10.1007/978-3-030-60946-7_11
-  - https://arxiv.org/pdf/2009.13081.pdf
-  - https://arxiv.org/pdf/2010.06595.pdf
-  - https://arxiv.org/abs/2007.05611
-  - https://openreview.net/forum?id=Hkl1iRNFwS
-  - https://www.sciencedirect.com/science/article/abs/pii/S1047320320301425
-  - https://arxiv.org/abs/2003.11755
-  - https://arxiv.org/abs/2007.02835
-  - https://arxiv.org/abs/2006.08218
-  - https://arxiv.org/abs/1809.00732
-  - https://arxiv.org/pdf/2005.00574.pdf
-  - https://arxiv.org/abs/2005.12766
-  - https://www.aclweb.org/anthology/D19-5509.pdf
-  - https://proceedings.icml.cc/static/paper_files/icml/2020/5645-Paper.pdf
-  - https://arxiv.org/abs/1706.07567
-  - https://arxiv.org/abs/1503.03832
-  - https://arxiv.org/abs/1803.00942
-  - https://arxiv.org/abs/1903.05503
-  - http://groups.csail.mit.edu/medg/ftp/min/MinSoYeon-meng-eecs-2020.pdf
-  - https://arxiv.org/pdf/2003.07853.pdf
+## To categorize
+  - https://www.biorxiv.org/content/10.1101/2020.01.23.917682v1
+  - https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract
 
-### Shortlist (5 max, unordered)
-  - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract (in progress)
-  - [X] https://dl.acm.org/doi/pdf/10.1145/3394486.3403110
+## Shortlist (5 max, unordered)
 
-### Classic Papers
+## Classic Papers
   - Meta-list: https://github.com/beamlab-hsph/journalclub
 
-### Topic-Structured Papers
-#### Deep Learning Theory
-  - [X] [Lottery Ticket Hypothesis](https://arxiv.org/abs/1803.03635)
-    - [ ] https://arxiv.org/abs/2002.00585
-    - [ ] http://papers.nips.cc/paper/8739-one-ticket-to-win-them-all-generalizing-lottery-ticket-initializations-across-datasets-and-optimizers
-    - [ ] 
-    - [X] https://arxiv.org/abs/2007.12223
-    - [X] https://arxiv.org/abs/1911.11134
-    - [X] https://ai.googleblog.com/2020/09/improving-sparse-training-with-rigl.html
-##### Training under class imbalance
-  - [X] https://arxiv.org/pdf/2009.02189v1.pdf
-  - [X] https://arxiv.org/pdf/1903.01182.pdf
-  
-#### Clustering
-  - [X] https://arxiv.org/pdf/2009.07417v1.pdf
+## Topic-Structured Papers
+### Deep Learning Theory
+  - [ ] [Hopfield Networks](https://arxiv.org/pdf/2008.02217.pdf)
+  - [ ] [Gradient Starvation](https://arxiv.org/pdf/2011.09468.pdf)
+  - [ ] [Neural Function Modules](https://arxiv.org/pdf/2010.08012.pdf)
  
-#### Representation Learning
-##### Self Supervised Representation Learning in General
-  - [X] https://arxiv.org/pdf/2008.01064.pdf
-  - [ ] https://arxiv.org/abs/2002.08822: Relevant to adversarial pre-training
-  - [ ] https://arxiv.org/abs/2006.01095
-  
-##### Pre-training
-###### Biomedical > Proteins
+### Representation Learning
+
+#### Self-supervised Representation Learning Theory
+  - [X] [Predicting What You Already Know Helps: Provable Self-Supervised Learning](https://arxiv.org/pdf/2008.01064.pdf)
+  - [ ] [Understanding Self-supervised Learning with Dual Deep Networks](https://arxiv.org/pdf/2010.00578v1.pdf)
+  - [ ] [Self-supervised Learning: Generative or Contrastive](https://arxiv.org/abs/2006.08218)
+
+#### General Self Supervised Representation Learning
+  - [ ] [Automatic Shortcut Removal for Self-Supervised Representation Learning
+](https://arxiv.org/abs/2002.08822)
+ 
+#### Pre-training
+##### Biomedical > Proteins
   - Meta-list: https://github.com/yangkky/Machine-learning-for-proteins
   - [ ] https://openreview.net/pdf?id=SygLehCqtm
   - [ ] https://www.biorxiv.org/content/10.1101/2020.01.23.917682v1
   - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract
+  
+##### Language
+  - [ ] [CERT: Contrastive Self-supervised Learning for Language Understanding](https://arxiv.org/abs/2005.12766)
 
-###### Clinical
-  - [ ] https://arxiv.org/pdf/2006.08600.pdf
+##### Clinical Time-series
+  - [ ] [Temporal Phenotyping using Deep Predictive Clustering of Disease Progression](https://arxiv.org/pdf/2006.08600.pdf)
   
-###### Graphs
-  - [ ] https://arxiv.org/pdf/2001.05140.pdf
-  - [ ] https://arxiv.org/abs/1905.12265
-  - [ ] https://www.semanticscholar.org/paper/GCC%3A-Graph-Contrastive-Coding-for-Graph-Neural-Qiu-Chen/91fb815361fdbf80ff15ce4d783a41846bd99232
-  - [ ] https://academic.oup.com/bioinformatics/article/36/4/1241/5581350
+##### Graphs
+  - [ ] [Graph-BERT](https://arxiv.org/pdf/2001.05140.pdf)
+  - [ ] [Strategies for Pre-training Graph Neural Networks](https://arxiv.org/abs/1905.12265)
+  - [ ] [GCC: Graph Contrastive Coding for Graph Neural Network Pre-Training](https://dl.acm.org/doi/10.1145/3394486.3403168)
+  - [ ] https://arxiv.org/pdf/2010.12811.pdf
+  - [ ] [Self-Supervised Graph Transformer on Large-Scale Molecular Data](https://arxiv.org/pdf/2007.02835.pdf)
   
-##### Deep Metric Learning:
+##### Ontologies
+  - [ ] https://arxiv.org/pdf/2006.10217.pdf
+  
+###### BERT + KG
+  - [ ] https://www.aclweb.org/anthology/2020.coling-main.57.pdf
+  - [ ] [UmlsBERT](https://arxiv.org/pdf/2010.10391.pdf
+  - [ ] [Infusing Disease Knowledge into BERT for Health Question Answering](https://arxiv.org/pdf/2010.03746.pdf)
+  
+#### Contrastive Learning
+  - [ ] https://arxiv.org/pdf/2011.04419.pdf
+  - [ ] https://arxiv.org/abs/2002.05709
+  
+#### Deep Metric Learning:
   - [ ] https://openaccess.thecvf.com/content_cvpr_2018/html/Duan_Deep_Adversarial_Metric_CVPR_2018_paper.html
   - [ ] https://arxiv.org/abs/1903.05503
   - [ ] https://arxiv.org/abs/1803.00942
-  - [ ] https://arxiv.org/abs/1503.03832
   - [ ] https://arxiv.org/abs/1706.07567
 
-#### Multi-task Learning
+#### Transfer Learning
+  - [ ] [A Combinatorial Perspective on Transfer Learning](https://arxiv.org/pdf/2010.12268v1.pdf)
+
+### Multi-task Learning
   - [ ] https://arxiv.org/abs/1905.07553
-  
-#### GNNs
+
+### Knowledge Graphs
+  - [ ] [Knowledge Graph-based Question Answering with Electronic Health Records](https://arxiv.org/pdf/2010.09394.pdf)
+  - [ ] [Graph embedding on biomedical networks: methods, applications and evaluations](https://academic.oup.com/bioinformatics/article/36/4/1241/5581350)
+
+### Graph Neural Networks
   - Meta Lists:
     - https://github.com/thunlp/GNNPapers
     - https://twitter.com/PetarV_93/status/1306689702020382720
-
-#### Imputation
+    
+### Irregular Time-series
+  - [ ] https://arxiv.org/pdf/2012.00168.pdf
+  
+### Protein Modeling
+  - [ ] [LEARNING PROTEIN SEQUENCE EMBEDDINGS USING INFORMATION FROM STRUCTURE](https://openreview.net/pdf?id=SygLehCqtm)
+  
+### Machine Learning Engineering
+  - [ ] https://arxiv.org/pdf/2011.03751v1.pdf
+  
+### Curiousity Papers
+  - [ ] [Quantum Neural Networks](https://arxiv.org/pdf/2011.00027v1.pdf)
+  - [ ] [Ideal Theory in AI Ethics](https://arxiv.org/abs/2011.02279)
+  - [ ] [Deep Learning for Scientific Discovery](https://arxiv.org/abs/2003.11755)
+      
+# Tech Stack Reading / Tutorial Queue:
+  - [ ] https://medium.com/pytorch/pytorch-lightning-bolts-from-boosted-regression-on-tpus-to-pre-trained-gans-5cebdb1f99fe
+  
+# Archived Papers List
+This list is for deprioritized papers/topics that may have been read.
+## Imputation
   - [X] [Neural ODEs](https://arxiv.org/abs/1806.07366)
     - [ ] https://arxiv.org/abs/2002.08071
     - [ ] https://papers.nips.cc/paper/8773-latent-ordinary-differential-equations-for-irregularly-sampled-time-series.pdf
@@ -160,14 +119,24 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
     - [ ] https://link.springer.com/content/pdf/10.1007/s41666-020-00076-2.pdf
     - [ ] https://proceedings.icml.cc/static/paper_files/icml/2020/3129-Paper.pdf
 
-#### Clinical & Biomedical Modeling (e.g., task-oriented, rather than representation oriented)
-  - [ ] https://arxiv.org/pdf/2007.09483.pdf
-  - [ ] https://arxiv.org/abs/2006.12777
-  - [ ] https://dl.acm.org/doi/pdf/10.1145/3394486.3403110
-  
-#### Efficient Network Architectures
-##### Transformers
+## Biomedical Modeling (e.g., task-oriented, rather than representation oriented)
+  - [X] https://dl.acm.org/doi/pdf/10.1145/3394486.3403110
+
+## Efficient Network Architectures
+### Transformers
   - [ ] https://arxiv.org/pdf/2009.06732.pdf
-    
-## Tech Stack Reading / Tutorial Queue:
-  - [ ] https://medium.com/pytorch/pytorch-lightning-bolts-from-boosted-regression-on-tpus-to-pre-trained-gans-5cebdb1f99fe
+  
+## Deep Learning Theory
+  - [X] [Lottery Ticket Hypothesis](https://arxiv.org/abs/1803.03635)
+    - [X] https://arxiv.org/abs/2007.12223
+    - [X] https://arxiv.org/abs/1911.11134
+    - [X] https://ai.googleblog.com/2020/09/improving-sparse-training-with-rigl.html
+  - [x] [Deep Contextual Clinical Prediction with Reverse Distillation](https://arxiv.org/abs/2007.05611)
+
+
+### Training under class imbalance
+  - [X] https://arxiv.org/pdf/2009.02189v1.pdf
+  - [X] https://arxiv.org/pdf/1903.01182.pdf
+  
+## Clustering
+  - [X] https://arxiv.org/pdf/2009.07417v1.pdf
