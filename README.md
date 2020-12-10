@@ -32,16 +32,9 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   - [ ] [Self-supervised Learning: Generative or Contrastive](https://arxiv.org/abs/2006.08218)
 
 #### General Self Supervised Representation Learning
-  - [ ] [Automatic Shortcut Removal for Self-Supervised Representation Learning
-](https://arxiv.org/abs/2002.08822)
+  - [ ] [Automatic Shortcut Removal for Self-Supervised Representation Learning](https://arxiv.org/abs/2002.08822)
  
-#### Pre-training
-##### Biomedical > Proteins
-  - Meta-list: https://github.com/yangkky/Machine-learning-for-proteins
-  - [ ] https://openreview.net/pdf?id=SygLehCqtm
-  - [ ] https://www.biorxiv.org/content/10.1101/2020.01.23.917682v1
-  - [ ] https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract
-  
+#### Pre-training 
 ##### Language
   - [ ] [CERT: Contrastive Self-supervised Learning for Language Understanding](https://arxiv.org/abs/2005.12766)
 
@@ -49,35 +42,37 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   - [ ] [Temporal Phenotyping using Deep Predictive Clustering of Disease Progression](https://arxiv.org/pdf/2006.08600.pdf)
   
 ##### Graphs
-  - [ ] [Graph-BERT](https://arxiv.org/pdf/2001.05140.pdf)
+  - [X] [Graph-BERT](https://arxiv.org/pdf/2001.05140.pdf)
   - [ ] [Strategies for Pre-training Graph Neural Networks](https://arxiv.org/abs/1905.12265)
   - [ ] [GCC: Graph Contrastive Coding for Graph Neural Network Pre-Training](https://dl.acm.org/doi/10.1145/3394486.3403168)
-  - [ ] https://arxiv.org/pdf/2010.12811.pdf
+  - [ ] [Graph Information Bottleneck]https://arxiv.org/pdf/2010.12811.pdf
   - [ ] [Self-Supervised Graph Transformer on Large-Scale Molecular Data](https://arxiv.org/pdf/2007.02835.pdf)
   
 ##### Ontologies
-  - [ ] https://arxiv.org/pdf/2006.10217.pdf
+  - [ ] [STEAM: Self-Supervised Taxonomy Expansion with Mini-Paths](https://arxiv.org/pdf/2006.10217.pdf)
   
 ###### BERT + KG
-  - [ ] https://www.aclweb.org/anthology/2020.coling-main.57.pdf
-  - [ ] [UmlsBERT](https://arxiv.org/pdf/2010.10391.pdf
+  - [ ] [Enhancing Clinical BERT Embedding using a Biomedical Knowledge Base](https://www.aclweb.org/anthology/2020.coling-main.57.pdf)
+  - [ ] [UmlsBERT](https://arxiv.org/pdf/2010.10391.pdf)
   - [ ] [Infusing Disease Knowledge into BERT for Health Question Answering](https://arxiv.org/pdf/2010.03746.pdf)
   
 #### Contrastive Learning
-  - [ ] https://arxiv.org/pdf/2011.04419.pdf
-  - [ ] https://arxiv.org/abs/2002.05709
+  - [ ] [Towards Domain-Agnostic Contrastive Learning](https://arxiv.org/pdf/2011.04419.pdf)
+  - [ ] [A Simple Framework for Contrastive Learning of Visual Representations](https://arxiv.org/abs/2002.05709)
   
 #### Deep Metric Learning:
-  - [ ] https://openaccess.thecvf.com/content_cvpr_2018/html/Duan_Deep_Adversarial_Metric_CVPR_2018_paper.html
-  - [ ] https://arxiv.org/abs/1903.05503
-  - [ ] https://arxiv.org/abs/1803.00942
-  - [ ] https://arxiv.org/abs/1706.07567
+  - [ ] [Deep Adversarial Metric Learning](https://openaccess.thecvf.com/content_cvpr_2018/html/Duan_Deep_Adversarial_Metric_CVPR_2018_paper.html)
+  - [ ] [Hardness-Aware Deep Metric Learning
+](https://arxiv.org/abs/1903.05503)
+  - [ ] [Not All Samples Are Created Equal: Deep Learning with Importance Sampling](https://arxiv.org/abs/1803.00942)
+  - [ ] [Sampling Matters in Deep Embedding Learning](https://arxiv.org/abs/1706.07567)
 
 #### Transfer Learning
   - [ ] [A Combinatorial Perspective on Transfer Learning](https://arxiv.org/pdf/2010.12268v1.pdf)
 
 ### Multi-task Learning
-  - [ ] https://arxiv.org/abs/1905.07553
+  - [ ] [Which Tasks Should Be Learned Together in Multi-task Learning?](https://arxiv.org/abs/1905.07553)
+  - [ ] [Taskonomy: Disentangling Task Transfer Learning](https://arxiv.org/abs/1804.08328)
 
 ### Knowledge Graphs
   - [ ] [Knowledge Graph-based Question Answering with Electronic Health Records](https://arxiv.org/pdf/2010.09394.pdf)
@@ -89,21 +84,20 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
     - https://twitter.com/PetarV_93/status/1306689702020382720
     
 ### Irregular Time-series
-  - [ ] https://arxiv.org/pdf/2012.00168.pdf
+  - [ ] [A Survey on Principles, Models and Methods for Learning from Irregularly Sampled Time Series](https://arxiv.org/pdf/2012.00168.pdf)
   
 ### Protein Modeling
-  - [ ] [LEARNING PROTEIN SEQUENCE EMBEDDINGS USING INFORMATION FROM STRUCTURE](https://openreview.net/pdf?id=SygLehCqtm)
-  
-### Machine Learning Engineering
-  - [ ] https://arxiv.org/pdf/2011.03751v1.pdf
-  
+  - Meta-list: https://github.com/yangkky/Machine-learning-for-proteins
+  - [ ] [Learning Protein Sequence Embeddings Using Information from Structure](https://openreview.net/pdf?id=SygLehCqtm)
+ 
 ### Curiousity Papers
   - [ ] [Quantum Neural Networks](https://arxiv.org/pdf/2011.00027v1.pdf)
   - [ ] [Ideal Theory in AI Ethics](https://arxiv.org/abs/2011.02279)
   - [ ] [Deep Learning for Scientific Discovery](https://arxiv.org/abs/2003.11755)
+  - [ ] [Software engineering for artificial intelligence and machine learning software](https://arxiv.org/pdf/2011.03751v1.pdf)
       
 # Tech Stack Reading / Tutorial Queue:
-  - [ ] https://medium.com/pytorch/pytorch-lightning-bolts-from-boosted-regression-on-tpus-to-pre-trained-gans-5cebdb1f99fe
+  - [ ] [PyTorch Lightning Bolts](https://medium.com/pytorch/pytorch-lightning-bolts-from-boosted-regression-on-tpus-to-pre-trained-gans-5cebdb1f99fe)
   
 # Archived Papers List
 This list is for deprioritized papers/topics that may have been read.
