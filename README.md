@@ -23,6 +23,11 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   - [ ] [Hopfield Networks](https://arxiv.org/pdf/2008.02217.pdf)
   - [ ] [Gradient Starvation](https://arxiv.org/pdf/2011.09468.pdf)
   - [ ] [Neural Function Modules](https://arxiv.org/pdf/2010.08012.pdf)
+  - [ ] [Deep Evidential Regression](https://papers.nips.cc/paper/2020/file/aab085461de182608ee9f607f3f7d18f-Paper.pdf)
+#### Domain Generalization
+  - [ ] [In search of Lost Domain Generalization](https://arxiv.org/pdf/2007.01434.pdf)
+  - [ ] [Measuring Robustness to Natural Distribution Shifts in Image Classification](https://modestyachts.github.io/imagenet-testbed/)
+  - [ ] [Wilds: A Benchmark of in-the-Wild Distribution Shifts](https://arxiv.org/pdf/2012.07421.pdf)
  
 ### Representation Learning
 
@@ -33,6 +38,10 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
 
 #### General Self Supervised Representation Learning
   - [ ] [Automatic Shortcut Removal for Self-Supervised Representation Learning](https://arxiv.org/abs/2002.08822)
+  
+##### Latent Graph Learning
+  - Meta-list: https://towardsdatascience.com/manifold-learning-2-99a25eeb677d
+  
  
 #### Pre-training 
 ##### Language
@@ -60,15 +69,22 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   - [ ] [Towards Domain-Agnostic Contrastive Learning](https://arxiv.org/pdf/2011.04419.pdf)
   - [ ] [A Simple Framework for Contrastive Learning of Visual Representations](https://arxiv.org/abs/2002.05709)
   
-#### Deep Metric Learning:
+#### (Deep) Metric Learning:
   - [ ] [Deep Adversarial Metric Learning](https://openaccess.thecvf.com/content_cvpr_2018/html/Duan_Deep_Adversarial_Metric_CVPR_2018_paper.html)
   - [ ] [Hardness-Aware Deep Metric Learning
 ](https://arxiv.org/abs/1903.05503)
   - [ ] [Not All Samples Are Created Equal: Deep Learning with Importance Sampling](https://arxiv.org/abs/1803.00942)
   - [ ] [Sampling Matters in Deep Embedding Learning](https://arxiv.org/abs/1706.07567)
+  - [ ] [A unifying mutual information view of metric learning: cross-entropy vs. pairwise losses](https://arxiv.org/abs/2003.08983)
+  - [ ] [Hierarchical Triplet Loss](https://openaccess.thecvf.com/content_ECCV_2018/papers/Ge_Deep_Metric_Learning_ECCV_2018_paper.pdf)
+  - [ ] [The Group Loss for Deep Metric Learning](https://arxiv.org/pdf/1912.00385.pdf)
+  - [ ] [Multi-similarity Loss with General Pair Weighting for Deep Metric Learning](https://openaccess.thecvf.com/content_CVPR_2019/papers/Wang_Multi-Similarity_Loss_With_General_Pair_Weighting_for_Deep_Metric_Learning_CVPR_2019_paper.pdf)
 
 #### Transfer Learning
   - [ ] [A Combinatorial Perspective on Transfer Learning](https://arxiv.org/pdf/2010.12268v1.pdf)
+
+### Few-shot Learning
+  - Meta-list: https://github.com/Duan-JM/awesome-papers-fewshot/blob/master/REMAIN_SORTED_PAPER.md
 
 ### Multi-task Learning
   - [ ] [Which Tasks Should Be Learned Together in Multi-task Learning?](https://arxiv.org/abs/1905.07553)
@@ -82,6 +98,8 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   - Meta Lists:
     - https://github.com/thunlp/GNNPapers
     - https://twitter.com/PetarV_93/status/1306689702020382720
+  - [ ] [Provably More Powerful Neural Networks](https://proceedings.neurips.cc/paper/2020/file/2f73168bf3656f697507752ec592c437-Paper.pdf)
+  - [ ] [GraphSAINT](https://arxiv.org/abs/1907.04931)
     
 ### Irregular Time-series
   - [ ] [A Survey on Principles, Models and Methods for Learning from Irregularly Sampled Time Series](https://arxiv.org/pdf/2012.00168.pdf)
