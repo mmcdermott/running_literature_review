@@ -10,8 +10,6 @@ Here I'll maintain a running record of literature I've read, topics I've learned
 # Paper/Topic Queue
 Maintenance is at a best effort level. Until decided otherwise, this won't be sorted by topic, the relevant sub-works will be nested.
 ## To categorize
-  - https://www.biorxiv.org/content/10.1101/2020.01.23.917682v1
-  - https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract
 
 ## Shortlist (5 max, unordered)
 
@@ -133,6 +131,7 @@ This list is for deprioritized papers/topics that may have been read.
 
 ## Biomedical Modeling (e.g., task-oriented, rather than representation oriented)
   - [X] https://dl.acm.org/doi/pdf/10.1145/3394486.3403110
+  - [X] [Generative Probabilistic biological sequence models](https://www.biorxiv.org/content/10.1101/2020.07.31.231381v1.abstract)
 
 ## Efficient Network Architectures
 ### Transformers
