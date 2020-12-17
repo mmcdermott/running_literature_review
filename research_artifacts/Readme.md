@@ -31,38 +31,109 @@ Goal is to decide if should be read or not in depth.
 Goal is to give a full, complete summary of the paper.
 ```
 ## [Paper_Title](paper_link)
-  * **Logistics**:
-    - Citation (key points: publication venue, date, authors)
-    - \# of citations of this work & as-of date
-    - Author institutions
-    - Time Range: DATE (START - END)
-  * **Summary**:
-    - _Single Big Problem/Question_ The single big problem the paper seeks to solve (1 sent).
-    - _Solution Proposed/Answer Found_ The proposed solution (1 sent).
-    - _Why hasn't this been done before?_ Why has nobody solved this problem in this way before? What hole in the literature does this paper fill? (1 sent).
-    - _Experiments used to justify?_
-      1) List of experiments used to justify (tasks, data, etc.) -- full context.
-    - _Secret Terrible Thing_ What is the "secret terrible thing" of this paper?
-    - 3 most relevant other papers:
-      1)
-      2)
-      3)
-    - Warrants deeper dive in main doc? (options: No, Not at present, Maybe, At least partially, Yes)
-  * **Detailed Methodology**:
-    Detailed description of underlying methodology
-  * **Key Strengths**:
-    - List of big pros of the paper
-  * **Key Weaknesses**:
-    - List of big cons of this paper
-  * **Open Questions**:
-    - List of open questions inspired by this paper
-  * **Extensions**:
-    - List of possible extensions to this paper, at any level of thought-out.
-  * **How to learn more**:
-    - List of terms/concepts/questions to investigate to learn more about this paper.
+### Logistics:
+  - Citation (key points: publication venue, date, authors)
+  - \# of citations of this work & as-of date
+  - Author institutions
+  - Time Range: DATE (START - END)
+### Summary:
+  - _Single Big Problem/Question_ The single big problem the paper seeks to solve (1 sent).
+  - _Solution Proposed/Answer Found_ The proposed solution (1 sent).
+  - _Why hasn't this been done before?_ Why has nobody solved this problem in this way before? What hole in the literature does this paper fill? (1 sent).
+  - _Experiments used to justify?_
+    1) List of experiments used to justify (tasks, data, etc.) -- full context.
+  - _Secret Terrible Thing_ What is the "secret terrible thing" of this paper?
+  - 3 most relevant other papers:
+    1)
+    2)
+    3)
+### Detailed Methodology:
+  Detailed description of underlying methodology
+### Key Strengths:
+  - List of big pros of the paper
+### Key Weaknesses:
+  - List of big cons of this paper
+### Open Questions:
+  - List of open questions inspired by this paper
+### Extensions:
+  - List of possible extensions to this paper, at any level of thought-out.
+### How to learn more:
+  - List of terms/concepts/questions to investigate to learn more about this paper.
 ```
 
 # Uncategorized
+## [Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning](https://openaccess.thecvf.com/content_CVPR_2019/papers/Wang_Multi-Similarity_Loss_With_General_Pair_Weighting_for_Deep_Metric_Learning_CVPR_2019_paper.pdf)
+### Logistics:
+  - CWang X, Han X, Huang W, Dong D, Scott MR. Multi-similarity loss with general pair weighting for deep metric learning. InProceedings of the IEEE Conference on Computer Vision and Pattern Recognition 2019 (pp. 5022-5030).
+  - 110 (as of 12/2020)
+  - Malong Technologies, China
+  - Time Range: 12/17/20 (09:41 - 10:42)
+### Summary:
+  - _Single Big Problem/Question_ A nubmer of pair- or tuple- based Deep Metric Learning (DML) loss functions have been proposed, but no general unfiying framework exists across these losses. 
+  - _Solution Proposed/Answer Found_ The authors establish the General Pair Weighting (GPW) framework, which recasts the sampling problem in DML into  a unified view of pair weighting through gradient analysis. This allows various pair- or tuple-based loss functions to be discussed comprehensively, and allows one to propose the new _multi-similarity loss_ (MS loss), which is a more principled loss than the existing solutions.
+  - _Why hasn't this been done before?_ DML is an active area of research, but is still driven by empirical findings, rather than new theory that merges older metric-learning theory with new NN based ideas. This paper helps merge a variety of recent empirical approaches under a novel theoretical lens.
+  - _Experiments used to justify?_  The MS loss also obtains new state-of-the-art performance on four image retreival benchmarks, compared to recent approaches such as ABE and HTL by large margins.
+    Benchmarks:
+        1) CUB200
+        2) In-shop Clothes Retrieval dataset
+        3) ?
+        4) ?
+     Models:
+        1) ABE
+        2) HTL
+  - _Secret Terrible Thing_ What is the "secret terrible thing" of this paper?
+  - 3 most relevant other papers:
+    1)
+    2)
+    3)
+### Detailed Methodology:
+  #### General Pair Weighting
+  Given `\vec x_i \in \R^d` an instance vector, `\mat X \in \R^{m \times d}` an instance matrix, and `\vec y \in \{1, 2, \ldots, C}^m` a label vector. `\vec x_i` is projected ono an `\ell`-dimensional unit sphere by a neural network `f(\cdot ; \vec \theta): \R^d \to S^\ell` parametrized by `\vec \theta`. Formally, the similarity of two samples is defined as `S_{i,j} := \ip{f(\vec x_i ; \vec \theta), f(\vec x_j ; \vec \theta)}` (cosine similarity given unit sphere). Let `\mat S` be the `m \times m` matrix with `S_{i, j}` as its elements.
+  
+  Any pair-based loss `\mathcal L` can be formulated as a function of `\mat S, \vec y`. How? Consider the gradients that would be used to optimize `\mathcal L`: `\left. \pd{\mathcal L(\mat S, \vec y)}{\vec theta} \right|_t = \left.\pd{\mathcal L(\mat S, \vec y)}{\mat S} \right |_t \left \pd{\mat S}{\vec \theta} \right|_t` which in turn is equal to `\sum_{i=1}^m \sum_{j=1}^m \left.\pd{\mathcal L(\mat S, \vec y)}{S_{i,j}}\right|_t \left \pd{S_{i, j}}{\vec \theta} \right|_t`. 
+  
+  This can be re-formulated into a function `\mathcal F` whose gradient w.r.t. `\vec \theta` at the `t`-th iteration is computed exactly the same as Eq. 1: `\mathcal F(\mat S, \vec y} = \sum_{i=1}^m \sum_{j=1}^m \left.\pd{\mathcal L(\mat S, \vec y)}{S_{i,j}}\right|_t S_{i, j}`. Note that for this to be true, we must regard `\left.\pd{\mathcal L(\mat S, \vec y)}{S_{i,j}}\right|_t` as a _constant scalar_ independent of `\vec \theta` -- e.g., `\mathcal F` is really `\mathcal F_t`, which is a weighted sum whose (constant) weights happen to be equal precisely to `\left.\pd{\mathcal L(\mat S, \vec y)}{S_{i,j}}\right|_t`.
+  
+  For a pair-based loss (as we want to push positive pairs closer and negatives apart) we can assume `\left.\pd{\mathcal L(\mat S, \vec y)}{S_{i,j}}\right|_t \ge 0` for a negative pair and `\left.\pd{\mathcal L(\mat S, \vec y)}{S_{i,j}}\right|_t \le 0` for a positive pair. Thus, we can reformulat `\mathcal F` in the form of pair weighting as follows:
+  
+  `\mathcal F = \sum_{i=1}^m \left(\sum_{j | \vec y_j \neq \vec y_i}w_{ij} S_{ij} - \sum_{j | \vec y_j = \vec y_i}w_{ij} S_{ij}\right)`
+  where `w_{ij} = \abs{\left.\pd{\mathcal L(\mat S, \vec y)}{S_{i,j}}\right|_t}` (really, this should be `w_{ij}^{(t)}` as it does depend on iteration `t`). Thus, we can formulate any pair-based loss as a general pair re-weighting scheme. 
+  
+  ##### Re-interpretation under a graph lens
+  Under a graph lens, we lack `\vec y` and instead have adjacency matrix `\mat A \in \{0, 1\}^{m \times m}` corresponding to some graph `G`. With this mentality, we can re-interpret `\mathcal F` above as:
+  `\mathcal F = \sum_{i=1}^m \left(\sum_{j | \mat A_{i,j} = 0}w_{ij} S_{ij} - \sum_{j | \mat A_{i, j} = 1}w_{ij} S_{ij}\right)`. But this now looks suspiciously like a dot product. With a little re-arranging:
+  
+  `\mathcal F = \sum_{i=1}^m \ip{\vec w_i \vec S_{i, :}} - 2 * \ip{\mat_A{i, :}, \vec w \odot \vec S_{i, :}}`
+  `\mathcal F = \sum_{i=1}^m \ip{\vec 1, \vec w_i \odot \vec S_{i, :}} - 2 * \ip{\mat_A{i, :}, \vec w \odot \vec S_{i, :}}`
+  `\mathcal F = \sum_{i=1}^m \ip{\vec 1 - 2\mat_A{i, :}, \vec w_i \odot \vec S_{i, :}}`
+  `\mathcal F = (\vec 1_m^T) \cdot \left( [\mat 1_{m \times m} - 2 \mat A] \odot \mat w \odot \mat S\right) \cdot \vec 1_m`
+  `\mathcal F = \vec 1_m^T \cdot \left( \mat w \odot \mat S \right) \vec 1_m - 2 \left( \vec 1_m^T \left( \mat A \odot \mat w \odot \mat S \right) \vec 1_m`
+  `\mathcal F = \vec 1_m^T \cdot \left( \tilde{\mat A} \odot \mat w \odot \mat S \right) \vec 1_m - \left( \vec 1_m^T \left( \mat A \odot \mat w \odot \mat S \right) \vec 1_m`
+  
+  Which we can interpret as a difference between the sum of `\mat w \odot \mat S` re-weighted edge weights in the "inverted" adjacency matrix corresponding to the graph `G'` which has edges precisely where `G` does not and the original graph `G`.
+  
+  #### Multi-similarity Loss
+  ##### Different kinds of similarity
+  TODO
+  
+  ##### Loss Formulation.
+  `\mathcal L_{\text{MS}} = \frac{1}{m} \sum_{i=1}^m \left ( \frac{1}{\alpha} \log\left( 1 + \sum_{j | y_i = y_j} e^{-\alpha(S_{i,j} - \lambda)}\right) + \frac{1}{\beta} \log \left(1 + \sum_{j | y_i \neq y_j e^{\beta (S_{ij} - \lambda)}\right)\right)`
+  ###### Under graph lens
+  `\mathcal L_{\text{MS}} = \frac{1}{m} \sum_{i=1}^m \left ( \frac{1}{\alpha} \log\left( 1 + \sum_{j | y_i = y_j} e^{-\alpha(S_{i,j} - \lambda)}\right) + \frac{1}{\beta} \log \left(1 + \sum_{j | y_i \neq y_j} e^{\beta (S_{ij} - \lambda)}\right)\right)`
+  `\mathcal L_{\text{MS}} = \frac{1}{m} (\vec 1_m^T) \cdot \left(\frac{1}{\alpha} \log\left(1 + e^{\alpha\lambda}\mat A \odot e^{-\alpha\mat S}\right) + \frac{1}{\beta} \log \left(1 + e^{-\beta\lambda} \tilde{\mat A} \odot e^{\beta \mat S}\right)\right) \cdot \vec 1_m`
+  
+### Key Strengths:
+  - List of big pros of the paper
+### Key Weaknesses:
+  - List of big cons of this paper
+### Open Questions:
+  - List of open questions inspired by this paper
+### Extensions:
+  - List of possible extensions to this paper, at any level of thought-out.
+### How to learn more:
+  - List of terms/concepts/questions to investigate to learn more about this paper.
+
+
 ## [Learning to Select the Best Forecasting Tasks for Clinical Outcome Prediction](https://proceedings.neurips.cc/paper/2020/file/abc99d6b9938aa86d1f30f8ee0fd169f-Paper.pdf)
   * **Logistics**:
     - Xue Y, Du N, Mottram A, Seneviratne M, Dai AM. Learning to Select Best Forecast Tasks for Clinical Outcome Prediction. Advances in Neural Information Processing Systems. 2020;33.
