@@ -52,7 +52,7 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   - [X] [Graph-BERT](https://arxiv.org/pdf/2001.05140.pdf)
   - [ ] [Strategies for Pre-training Graph Neural Networks](https://arxiv.org/abs/1905.12265)
   - [ ] [GCC: Graph Contrastive Coding for Graph Neural Network Pre-Training](https://dl.acm.org/doi/10.1145/3394486.3403168)
-  - [ ] [Graph Information Bottleneck]https://arxiv.org/pdf/2010.12811.pdf
+  - [ ] [Graph Information Bottleneck](https://arxiv.org/pdf/2010.12811.pdf)
   - [ ] [Self-Supervised Graph Transformer on Large-Scale Molecular Data](https://arxiv.org/pdf/2007.02835.pdf)
   
 ##### Ontologies
@@ -69,8 +69,7 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   
 #### (Deep) Metric Learning:
   - [ ] [Deep Adversarial Metric Learning](https://openaccess.thecvf.com/content_cvpr_2018/html/Duan_Deep_Adversarial_Metric_CVPR_2018_paper.html)
-  - [ ] [Hardness-Aware Deep Metric Learning
-](https://arxiv.org/abs/1903.05503)
+  - [ ] [Hardness-Aware Deep Metric Learning](https://arxiv.org/abs/1903.05503)
   - [ ] [Not All Samples Are Created Equal: Deep Learning with Importance Sampling](https://arxiv.org/abs/1803.00942)
   - [ ] [Sampling Matters in Deep Embedding Learning](https://arxiv.org/abs/1706.07567)
   - [ ] [A unifying mutual information view of metric learning: cross-entropy vs. pairwise losses](https://arxiv.org/abs/2003.08983)
