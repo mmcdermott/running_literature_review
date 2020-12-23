@@ -62,6 +62,70 @@ Goal is to give a full, complete summary of the paper.
 ```
 
 # Uncategorized
+##[Topological Autoencoders](https://arxiv.org/pdf/1906.00722.pdf)
+### Logistics:
+  - Moor M, Horn M, Rieck B, Borgwardt K. Topological autoencoders. InInternational Conference on Machine Learning 2020 Nov 21 (pp. 7045-7054). PMLR.
+  - 11 (12/2020)
+  - ETH Zurich
+  - Time Range: 12/22/20 (16:23 - END)
+### Summary:
+  - _Single Big Problem/Question_ It would be valuable if we could learn autoencoders that perserved topological features of point clouds, but preserving topology directly is challenging as topological criteria are not differentiable natively.
+  - _Solution Proposed/Answer Found_ The authors propose a vehicle to obtain gradients of topological signatures, making it possible to employ topological constraints while training deep neural networks and building topology-preserving autoencoders.
+  - _Why hasn't this been done before?_ Why has nobody solved this problem in this way before? What hole in the literature does this paper fill? (1 sent).
+  - _Experiments used to justify?_
+    1) List of experiments used to justify (tasks, data, etc.) -- full context.
+  - _Secret Terrible Thing_ Why do I want to learn an autoencoder that perserves topology? Is this for compression? What if I think my input metric is really stupid, so my topology is bad, and I want to learn a \emph{better} topology? Also, they only suppor the simplest of topological features?
+  - 3 most relevant other papers:
+    1)
+    2)
+    3)
+### Detailed Methodology:
+  Persistent homology extends simplicial homology from underlying manifolds/simplices to point clouds (e.g. `X = \{x_1, \ldots, x_n\} \in \R^d`, and a metric `\dist: X \times X \to \R`). How? By defining simplices across multiple scales of the metric `\dist` and examining their homological properties. For small (sufficiently) changes of the metric, the simplices don't change, so the homology signatures are continuous w.r.t. the metric. The actual persistent homology signature itself is a collection of points defining regions of the metric threshold where a particular topological feature exists.
+  
+  For a topology-preserving autoencoder, the authors compute the persistent homology signature of the latent code Z induced by an autoencoder `X \to Z \to \tilde{X}`, and assert that this should be identical to that of `X`. They do this by realizing the persistence diagram as really a selection operation within the all-pairs distance matrix of the dataset, and, given continuity, the selection property will have no gradient so they can just compare distances on all selected edges, which gives clean losses. This is, in essence, a way of training your autoencoder such that it perserves the relative distance relationships among the critical nodes in the dataset (and, by unioning the edges between those critical for X and Z, it also will inherently push the edge-sets to be the same, by making the edges of the unimportant Z selections change to mirror their unimportant state in X).
+  
+  The authors also show some properties re stability of this approach.
+### Key Strengths:
+  - List of big pros of the paper
+### Key Weaknesses:
+  - List of big cons of this paper
+### Open Questions:
+  - How does this work given the persistence diagram won't change much given small changes in metric or representation? Ahh, that's actually a misunderstanding. As the persistence diagram captures bounds on the threshold directly, small changes in the metric will change that threshold exactly, so it does have a continuous gradient. In fact, instead of being nearly zero everywhere, it will be identity nearly everywhere, with more abrupt changes at various points.
+### Extensions:
+  - List of possible extensions to this paper, at any level of thought-out.
+### How to learn more:
+  - List of terms/concepts/questions to investigate to learn more about this paper.
+
+## [WILDS: A Benchmark of in-the-Wild Distribution Shifts](https://arxiv.org/abs/2012.07421)
+### Logistics:
+  - Koh PW, Sagawa S, Marklund H, Xie SM, Zhang M, Balsubramani A, Hu W, Yasunaga M, Phillips RL, Beery S, Leskovec J. WILDS: A Benchmark of in-the-Wild Distribution Shifts. arXiv preprint arXiv:2012.07421. 2020 Dec 14.
+  - Stanford, Berkeley, Microsoft, Cornell, CalTech
+  - Time Range: 12/22 (15:57 - 16:21) -- stopping early as I think I have the feel for the paper and it isn't immediately relevant to me beyond that.
+### Summary:
+  - _Single Big Problem/Question_ Distribution shifts cause major problems for ML in the real world, but lack organized, realistic benchmarks on which researchers can evaluate novel paradigms for learning under shifts.
+  - _Solution Proposed/Answer Found_ The authors propose WILDS, a benchmark of in-the-wild distribution shifts spanning diverse modalities and applications. Provides real-world, domain-oriented train/test splits and evaluation metrics.
+  - _Why hasn't this been done before?_ This is a big project that takes a lot of organizational effort, and is only relevant at the moment when ML is beginning to be used sufficiently in the real-world that issues w/  dataset shift are causing real problems. To surmount the logistical work and domain-expertise required to create something like WILDS, prior efforts also have generally introduced synthetic examples of dataset shift, which are not necessarily representative of true domain shift.
+  - _Experiments used to justify?_ Not super applicable, but the authros do profile ERM, DeepCoral, IRM, and GroupDRO on their benchmark.
+  - _Secret Terrible Thing_
+    Two things: First, I don't like the static train/test split. _Especially_ in the context of domain shift, where train is not iid of test, repeated train/test sampling is essential to get a strong estimate of mean, I think. Depending on the # of domains, this may or may not be a big problem. Second, I think we _must_ assume that D_train and D_test are either iid samples from some domain generative process, or that the pair (D_train, D_test) is a sample from some domain adaption generative process D_gen (in either case), and that we have some way of further _simulating_ sampling from D_gen (e.g., subsampling the train set). In this way, learning how to solve domain generalization on D_train helps us on D_test. This can only work, however, if their datasets are truly constructed in this way, which does not appear to be the case.
+  - 3 most relevant other papers:
+    1)
+    2)
+    3)
+### Detailed Methodology:
+  They define "Domain generalization" to be when the domains at train time are non-overlapping with those at test time (e.g., train on MIMIC, test on eICU), and "subpopulation shift" when the domains are the same but the relative makeup may be different (e.g., we train on mostly white people but want to do well on all people). Note these are both different from "Domain Adaption", where we know D_train and D_test and want to adapt from D_train to D_test explicitly. They simulate Domain generalization as domain adaption, though, by adding OOD validation sets for tuning.
+### Key Strengths:
+  - List of big pros of the paper
+### Key Weaknesses:
+  - List of big cons of this paper
+### Open Questions:
+  - List of open questions inspired by this paper
+### Extensions:
+  - List of possible extensions to this paper, at any level of thought-out.
+### How to learn more:
+  - List of terms/concepts/questions to investigate to learn more about this paper.
+
+
 ## [Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning](https://openaccess.thecvf.com/content_CVPR_2019/papers/Wang_Multi-Similarity_Loss_With_General_Pair_Weighting_for_Deep_Metric_Learning_CVPR_2019_paper.pdf)
 ### Logistics:
   - CWang X, Han X, Huang W, Dong D, Scott MR. Multi-similarity loss with general pair weighting for deep metric learning. InProceedings of the IEEE Conference on Computer Vision and Pattern Recognition 2019 (pp. 5022-5030).
