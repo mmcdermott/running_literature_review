@@ -110,6 +110,7 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
   - [ ] [Ideal Theory in AI Ethics](https://arxiv.org/abs/2011.02279)
   - [ ] [Deep Learning for Scientific Discovery](https://arxiv.org/abs/2003.11755)
   - [ ] [Software engineering for artificial intelligence and machine learning software](https://arxiv.org/pdf/2011.03751v1.pdf)
+  - [ ] [Requirements Analysis for an Open Research Knowledge Graph](https://arxiv.org/pdf/2005.10334.pdf)
       
 # Tech Stack Reading / Tutorial Queue:
   - [ ] [PyTorch Lightning Bolts](https://medium.com/pytorch/pytorch-lightning-bolts-from-boosted-regression-on-tpus-to-pre-trained-gans-5cebdb1f99fe)
