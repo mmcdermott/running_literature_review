@@ -97,6 +97,7 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
     - https://twitter.com/PetarV_93/status/1306689702020382720
   - [ ] [Provably More Powerful Neural Networks](https://proceedings.neurips.cc/paper/2020/file/2f73168bf3656f697507752ec592c437-Paper.pdf)
   - [ ] [GraphSAINT](https://arxiv.org/abs/1907.04931)
+  - [ ] [ID-GNNs](https://arxiv.org/pdf/2101.10320.pdf)
     
 ### Irregular Time-series
   - [ ] [A Survey on Principles, Models and Methods for Learning from Irregularly Sampled Time Series](https://arxiv.org/pdf/2012.00168.pdf)
@@ -114,6 +115,7 @@ Maintenance is at a best effort level. Until decided otherwise, this won't be so
       
 # Tech Stack Reading / Tutorial Queue:
   - [ ] [PyTorch Lightning Bolts](https://medium.com/pytorch/pytorch-lightning-bolts-from-boosted-regression-on-tpus-to-pre-trained-gans-5cebdb1f99fe)
+  - [ ] [PyHealth](https://arxiv.org/pdf/2101.04209.pdf)
   
 # Archived Papers List
 This list is for deprioritized papers/topics that may have been read.
